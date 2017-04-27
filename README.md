@@ -1,68 +1,95 @@
-vichan - A lightweight and full featured PHP imageboard.
+
+H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 ========================================================
+
+Important Notice
+------------
+I created this fork because it looks like [Vichan](https://engine.vichan.net/) is dying... Since there are no more major
+updates for almost a year. 
+
+<strike> Maybe it's because of [INFINITY](https://github.com/ctrlcctrlv/infinity), being sold to a Jim Wat...Kin,
+and the complete clusterfuck of josh's [infinity never](https://github.com/infinity-next/infinity-next).
+Leading to a NTEC or whatever license that makes it illegal for hotwheels etc... to update the code.. </strike>
+
+Seems like Infinity is reborn here: [OpenIB](https://github.com/OpenIB/OpenIB) 
+
+I only created this fork out of necessity... To have my own hentai board, that (hopefully) will work for the coming decades. 
+
+Special Thanks
+------------
+* [Vichan](https://engine.vichan.net/) @czaks
+* [Tinyboard](http://github.com/savetheinternet/Tinyboard) @savetheinternet 
+  Support him by going to this site: [stop nerds](http://stopnerds.org/) 
+* [Infinity](https://github.com/ctrlcctrlv/infinity) @ctrcctrlv
+* [OpenIB](https://github.com/OpenIB/OpenIB) @Cipherwraith
+* [Lainchan](https://github.com/lainchan/lainchan)
+
+
+H0K4CH4N WIKI
+------------
+Credits go to @savetheinternet for making most of the [WIKI](https://github.com/horija/hokachan/wiki).
 
 About
 ------------
-vichan is a free light-weight, fast, highly configurable and user-friendly
+H0K4CH4N is a free light-weight, fast, highly configurable and user-friendly
 imageboard software package. It is written in PHP and has few dependencies.
 
-vichan is a fork of (now defunc'd) [Tinyboard](http://github.com/savetheinternet/Tinyboard),
-a great imageboard package, actively building on it and adding a lot of features and other
-improvements.
+H0K4CH4Nn is a fork of the (almost defunc'd) [Vichan](https://engine.vichan.net/) and (now defunc'd) 
+[Tinyboard](http://github.com/savetheinternet/Tinyboard),
 
-Support and announcements: https://engine.vichan.net/
+H0K4CH4N tries to combine useful features of Infinity, Vichan and TinyBoard.
+While removing useless/outdated/unfinished/broken code.
 
 Requirements
 ------------
-1.	PHP >= 5.4 (we still try to keep compatibility with php 5.3 as much as possible)
-        PHP 7.0 is explicitly supported.
+1.	PHP >= 5.6 (PHP 7.0 is recommended)
 2.	MySQL/MariaDB server
 3.	[mbstring](http://www.php.net/manual/en/mbstring.installation.php) 
 4.	[PHP GD](http://www.php.net/manual/en/intro.image.php)
 5.	[PHP PDO](http://www.php.net/manual/en/intro.pdo.php)
 
-We try to make sure vichan is compatible with all major web servers and
-operating systems. vichan does not include an Apache ```.htaccess``` file nor does
-it need one.
+We try to make sure H0K4CH4N is compatible with all major web servers and
+operating systems. <strike>Vichan does not include an Apache ```.htaccess``` file nor does
+it need one.</strike>  H0K4CH4N will require one and will include an example soon.
 
 ### Recommended
 1.	MySQL/MariaDB server >= 5.5.3
 2.	ImageMagick (command-line ImageMagick or GraphicsMagick preferred).
-3.	[APC (Alternative PHP Cache)](http://php.net/manual/en/book.apc.php),
+3.	<strike>[APC (Alternative PHP Cache)](http://php.net/manual/en/book.apc.php)</strike> 
+	(from php 5.4 it changed to APCU and doesn't seem to work in php 7), 
 	[XCache](http://xcache.lighttpd.net/) or
-	[Memcached](http://www.php.net/manual/en/intro.memcached.php)
+	[Memcached](http://www.php.net/manual/en/intro.memcached.php) 
 
 Contributing
 ------------
-You can contribute to vichan by:
+You can contribute to H0K4CH4N by:
 *	Developing patches/improvements/translations and using GitHub to submit pull requests
 *	Providing feedback and suggestions
 *	Writing/editing documentation
-
-If you need help developing a patch, please join our IRC channel.
+*	Fixing spelling errors. 
+*	<strike>Donating</strike> Just kidding... anyone alse noticed the extreme growth in e-beggars? 
 
 Installation
 -------------
-1.	Download and extract vichan to your web directory or get the latest
-	development version with:
-
-        git clone git://github.com/vichan-devel/vichan.git
-	
+1.	Download and extract H0K4CH4N to your web directory.	
 2.	Navigate to ```install.php``` in your web browser and follow the
 	prompts.
-3.	vichan should now be installed. Log in to ```mod.php``` with the
-	default username and password combination: **admin / password**.
-
-Please remember to change the administrator account password.
+3.	H0K4CH4N should now be installed. Log in to ```mod.php``` with the
+	default username and password combination: **admin / password**. (Change this as soon as possible)
+4. 	You should delete the tools folder if you don't need it
+5.	Remove install.php if it is still inside your root folder. 
+6.	install the central theme if you want to have a front page like on [H0K4CH4N](https://hokachan.com/)
 
 See also: [Configuration Basics](https://web.archive.org/web/20121003095922/http://tinyboard.org/docs/?p=Config).
 
 Upgrade
 -------
-To upgrade from any version of Tinyboard or vichan:
+To upgrade from any version of Tinyboard, Vichan or H0K4CH4N:
 
-Either run ```git pull``` to update your files, if you used git, or
-backup your ```inc/instance-config.php```, replace all your files in place
+backup your ```inc/instance-config.php```, replace all your files in place, 
+or remove the instance-config.php from the new version.
+Remove the config file in the captcha folder if using.
+Make sure you didn't modify the config.php
 (don't remove boards etc.), then put ```inc/instance-config.php``` back and
 finally run ```install.php```.
 
@@ -70,32 +97,21 @@ To migrate from a Kusaba X board, use http://github.com/vichan-devel/Tinyboard-M
 
 Support
 --------
-vichan is still beta software -- there are bound to be bugs. If you find a
+H0K4CH4N is still beta software -- there are bound to be bugs. If you find a
 bug, please report it.
 
-If you need assistance with installing, configuring, or using vichan, you may
+If you need assistance with installing, configuring, or using vichan/hokachan, you may
 find support from a variety of sources:
 
 *	If you're unsure about how to enable or configure certain features, make
-	sure you have read the comments in ```inc/config.php```.
-*	Check out an [official vichan board](http://int.vichan.net/devel/).
-*	You can join vichan's IRC channel for support
-	[irc.6irc.net #vichan-devel](irc://irc.6irc.net/vichan-devel)
+	sure you have read the comments in ```inc/config.php```, or read the wiki of this depository. 
 
-### Tinyboard support
-vichan is based on a Tinyboard, so both engines have very much in common. These
+### H0K4CH4N/Tinyboard/Vichan support
+H0K4CH4N is based on a Tinyboard and Vichan, so these engines have very much in common. These
 links may be helpful for you as well: 
 
 *	Tinyboard documentation can be found [here](https://web.archive.org/web/20121016074303/http://tinyboard.org/docs/?p=Main_Page).
-
-Donations
----------
-Do you like our work? You can motivate us financially to do better ;)
-* Bitcoin: 1GjZEdLaTQ8JWVFGZW921Yv4x59f9oiZME
-
-You can also ask us to develop some feature specially for you <3. Join our IRC
-channel and ask for a quote (there are a few of us, who work with the codebase
-and are skilled enough to develop such features pretty quickly).
+*	Vichan help can be found [here](http://int.vichan.net/devel/).
 
 CLI tools
 -----------------
@@ -104,23 +120,19 @@ to be launched from a Unix shell account (SSH, or something). They are located i
 directory.
 
 You actually don't need these tools for your imageboard functioning, they are aimed
-at the power users. You won't be able to run these from shared hosting accounts
-(i.e. all free web servers).
+at the power users.
 
 Localisation
 ------------
-Wanting to have vichan in your language? You can contribute your translations at this URL:
+Wanting to have vichan/hokachan in your language? You can contribute your translations at this URL:
 
 https://www.transifex.com/projects/p/tinyboard-vichan-devel/
 
 Oekaki
 ------
-vichan makes use of [wPaint](https://github.com/websanova/wPaint) for oekaki. After you pull the repository, however, you will need to download wPaint separately using git's `submodule` feature. Use the following commands:
+H0K4CH4N makes use of <strike>[wPaint](https://github.com/websanova/wPaint)</strike> use the link below for oekaki:
 
-```
-git submodule init
-git submodule update
-```
+[ctrlcctrlv/wPaint](https://github.com/ctrlcctrlv/wPaint/tree/53b007f28cf0b6cec9998e5e79d56dae6feb8c69)
 
 To enable oekaki, add all the scripts listed in `js/wpaint.js` to your `instance-config.php`.
 
@@ -128,12 +140,12 @@ WebM support
 ------------
 Read `inc/lib/webm/README.md` for information about enabling webm.
 
-vichan API
+H0K4CH4N/vichan API
 ----------
 vichan provides by default a 4chan-compatible JSON API. For documentation on this, see:
 https://github.com/vichan-devel/vichan-API/ .
 
 License
 --------
-See [LICENSE.md](http://github.com/vichan-devel/vichan/blob/master/LICENSE.md).
+See [LICENSE.md](https://github.com/horija/H0K4CH4N/blob/H0K4M4ST3R/LICENSE.md).
 
