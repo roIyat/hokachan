@@ -1506,8 +1506,6 @@
 		10	=> 'Janitor',
 		20	=> 'Mod',
 		30	=> 'Admin',
-		// 98	=> 'God',
-		99	=> 'Disabled'
 	);
 
 	// If you add stuff to the above, you'll need to call this function immediately after.
