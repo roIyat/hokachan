@@ -37,7 +37,7 @@
 	$config['blotter'] = &$config['global_message'];
 
 	// Automatically check if a newer version of Tinyboard is available when an administrator logs in.
-	$config['check_updates'] = true;
+	$config['check_updates'] = false;
 	// How often to check for updates
 	$config['check_updates_time'] = 43200; // 12 hours
 
@@ -284,6 +284,8 @@
 		'embed',
 		'recaptcha_challenge_field',
 		'recaptcha_response_field',
+		'captcha_cookie',
+		'captcha_text',
 		'spoiler',
 		'page',
 		'file_url',
@@ -299,6 +301,29 @@
 	// Public and private key pair from https://www.google.com/recaptcha/admin/create
 	$config['recaptcha_public'] = '6LcXTcUSAAAAAKBxyFWIt2SO8jwx4W7wcSMRoN3f';
 	$config['recaptcha_private'] = '6LcXTcUSAAAAAOGVbVdhmEM1_SyRF4xTKe8jbzf_';
+
+	// Enable Custom Captcha you need to change a couple of settings 
+	//Read more at: /captcha/instructions.md
+	 $config['captcha'] = array();
+
+	// Enable custom captcha provider
+	$config['captcha']['enabled'] = false;
+
+	//New thread captcha
+ 	//Require solving a captcha to post a thread. 
+ 	//Default off.
+ 	 $config['new_thread_capt'] = false;
+ 	 
+ 	// Use CAPTCHA for reports?
+	$config['report_captcha'] = false;
+
+	// Custom captcha get provider path (if not working get the absolute path aka your url.)
+	$config['captcha']['provider_get'] = 'https://hokachan.com/inc/captcha/entrypoint.php';
+	// Custom captcha check provider path
+	$config['captcha']['provider_check'] = 'https://hokachan.com/inc/captcha/entrypoint.php';
+
+	// Custom captcha extra field (eg. charset)
+	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
 	
 	// Ability to lock a board for normal users and still allow mods to post.  Could also be useful for making an archive board
 	$config['board_locked'] = false;
@@ -448,7 +473,7 @@
 	// Do you need a body for new threads?
 	$config['force_body_op'] = true;
 	// Require an image for threads?
-	$config['force_image_op'] = true;
+	$config['force_image_op'] = false;
 
 	// Strip superfluous new lines at the end of a post.
 	$config['strip_superfluous_returns'] = true;
@@ -456,7 +481,7 @@
 	$config['strip_combining_chars'] = true;
 
 	// Maximum post body length.
-	$config['max_body'] = 1800;
+	$config['max_body'] = 180000;
 	// Maximum number of post body lines to show on the index page.
 	$config['body_truncate'] = 15;
 	// Maximum number of characters to show on the index page.
@@ -514,7 +539,7 @@
 	
 	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then Tinyboard will
 	// download it. Not usually recommended.
-	$config['allow_upload_by_url'] = false;
+	$config['allow_upload_by_url'] = true;
 	// The timeout for the above, in seconds.
 	$config['upload_by_url_timeout'] = 15;
 
@@ -584,7 +609,7 @@
 	
 	// List of user_flag the user can choose. Flags must be placed in the directory set by $config['uri_flags']
 	$config['user_flags'] = array();
-	/* example: 
+	/* example: 
 	$config['user_flags'] = array (
 		'nz' => 'Nazi',
 		'cm' => 'Communist',
@@ -665,7 +690,7 @@
 	// Maximum number of images allowed. Increasing this number enabled multi image.
 	// If you make it more than 1, make sure to enable the below script for the post form to change.
 	// $config['additional_javascript'][] = 'js/multi-image.js';
-	$config['max_images'] = 1;
+	$config['max_images'] = 3;
 
 	// Method to use for determing the max filesize. 
 	// "split" means that your max filesize is split between the images. For example, if your max filesize
@@ -759,8 +784,8 @@
 	$config['allowed_ext_op'] = false;
 
 	// Allowed additional file extensions (not images; downloadable files).
-	// $config['allowed_ext_files'][] = 'txt';
-	// $config['allowed_ext_files'][] = 'zip';
+	$config['allowed_ext_files'][] = 'txt';
+	$config['allowed_ext_files'][] = 'zip';
 
 	// An alternative function for generating image filenames, instead of the default UNIX timestamp.
 	// $config['filename_func'] = function($post) {
@@ -810,7 +835,7 @@
 	$config['webm']['ffprobe_path'] = 'ffprobe';
 
 	// Display image identification links for ImgOps, regex.info/exif, Google Images and iqdb.
-	$config['image_identification'] = false;
+	$config['image_identification'] = true;
 	// Which of the identification links to display. Only works if $config['image_identification'] is true.
 	$config['image_identification_imgops'] = true;
 	$config['image_identification_exif'] = true;
@@ -845,11 +870,11 @@
  */
 
 	// Maximum amount of threads to display per page.
-	$config['threads_per_page'] = 10;
+	$config['threads_per_page'] = 20;
 	// Maximum number of pages. Content past the last page is automatically purged.
-	$config['max_pages'] = 10;
+	$config['max_pages'] = 100;
 	// Replies to show per thread on the board index page.
-	$config['threads_preview'] = 5;
+	$config['threads_preview'] = 1;
 	// Same as above, but for stickied threads.
 	$config['threads_preview_sticky'] = 1;
 
@@ -866,6 +891,9 @@
 
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
 	$config['allow_subtitle_html'] = false;
+
+	// Enable the Grid board layout
+	$config['grid'] = true;
 
 /*
  * ====================
@@ -911,16 +939,44 @@
 
 	// Custom stylesheets available for the user to choose. See the "stylesheets/" folder for a list of
 	// available stylesheets (or create your own).
-	$config['stylesheets']['Yotsuba B'] = ''; // Default; there is no additional/custom stylesheet for this.
-	$config['stylesheets']['Yotsuba'] = 'yotsuba.css';
-	// $config['stylesheets']['Futaba'] = 'futaba.css';
-	// $config['stylesheets']['Dark'] = 'dark.css';
+	$config['stylesheets']['SH4D1L4Y']          = 'shadilay.css'; //Default
+	$config['stylesheets']['Yotsuba B']         = ''; // style.css previous default theme 
+	$config['stylesheets']['Yotsuba']           = 'yotsuba.css';
+	$config['stylesheets']['Futaba']            = 'futaba.css';
+	$config['stylesheets']['Dark']              = 'dark.css';
+	$config['stylesheets']['Burichan']          = 'burichan.css';
+	$config['stylesheets']['Caffe']             = 'caffe.css';
+	$config['stylesheets']['Confraria']         = 'confraria.css';
+	$config['stylesheets']['Dark Roach']        = 'dark_roach.css';
+	$config['stylesheets']['Favela']            = 'favela.css';
+	$config['stylesheets']['FutaVichan']        = 'futaba+vichan.css';
+	$config['stylesheets']['FutaLight']         = 'futaba-light.css';
+	$config['stylesheets']['Gentoo']            = 'gentoochan.css';
+	$config['stylesheets']['Jungle']            = 'jungle.css';
+	$config['stylesheets']['Luna']              = 'luna.css';
+	$config['stylesheets']['Miku']              = 'miku.css';
+	$config['stylesheets']['Nigra']             = 'nigrachan.css';
+	$config['stylesheets']['Northboard']        = 'northboard_cb.css';
+	$config['stylesheets']['Notsuba']           = 'notsuba.css';
+	$config['stylesheets']['Novo Jungle']       = 'novo_jungle.css';
+	$config['stylesheets']['Photon']            = 'photon.css';
+	$config['stylesheets']['Piwnichan']         = 'piwnichan.css';
+	$config['stylesheets']['Ricechan']          = 'ricechan.css';
+	$config['stylesheets']['Roach']             = 'roach.css';
+	$config['stylesheets']['Rugby']             = 'rugby.css';
+	$config['stylesheets']['Stripes']           = 'stripes.css';
+	$config['stylesheets']['Szalet']            = 'szalet.css';
+	$config['stylesheets']['Terminal2']         = 'terminal2.css';
+	$config['stylesheets']['Testorange']        = 'testorange.css';
+	$config['stylesheets']['V8CH']              = 'v8ch.css';
+	$config['stylesheets']['Wasabi']            = 'wasabi.css';
+	
 
 	// The prefix for each stylesheet URI. Defaults to $config['root']/stylesheets/
 	// $config['uri_stylesheets'] = 'http://static.example.org/stylesheets/';
 
 	// The default stylesheet to use.
-	$config['default_stylesheet'] = array('Yotsuba B', $config['stylesheets']['Yotsuba B']);
+	$config['default_stylesheet'] = array('SH4D1L4Y', $config['stylesheets']['SH4D1L4Y']);
 
 	// Make stylesheet selections board-specific.
 	$config['stylesheets_board'] = false;
@@ -940,22 +996,24 @@
 	 * with groups. Each array() in $config['boards'] represents a new square bracket group.
 	 */
 
-	// $config['boards'] = array(
-	// 	array('a', 'b'),
+	$config['boards'] = array(
+	 	array('Home' => '/'),
+		array('b'),
 	// 	array('c', 'd', 'e', 'f', 'g'),
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
-	// 	array('status' => 'http://status.example.org/')
-	// );
+		array('Search' => '/search.php'), 
+		array('Command Center' => '/mod.php')
+	 );
 
 	// Whether or not to put brackets around the whole board list
 	$config['boardlist_wrap_bracket'] = false;
 
 	// Show page navigation links at the top as well.
-	$config['page_nav_top'] = false;
+	$config['page_nav_top'] = true;
 
 	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to false to disable.
-	$config['catalog_link'] = 'catalog.html';
+	// $config['catalog_link'] = 'catalog.html';
 
 	// Board categories. Only used in the "Categories" theme.
 	// $config['categories'] = array(
@@ -1001,7 +1059,7 @@
  */
 
 	// Additional Javascript files to include on board index and thread pages. See js/ for available scripts.
-	$config['additional_javascript'][] = 'js/inline-expanding.js';
+	// $config['additional_javascript'][] = 'js/inline-expanding.js';
 	// $config['additional_javascript'][] = 'js/local-time.js';
 
 	// Some scripts require jQuery. Check the comments in script files to see what's needed. When enabling
@@ -1009,11 +1067,56 @@
 	// "js/inline-expanding.js" or else the inline-expanding script might not interact properly with other
 	// scripts.
 	// $config['additional_javascript'] = array();
-	// $config['additional_javascript'][] = 'js/jquery.min.js';
-	// $config['additional_javascript'][] = 'js/inline-expanding.js';
-	// $config['additional_javascript'][] = 'js/auto-reload.js';
-	// $config['additional_javascript'][] = 'js/post-hover.js';
-	// $config['additional_javascript'][] = 'js/style-select.js';
+	$config['additional_javascript'] = array();
+    	$config['additional_javascript'][] = 'js/jquery.min.js';
+	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
+	$config['additional_javascript'][] = 'js/ajax.js';
+	$config['additional_javascript'][] = 'js/captcha.js';
+	$config['additional_javascript'][] = 'js/download-original.js';
+	$config['additional_javascript'][] = 'js/expand-all-images.js';
+	$config['additional_javascript'][] = 'js/expand-too-long.js';
+	$config['additional_javascript'][] = 'js/expand-video.js';
+	$config['additional_javascript'][] = 'js/expand.js';
+	$config['additional_javascript'][] = 'js/file-selector.js';
+	$config['additional_javascript'][] = 'js/gallery-view.js';
+	$config['additional_javascript'][] = 'js/hide-images.js';
+	$config['additional_javascript'][] = 'js/hide-threads.js';
+	$config['additional_javascript'][] = 'js/infinite-scroll.js';
+	$config['additional_javascript'][] = 'js/inline-expanding.js';
+	$config['additional_javascript'][] = 'js/options.js';
+	$config['additional_javascript'][] = 'js/options/general.js';
+	$config['additional_javascript'][] = 'js/post-hover.js';
+	$config['additional_javascript'][] = 'js/quick-post-controls.js';
+	$config['additional_javascript'][] = 'js/show-backlinks.js';
+	$config['additional_javascript'][] = 'js/show-op.js';
+	$config['additional_javascript'][] = 'js/show-own-posts.js';
+	$config['additional_javascript'][] = 'js/thread-stats.js';
+	$config['additional_javascript'][] = 'js/toggle-images.js';
+	$config['additional_javascript'][] = 'js/toggle-locked-threads.js';
+	$config['additional_javascript'][] = 'js/treeview.js';
+	$config['additional_javascript'][] = 'js/thread-watcher.js';
+	$config['additional_javascript'][] = 'js/youtube.js';
+	$config['additional_javascript'][] = 'js/comment-toolbar.js';
+	$config['additional_javascript'][] = 'js/settings.js';
+	$config['additional_javascript'][] = 'js/quick-reply.js';
+	$config['additional_javascript'][] = 'js/quote-selection.js';
+	$config['additional_javascript'][] = 'js/ajax-post-controls.js';
+	$config['additional_javascript'][] = 'js/multi-image.js';
+	$config['additional_javascript'][] = 'js/upload-selection.js';
+	$config['additional_javascript'][] = 'js/style-switcher.js';
+	$config['additional_javascript'][] = 'js/options/user-css.js';
+	$config['additional_javascript'][] = 'js/options/user-js.js';
+	$config['additional_javascript'][] = 'js/webm-settings.js';
+	$config['additional_javascript'][] = 'js/image-hover.js';
+	$config['additional_javascript'][] = 'js/inline.js';
+	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
+	$config['additional_javascript'][] = 'js/auto-reload.js';
+	$config['additional_javascript'][] = 'js/mobile-style.js';
+	/* Optional JS (probably has bugs)*/
+	// $config['additional_javascript'][] = 'js/post-filter.js';
+	// $config['additional_javascript'][] = 'js/post-menu.js';
+	// $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
+	// $config['additional_javascript'][] = 'js/addyour.js';
 
 	// Where these script files are located on the web. Defaults to $config['root'].
 	// $config['additional_javascript_url'] = 'http://static.example.org/tinyboard-javascript-stuff/';
@@ -1035,18 +1138,18 @@
  */
 
 	// Enable embedding (see below).
-	$config['enable_embedding'] = false;
+	$config['enable_embedding'] = true;
 
 	// Custom embedding (YouTube, vimeo, etc.)
 	// It's very important that you match the entire input (with ^ and $) or things will not work correctly.
 	$config['embedding'] = array(
 		array(
 			'/^https?:\/\/(\w+\.)?youtube\.com\/watch\?v=([a-zA-Z0-9\-_]{10,11})(&.+)?$/i',
-			'<iframe style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%" frameborder="0" id="ytplayer" src="http://www.youtube.com/embed/$2"></iframe>'
+			'<iframe style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%" frameborder="0" id="ytplayer" src="https://www.youtube.com/embed/$2"></iframe>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?vimeo\.com\/(\d{2,10})(\?.+)?$/i',
-			'<object style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="%%tb_width%%" height="%%tb_height%%"></object>'
+			'<object style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="https://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="https://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="%%tb_width%%" height="%%tb_height%%"></object>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?dailymotion\.com\/video\/([a-zA-Z0-9]{2,10})(_.+)?$/i',
@@ -1054,21 +1157,21 @@
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?metacafe\.com\/watch\/(\d+)\/([a-zA-Z0-9_\-.]+)\/(\?[^\'"<>]+)?$/i',
-			'<div style="float:left;margin:10px 20px;width:%%tb_width%%px;height:%%tb_height%%px"><embed flashVars="playerVars=showStats=no|autoPlay=no" src="http://www.metacafe.com/fplayer/$2/$3.swf" width="%%tb_width%%" height="%%tb_height%%" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_$2" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></div>'
+			'<div style="float:left;margin:10px 20px;width:%%tb_width%%px;height:%%tb_height%%px"><embed flashVars="playerVars=showStats=no|autoPlay=no" src="https://www.metacafe.com/fplayer/$2/$3.swf" width="%%tb_width%%" height="%%tb_height%%" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_$2" pluginspage="https://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></div>'
 		),
 		array(
 			'/^https?:\/\/video\.google\.com\/videoplay\?docid=(\d+)([&#](.+)?)?$/i',
-			'<embed src="http://video.google.com/googleplayer.swf?docid=$1&hl=en&fs=true" style="width:%%tb_width%%px;height:%%tb_height%%px;float:left;margin:10px 20px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>'
+			'<embed src="https://video.google.com/googleplayer.swf?docid=$1&hl=en&fs=true" style="width:%%tb_width%%px;height:%%tb_height%%px;float:left;margin:10px 20px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?vocaroo\.com\/i\/([a-zA-Z0-9]{2,15})$/i',
-			'<object style="float: left;margin: 10px 20px;" width="148" height="44"><param name="movie" value="http://vocaroo.com/player.swf?playMediaID=$2&autoplay=0"><param name="wmode" value="transparent"><embed src="http://vocaroo.com/player.swf?playMediaID=$2&autoplay=0" width="148" height="44" wmode="transparent" type="application/x-shockwave-flash"></object>'
+			'<object style="float: left;margin: 10px 20px;" width="148" height="44"><param name="movie" value="https://vocaroo.com/player.swf?playMediaID=$2&autoplay=0"><param name="wmode" value="transparent"><embed src="https://vocaroo.com/player.swf?playMediaID=$2&autoplay=0" width="148" height="44" wmode="transparent" type="application/x-shockwave-flash"></object>'
 		)
 	);
 
 	// Embedding width and height.
 	$config['embed_width'] = 300;
-	$config['embed_height'] = 246;
+	$config['embed_height'] = 200;
 
 /*
  * ====================
@@ -1083,7 +1186,7 @@
 	$config['error']['toolong_body']	= _('The body was too long.');
 	$config['error']['tooshort_body']	= _('The body was too short or empty.');
 	$config['error']['noimage']		= _('You must upload an image.');
-	$config['error']['toomanyimages'] = _('You have attempted to upload too many images!');
+	$config['error']['toomanyimages'] 	= _('You have attempted to upload too many images!');
 	$config['error']['nomove']		= _('The server failed to handle your upload.');
 	$config['error']['fileext']		= _('Unsupported image format.');
 	$config['error']['noboard']		= _('Invalid board!');
@@ -1482,7 +1585,7 @@
 	// Edit posts
 	$config['mod']['editpost'] = ADMIN;
 	// "Move" a thread to another board (EXPERIMENTAL; has some known bugs)
-	$config['mod']['move'] = DISABLED;
+	$config['mod']['move'] = ADMIN;
 	// Bypass "field_disable_*" (forced anonymity, etc.)
 	$config['mod']['bypass_field_disable'] = MOD;
 	// Post bypass unoriginal content check on robot-enabled boards
@@ -1638,7 +1741,7 @@
 	$config['search'] = array();
 
 	// Enable the search form
-	$config['search']['enable'] = false;
+	$config['search']['enable'] = true;
 
 	// Maximal number of queries per IP address per minutes
 	$config['search']['queries_per_minutes'] = Array(15, 2);
@@ -1682,51 +1785,12 @@
 
 	// Whether or not to enable the 4chan-compatible API, disabled by default. See
 	// https://github.com/4chan/4chan-API for API specification.
-	$config['api']['enabled'] = true;
+	$config['api']['enabled'] = false;
 
 	// Extra fields in to be shown in the array that are not in the 4chan-API. You can get these by taking a
 	// look at the schema for posts_ tables. The array should be formatted as $db_column => $translated_name.
 	// Example: Adding the pre-markup post body to the API as "com_nomarkup".
 	// $config['api']['extra_fields'] = array('body_nomarkup' => 'com_nomarkup');
-
-/*
- * ==================
- *  NNTPChan settings
- * ==================
- */
-
-/*
- * Please keep in mind that NNTPChan support in vichan isn't finished yet / is in an experimental
- * state. Please join #nntpchan on Rizon in order to peer with someone.
- */
-
-	$config['nntpchan'] = array();
-
-	// Enable NNTPChan integration
-	$config['nntpchan']['enabled'] = false;
-
-	// NNTP server
-	$config['nntpchan']['server'] = "localhost:1119";
-
-	// Global dispatch array. Add your boards to it to enable them. Please make
-	// sure that this setting is set in a global context.
-	$config['nntpchan']['dispatch'] = array(); // 'overchan.test' => 'test'
-
-	// Trusted peer - an IP address of your NNTPChan instance. This peer will have
-	// increased capabilities, eg.: will evade spamfilter.
-	$config['nntpchan']['trusted_peer'] = '127.0.0.1';
-
-	// Salt for message ID generation. Keep it long and secure.
-	$config['nntpchan']['salt'] = 'change_me+please';
-
-	// A local message ID domain. Make sure to change it.
-	$config['nntpchan']['domain'] = 'example.vichan.net';
-
-	// An NNTPChan group name.
-	// Please set this setting in your board/config.php, not globally.
-	$config['nntpchan']['group'] = false; // eg. 'overchan.test'
-
-
 
 /*
  * ====================
@@ -1824,9 +1888,6 @@
 	// If set to 0, it won't upgrade hashes using old password encryption schema, only create new.
 	// You can set it to a higher value, to further migrate to other password hashing function.
 	$config['password_crypt_version'] = 1;
-
-	// Use CAPTCHA for reports?
-	$config['report_captcha'] = false;
 
 	// Allowed HTML tags in ?/edit_pages.
 	$config['allowed_html'] = 'a[href|title],p,br,li,ol,ul,strong,em,u,h2,b,i,tt,div,img[src|alt|title],hr';

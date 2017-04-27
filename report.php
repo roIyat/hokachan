@@ -10,7 +10,12 @@ if (!$post || !preg_match('/^delete_\d+$/', $post) || !$board || !openBoard($boa
 }
 
 if ($config['report_captcha']) {
-	$captcha = generate_captcha($config['captcha']['extra']);
+	$captcha = file_get_contents($config['captcha']['provider_check'] . "?" . http_build_query([
+			'mode' => 'check',
+			'text' =>  isset($_POST['captcha_text']) ? $_POST['captcha_text'] : "",
+			'extra' => $config['captcha']['extra'],
+			'cookie' =>isset($_POST['captcha_cookie']) ? $_POST['captcha_cookie'] : ""
+		]));
 } else {
 	$captcha = null;
 }

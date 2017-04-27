@@ -1,7 +1,7 @@
 <?php
 
 // Installation/upgrade file	
-define('VERSION', '5.1.3');
+define('VERSION', '6.0.0 dev2');
 
 require 'inc/functions.php';
 
@@ -529,7 +529,7 @@ if (file_exists($config['has_installed'])) {
 		case '4.5.2':
 			if (!isset($_GET['confirm3'])) {
 				$page['title'] = 'Breaking change';
-				$page['body'] = '<p style="text-align:center">You are upgrading to the 5.0 branch of vichan. Please back up your database, because the process is irreversible. At the current time, if you want a very stable vichan experience, please use the 4.5 branch. This warning will be lifted as soon as we all agree that 5.0 branch is stable enough</p>
+				$page['body'] = '<p style="text-align:center">You are upgrading to the 5.0 branch of H0K4CH4N. Please back up your database, because the process is irreversible. At the current time, if you want a very stable H0K4CH4N experience, please use the 4.5 branch. This warning will be lifted as soon as we all agree that 5.0 branch is stable enough</p>
 					<p style="text-align:center">
 						<a href="?confirm3=1">I have read and understood the warning. Proceed to upgrading.</a>
 					</p>';
@@ -560,7 +560,7 @@ if (file_exists($config['has_installed'])) {
 			query('ALTER TABLE ``mods`` CHANGE `salt` `version` VARCHAR(64) NOT NULL;') or error(db_error());
 		case '5.0.1':
 		case '5.1.0':
-			query('CREATE TABLE ``pages`` (
+			query('CREATE TABLE IF NOT EXISTS ``pages`` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `board` varchar(255) DEFAULT NULL,
 			  `name` varchar(255) NOT NULL,
@@ -575,19 +575,16 @@ if (file_exists($config['has_installed'])) {
                                 query(sprintf("ALTER TABLE ``posts_%s`` ADD `cycle` int(1) NOT NULL AFTER `locked`", $board['uri'])) or error(db_error());
                         }
 		case '5.1.2':
-			query('CREATE TABLE ``nntp_references`` (
-				  `board` varchar(60) NOT NULL,
-				  `id` int(11) unsigned NOT NULL,
-				  `message_id` varchar(255) CHARACTER SET ascii NOT NULL,
-				  `message_id_digest` varchar(40) CHARACTER SET ascii NOT NULL,
-				  `own` tinyint(1) NOT NULL,
-				  `headers` text,
-				  PRIMARY KEY (`message_id_digest`),
-				  UNIQUE KEY `message_id` (`message_id`),
-				  UNIQUE KEY `u_board_id` (`board`, `id`)
-				) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-			') or error(db_error());
-
+		case '5.1.3':
+			query("DROP TABLE IF EXISTS  ``nntp_references``") or error(db_error());
+		case '6.0.0 dev 1':
+			query('CREATE TABLE IF NOT EXISTS ``captchas`` (
+			  `cookie` varchar(50),
+			  `extra` varchar(200),
+			  `text` varchar(255),
+			  `created_at` int(11),
+			  PRIMARY KEY (`cookie`,`extra`),
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;') or error(db_error());
 		case false:
 			// TODO: enhance Tinyboard -> vichan upgrade path.
 			query("CREATE TABLE IF NOT EXISTS ``search_queries`` (  `ip` varchar(39) NOT NULL,  `time` int(11) NOT NULL,  `query` text NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8;") or error(db_error());
@@ -600,11 +597,11 @@ if (file_exists($config['has_installed'])) {
 			break;
 		default:
 			$page['title'] = 'Unknown version';
-			$page['body'] = '<p style="text-align:center">vichan was unable to determine what version is currently installed.</p>';
+			$page['body'] = '<p style="text-align:center">H0K4CH4N was unable to determine what version is currently installed.</p>';
 			break;
 		case VERSION:
 			$page['title'] = 'Already installed';
-			$page['body'] = '<p style="text-align:center">It appears that vichan is already installed (' . $version . ') and there is nothing to upgrade! Delete <strong>' . $config['has_installed'] . '</strong> to reinstall.</p>';
+			$page['body'] = '<p style="text-align:center">It appears that H0K4CH4N is already installed (' . $version . ') and there is nothing to upgrade! Delete <strong>' . $config['has_installed'] . '</strong> to reinstall.</p>';
 			break;
 	}			
 	
@@ -681,14 +678,14 @@ if ($step == 0) {
 			'name' => 'PHP &ge; 5.4',
 			'result' => PHP_VERSION_ID >= 50400,
 			'required' => true,
-			'message' => 'vichan requires PHP 5.4 or better.',
+			'message' => 'H0K4CH4N requires PHP 5.4 or better.',
 		),
 		array(
 			'category' => 'PHP',
 			'name' => 'PHP &ge; 5.6',
 			'result' => PHP_VERSION_ID >= 50600,
 			'required' => false,
-			'message' => 'vichan works best on PHP 5.6 or better.',
+			'message' => 'H0K4CH4N works best on PHP 5.6 or better.',
 		),
 		array(
 			'category' => 'PHP',
@@ -793,28 +790,28 @@ if ($step == 0) {
 			'name' => getcwd(),
 			'result' => is_writable('.'),
 			'required' => true,
-			'message' => 'vichan does not have permission to create directories (boards) here. You will need to <code>chmod</code> (or operating system equivalent) appropriately.'
+			'message' => 'H0K4CH4N does not have permission to create directories (boards) here. You will need to <code>chmod</code> (or operating system equivalent) appropriately.'
 		),
 		array(
 			'category' => 'File permissions',
 			'name' => getcwd() . '/templates/cache',
 			'result' => is_writable('templates') || (is_dir('templates/cache') && is_writable('templates/cache')),
 			'required' => true,
-			'message' => 'You must give vichan permission to create (and write to) the <code>templates/cache</code> directory or performance will be drastically reduced.'
+			'message' => 'You must give H0K4CH4N permission to create (and write to) the <code>templates/cache</code> directory or performance will be drastically reduced.'
 		),
 		array(
 			'category' => 'File permissions',
 			'name' => getcwd() . '/tmp/cache',
 			'result' => is_dir('tmp/cache') && is_writable('tmp/cache'),
 			'required' => true,
-			'message' => 'You must give vichan permission to write to the <code>tmp/cache</code> directory.'
+			'message' => 'You must give H0K4CH4N permission to write to the <code>tmp/cache</code> directory.'
 		),
 		array(
 			'category' => 'File permissions',
 			'name' => getcwd() . '/inc/instance-config.php',
 			'result' => is_writable('inc/instance-config.php'),
 			'required' => false,
-			'message' => 'vichan does not have permission to make changes to <code>inc/instance-config.php</code>. To complete the installation, you will be asked to manually copy and paste code into the file instead.'
+			'message' => 'H0K4CH4N does not have permission to make changes to <code>inc/instance-config.php</code>. To complete the installation, you will be asked to manually copy and paste code into the file instead.'
 		),
 		array(
 			'category' => 'Misc',
@@ -826,10 +823,10 @@ if ($step == 0) {
 		),
 		array(
 			'category' => 'Misc',
-			'name' => 'vichan installed using git',
+			'name' => 'H0K4CH4N installed using git',
 			'result' => is_dir('.git'),
 			'required' => false,
-			'message' => 'vichan is still beta software and it\'s not going to come out of beta any time soon. As there are often many months between releases yet changes and bug fixes are very frequent, it\'s recommended to use the git repository to maintain your vichan installation. Using git makes upgrading much easier.'
+			'message' => 'H0K4CH4N is still beta software and it\'s not going to come out of beta any time soon. As there are often many months between releases yet changes and bug fixes are very frequent, it\'s recommended to use the git repository to maintain your H0K4CH4N installation. Using git makes upgrading much easier.'
 		)
 	);
 
@@ -934,10 +931,10 @@ if ($step == 0) {
 	}
 	
 	$page['title'] = 'Installation complete';
-	$page['body'] = '<p style="text-align:center">Thank you for using vichan. Please remember to report any bugs you discover. <a href="http://tinyboard.org/docs/?p=Config">How do I edit the config files?</a></p>';
+	$page['body'] = '<p style="text-align:center">Thank you for using H0K4CH4N. Please remember to report any bugs you discover. <a href="http://tinyboard.org/docs/?p=Config">How do I edit the config files?</a></p>';
 	
 	if (!empty($sql_errors)) {
-		$page['body'] .= '<div class="ban"><h2>SQL errors</h2><p>SQL errors were encountered when trying to install the database. This may be the result of using a database which is already occupied with a vichan installation; if so, you can probably ignore this.</p><p>The errors encountered were:</p><ul>' . $sql_errors . '</ul><p><a href="?step=5">Ignore errors and complete installation.</a></p></div>';
+		$page['body'] .= '<div class="ban"><h2>SQL errors</h2><p>SQL errors were encountered when trying to install the database. This may be the result of using a database which is already occupied with a H0K4CH4N installation; if so, you can probably ignore this.</p><p>The errors encountered were:</p><ul>' . $sql_errors . '</ul><p><a href="?step=5">Ignore errors and complete installation.</a></p></div>';
 	} else {
 		$boards = listBoards();
 		foreach ($boards as &$_board) {
@@ -954,7 +951,7 @@ if ($step == 0) {
 	echo Element('page.html', $page);
 } elseif ($step == 5) {
 	$page['title'] = 'Installation complete';
-	$page['body'] = '<p style="text-align:center">Thank you for using vichan. Please remember to report any bugs you discover.</p>';
+	$page['body'] = '<p style="text-align:center">Thank you for using H0K4CH4N. Please remember to report any bugs you discover.</p>';
 	
 	$boards = listBoards();
 	foreach ($boards as &$_board) {

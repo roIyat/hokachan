@@ -31,18 +31,18 @@ tb_settings['quick-reply'] = {
 	// Hide form when scrolled to top of page (where original form is visible)
 	hide_at_top: true,
 	// "Quick reply" button floating at the top right hand corner of the page at all times
-	floating_link: false,
+	floating_link: true,
 	// Show remote in quick reply
-	show_remote: false,
+	show_remote: true,
 	// Show embedding in quick reply
-	show_embed: false
+	show_embed: true
 };
 
-// ajax.js
+/* ajax.js
 tb_settings['ajax'] = {
 	// Always act as if "noko" was typed when posting replies with the ajax script
 	always_noko_replies: false	
-};
+};*/
 
 // wpaint.js
 tb_settings['wpaint'] = {
@@ -52,7 +52,7 @@ tb_settings['wpaint'] = {
 	height: 250
 };
 
-// auto-reload.js
+/* auto-reload.js
 tb_settings['auto-reload'] = {
 	// Minimum delay before reloading the page when at the bottom
 	min_delay_bottom: 5000,
@@ -62,4 +62,4 @@ tb_settings['auto-reload'] = {
 	error_delay: 30000,
 	// Reset the delay to the minimum upon focussing the window.
 	reset_focus: true
-};
+};*/
