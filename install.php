@@ -1,7 +1,7 @@
 <?php
 
 // Installation/upgrade file	
-define('VERSION', '6.0.0 dev2');
+define('VERSION', '6.0.0 dev3');
 
 require 'inc/functions.php';
 
@@ -577,7 +577,7 @@ if (file_exists($config['has_installed'])) {
 		case '5.1.2':
 		case '5.1.3':
 			query("DROP TABLE IF EXISTS  ``nntp_references``") or error(db_error());
-		case '6.0.0 dev 1':
+		case '6.0.0 dev1':
 			query('CREATE TABLE IF NOT EXISTS ``captchas`` (
 			  `cookie` varchar(50),
 			  `extra` varchar(200),
@@ -585,6 +585,7 @@ if (file_exists($config['has_installed'])) {
 			  `created_at` int(11),
 			  PRIMARY KEY (`cookie`,`extra`),
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;') or error(db_error());
+		case '6.0.0 dev2':
 		case false:
 			// TODO: enhance Tinyboard -> vichan upgrade path.
 			query("CREATE TABLE IF NOT EXISTS ``search_queries`` (  `ip` varchar(39) NOT NULL,  `time` int(11) NOT NULL,  `query` text NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8;") or error(db_error());
