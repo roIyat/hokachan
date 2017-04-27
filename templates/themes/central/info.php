@@ -18,13 +18,6 @@
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro',
-		'name' => 'intro',
-		'type' => 'text',
-		'default' => 'Congratulations, you installed the central theme.'
-	);
-	
-	$theme['config'][] = Array(
 		'title' => 'Excluded boards',
 		'name' => 'exclude',
 		'type' => 'text',

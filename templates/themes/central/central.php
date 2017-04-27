@@ -17,7 +17,7 @@
 	{{ boardlist.top }}
 	
 <header>
-	<center><img src="../templates/themes/central/hokachan.png" style="width: 50px;"></center>
+	<center><img src="../templates/themes/central/hokachan.png" style="width: 75px;"></center>
 	<h1>{{ settings.title }}</h1> 
 	<div class="subtitle">{{ settings.subtitle }}</div> 
 </header>
@@ -28,7 +28,7 @@
 	<!-- Modify the Intro -->
 	<div class="box-wrap-board">
 	<br/>
-	<h4>{{ settings.intro }}</h4>
+	<h4>Welcome to the central theme</h4>
 	<br/>
 	</div>
 		
@@ -82,24 +82,21 @@
 	<div class="box-wrap-board">	
 		<h2>Boards</h2>
 			<div id="contentBox">
-				<div id="column" style="float:left; margin:0; width:33.33%;">
+				<div id="column" style="float:left; margin:0; width:100%;">
 					<ul>
 						<!-- Add your left board names -->
-						<li><a href="/kinfolk/" title="Kin who can't shed their humanity.">KinFolk</a>
+						<li><a href="/b/" title="Anything you want">Random</a>
 					</ul>
-                </div>
-			    <div id="column" style="float:left; margin:0;width:33.33%;">
-					<ul>
-						<!-- Add your right board names -->
-					    <li><a href="/otherkin/" title="Change is the only constant.">OtherKin</a>
-					</ul>
+
 				</div>
-				<div id="column" style="float:left; margin:0;width:33.33%;">
-					<ul>
+
+		<!--	<div id="column" style="float:left; margin:0;width:50%;">
+					<ul>-->
 						<!-- Add your right board names -->
-					    <li><a href="/vilekin/" title="Every family has their undesirables.">VileKin</a>
+					<!--<li><a href=/b/" title="Anything you want">Random</a>
+						<li><a href="/b/" title="BAnything you want">Random</a>
 					</ul>
-				</div>
+				</div>-->
 			</div>
 	</div>	
 
@@ -148,6 +145,6 @@
 		<p class="unimportant" style="margin-top:20px;text-align:center;">
 		- <a href="https://github.com/savetheinternet/Tinyboard/">© TINYBOARD</a> + 
 		<a href="https://engine.vichan.net/"> © VICHAN</a> + 
-		<a href="https://johochan.com/">© H0K4CH4N</a> {{ config.version }} - 
+		<a href="https://hokachan.com/">© H0K4CH4N</a> {{ config.version }} - 
 		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
 </footer>
