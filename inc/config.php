@@ -1,7 +1,7 @@
 <?php
 
 /*
- *  Copyright (c) 2010-2013 Tinyboard Development Group
+ *  Copyright (c) 2010-2013 Tinyboard, 2013-2017 Vichan and 2016-2017 H0K4CH4N Development Group
  *  
  *  WARNING: This is a project-wide configuration file and is overwritten when upgrading to a newer
  *  version of Tinyboard. Please leave this file unchanged, or it will be a lot harder for you to upgrade.
@@ -17,9 +17,9 @@
  *  Some directives are commented out. This is either because they are optional and examples, or because
  *  they are "optionally configurable", and given their default values by Tinyboard's code later if unset.
  *
- *  More information: http://tinyboard.org/docs/?p=Config
+ *  More information: coming soon
  *
- *  Tinyboard documentation: http://tinyboard.org/docs/
+ *  Tinyboard documentation: coming soon
  *
  */
 
@@ -111,8 +111,6 @@
 	 * On top of the static file caching system, you can enable the additional caching system which is
 	 * designed to minimize SQL queries and can significantly increase speed when posting or using the 
 	 * moderator interface. APC is the recommended method of caching.
-	 *
-	 * http://tinyboard.org/docs/index.php?p=Config/Cache
 	 */
 
 	$config['cache']['enabled'] = 'php';
@@ -191,11 +189,12 @@
 	 * addresses published through the Internet Domain Name Service (DNS) either as a zone file that can be
 	 * used by DNS server software, or as a live DNS zone that can be queried in real-time.
 	 *
-	 * Read more: http://tinyboard.org/docs/?p=Config/DNSBL
+	 * Read more: coming... someday
 	 */
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
 	// of the strong anonymity associated with it.
+	// No Longer Working marked for removal if they don't come back online.
 	$config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1);
 
 	// http://www.sorbs.net/using.shtml
@@ -220,22 +219,22 @@
 	$config['dnsbl_exceptions'][] = '127.0.0.1';
 
 	/*
-	 * Introduction to Tinyboard's spam filter:
+	 * Introduction to H0K4CH4N's spam filter:
 	 *
 	 * In simple terms, whenever a posting form on a page is generated (which happens whenever a
-	 * post is made), Tinyboard will add a random amount of hidden, obscure fields to it to
+	 * post is made), H0K4CH4N will add a random amount of hidden, obscure fields to it to
 	 * confuse bots and upset hackers. These fields and their respective obscure values are
 	 * validated upon posting with a 160-bit "hash". That hash can only be used as many times
 	 * as you specify; otherwise, flooding bots could just keep reusing the same hash.
 	 * Once a new set of inputs (and the hash) are generated, old hashes for the same thread
 	 * and board are set to expire. Because you have to reload the page to get the new set
 	 * of inputs and hash, if they expire too quickly and more than one person is viewing the
-	 * page at a given time, Tinyboard would return false positives (depending on how long the
+	 * page at a given time, H0K4CH4N would return false positives (depending on how long the
 	 * user sits on the page before posting). If your imageboard is quite fast/popular, set
 	 * $config['spam']['hidden_inputs_max_pass'] and $config['spam']['hidden_inputs_expire'] to
 	 * something higher to avoid false positives.
 	 *
-	 * See also: http://tinyboard.org/docs/?p=Your_request_looks_automated
+	 * See also: Coming ... Someday
 	 *
 	 */
 
@@ -318,9 +317,9 @@
 	$config['report_captcha'] = false;
 
 	// Custom captcha get provider path (if not working get the absolute path aka your url.)
-	$config['captcha']['provider_get'] = 'https://hokachan.com/inc/captcha/entrypoint.php';
+	$config['captcha']['provider_get'] = '../inc/captcha/entrypoint.php';
 	// Custom captcha check provider path
-	$config['captcha']['provider_check'] = 'https://hokachan.com/inc/captcha/entrypoint.php';
+	$config['captcha']['provider_check'] = '../inc/captcha/entrypoint.php';
 
 	// Custom captcha extra field (eg. charset)
 	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
@@ -700,11 +699,11 @@
 	$config['multiimage_method'] = 'split';
 
 	// For resizing, maximum thumbnail dimensions.
-	$config['thumb_width'] = 255;
-	$config['thumb_height'] = 255;
+	$config['thumb_width'] = 200;
+	$config['thumb_height'] = 200;
 	// Maximum thumbnail dimensions for thread (OP) images.
-	$config['thumb_op_width'] = 255;
-	$config['thumb_op_height'] = 255;
+	$config['thumb_op_width'] = 200;
+	$config['thumb_op_height'] = 200;
 
 	// Thumbnail extension ("png" recommended). Leave this empty if you want the extension to be inherited
 	// from the uploaded file.
@@ -942,34 +941,18 @@
 	$config['stylesheets']['SH4D1L4Y']          = 'shadilay.css'; //Default
 	$config['stylesheets']['Yotsuba B']         = ''; // style.css previous default theme 
 	$config['stylesheets']['Yotsuba']           = 'yotsuba.css';
-	$config['stylesheets']['Futaba']            = 'futaba.css';
-	$config['stylesheets']['Dark']              = 'dark.css';
 	$config['stylesheets']['Burichan']          = 'burichan.css';
-	$config['stylesheets']['Caffe']             = 'caffe.css';
-	$config['stylesheets']['Confraria']         = 'confraria.css';
 	$config['stylesheets']['Dark Roach']        = 'dark_roach.css';
 	$config['stylesheets']['Favela']            = 'favela.css';
-	$config['stylesheets']['FutaVichan']        = 'futaba+vichan.css';
-	$config['stylesheets']['FutaLight']         = 'futaba-light.css';
-	$config['stylesheets']['Gentoo']            = 'gentoochan.css';
-	$config['stylesheets']['Jungle']            = 'jungle.css';
 	$config['stylesheets']['Luna']              = 'luna.css';
 	$config['stylesheets']['Miku']              = 'miku.css';
-	$config['stylesheets']['Nigra']             = 'nigrachan.css';
 	$config['stylesheets']['Northboard']        = 'northboard_cb.css';
-	$config['stylesheets']['Notsuba']           = 'notsuba.css';
-	$config['stylesheets']['Novo Jungle']       = 'novo_jungle.css';
 	$config['stylesheets']['Photon']            = 'photon.css';
-	$config['stylesheets']['Piwnichan']         = 'piwnichan.css';
 	$config['stylesheets']['Ricechan']          = 'ricechan.css';
 	$config['stylesheets']['Roach']             = 'roach.css';
 	$config['stylesheets']['Rugby']             = 'rugby.css';
 	$config['stylesheets']['Stripes']           = 'stripes.css';
-	$config['stylesheets']['Szalet']            = 'szalet.css';
-	$config['stylesheets']['Terminal2']         = 'terminal2.css';
-	$config['stylesheets']['Testorange']        = 'testorange.css';
 	$config['stylesheets']['V8CH']              = 'v8ch.css';
-	$config['stylesheets']['Wasabi']            = 'wasabi.css';
 	
 
 	// The prefix for each stylesheet URI. Defaults to $config['root']/stylesheets/
@@ -1003,7 +986,7 @@
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
 		array('Search' => '/search.php'), 
-		array('Command Center' => '/mod.php')
+		array('Manager' => '/mod.php')
 	 );
 
 	// Whether or not to put brackets around the whole board list
@@ -1068,7 +1051,7 @@
 	// scripts.
 	// $config['additional_javascript'] = array();
 	$config['additional_javascript'] = array();
-    	$config['additional_javascript'][] = 'js/jquery.min.js';
+    $config['additional_javascript'][] = 'js/jquery.min.js';
 	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
 	$config['additional_javascript'][] = 'js/ajax.js';
 	$config['additional_javascript'][] = 'js/captcha.js';
@@ -1110,9 +1093,10 @@
 	$config['additional_javascript'][] = 'js/image-hover.js';
 	$config['additional_javascript'][] = 'js/inline.js';
 	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
-	$config['additional_javascript'][] = 'js/auto-reload.js';
 	$config['additional_javascript'][] = 'js/mobile-style.js';
-	/* Optional JS (probably has bugs)*/
+	
+	// Optional JS (probably has bugs)  (don't use the addyour.js is an example if you need to add js)
+	// $config['additional_javascript'][] = 'js/auto-reload.js';
 	// $config['additional_javascript'][] = 'js/post-filter.js';
 	// $config['additional_javascript'][] = 'js/post-menu.js';
 	// $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
@@ -1727,7 +1711,7 @@
 	// File board. Like 4chan /f/
 	$config['file_board'] = false;
 
-	// Thread tags. Set to false to disable
+	// Thread tags. Set to false to disable (not working... there is no output.)
 	// Example: array('A' => 'Chinese cartoons', 'M' => 'Music', 'P' => 'Pornography');
 	$config['allowed_tags'] = false;
 
@@ -1785,7 +1769,7 @@
 
 	// Whether or not to enable the 4chan-compatible API, disabled by default. See
 	// https://github.com/4chan/4chan-API for API specification.
-	$config['api']['enabled'] = false;
+	$config['api']['enabled'] = true;
 
 	// Extra fields in to be shown in the array that are not in the 4chan-API. You can get these by taking a
 	// look at the schema for posts_ tables. The array should be formatted as $db_column => $translated_name.
