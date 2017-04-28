@@ -98,7 +98,6 @@
 				}
 
 				if (empty($post['image_count'])) $post['image_count'] = 0;
-				$post['pubdate'] = date('r', $post['time']);
 				$recent_posts[] = $post;
 			}
 			
@@ -118,12 +117,6 @@
 				'stats' => $stats,
 				'board' => $board_name,
 				'link' => $config['root'] . $board['dir']
-			)));
-
-			file_write($config['dir']['home'] . $board_name . '/index.rss', Element('themes/catalog/index.rss', Array(
-				'config' => $config,
-				'recent_posts' => $recent_posts,
-				'board' => $board
 			)));
 		}
 	};
