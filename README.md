@@ -7,6 +7,14 @@ Important Notice
 I created this fork because it looks like [Vichan](https://engine.vichan.net/) is dying... Since there are no more major
 updates for almost a year. 
 
+Use this fork at your own risk.
+Don't use this fork if you have no knowledge of fixing your own database and content. 
+If I screw something up I know how to fix my database and restore my content. You may not.
+
+I might remove this fork like before although now that I know how github desktop works I probably won't.
+
+When a stable version releases (not dev versions) you can use it if you have no knowledge of web developing. If you have knowledge of this script and know how to fix problems feel free to use it. 
+
 <strike> Maybe it's because of [INFINITY](https://github.com/ctrlcctrlv/infinity), being sold to a Jim Wat...Kin,
 and the complete clusterfuck of josh's [infinity never](https://github.com/infinity-next/infinity-next).
 Leading to a NTEC or whatever license that makes it illegal for hotwheels etc... to update the code.. </strike>
