@@ -194,9 +194,11 @@
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
 	// of the strong anonymity associated with it.
-	// $config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1); sectoor.de site is dead. 
+	// Example: $config['dnsbl'][] = 'another.blacklist.net'; // 
+	// $config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1); //sectoor.de site is dead. the number stands for (an) ip adress(es) I guess. 
 	
-	// $config['dnsbl'][] = 'another.blacklist.net';
+	// Replacement for sectoor will be the new one if sectoor stays dead
+	$config['dnsbl'][] = 'torexit.dan.me.uk';
 
 	// http://www.sorbs.net/using.shtml
 	// $config['dnsbl'][] = array('dnsbl.sorbs.net', array(2, 3, 4, 5, 6, 7, 8, 9));
