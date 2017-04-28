@@ -29,6 +29,10 @@ H0K4CH4N WIKI
 ------------
 Credits go to @savetheinternet for making most of the [WIKI](https://github.com/horija/hokachan/wiki).
 
+Important wiki links
+* [DNSBL Setup]https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information
+
+
 About
 ------------
 H0K4CH4N is a free light-weight, fast, highly configurable and user-friendly

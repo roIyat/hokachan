@@ -194,8 +194,9 @@
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
 	// of the strong anonymity associated with it.
-	// No Longer Working marked for removal if they don't come back online.
-	$config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1);
+	// $config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1); sectoor.de site is dead. 
+	
+	// $config['dnsbl'][] = 'another.blacklist.net';
 
 	// http://www.sorbs.net/using.shtml
 	// $config['dnsbl'][] = array('dnsbl.sorbs.net', array(2, 3, 4, 5, 6, 7, 8, 9));
