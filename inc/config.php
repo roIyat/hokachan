@@ -998,20 +998,6 @@
 	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to false to disable.
 	// $config['catalog_link'] = 'catalog.html';
 
-	// Board categories. Only used in the "Categories" theme.
-	// $config['categories'] = array(
-	// 	'Group Name' => array('a', 'b', 'c'),
-	// 	'Another Group' => array('d')
-	// );
-	// Optional for the Categories theme. This is an array of name => (title, url) groups for categories
-	// with non-board links.
-	// $config['custom_categories'] = array(
-	// 	'Links' => array(
-	// 		'Tinyboard' => 'http://tinyboard.org',
-	// 		'Donate' => 'donate.html'
-	// 	)
-	// );
-
 	// Automatically remove unnecessary whitespace when compiling HTML files from templates.
 	$config['minify_html'] = true;
 
@@ -1506,6 +1492,8 @@
 		10	=> 'Janitor',
 		20	=> 'Mod',
 		30	=> 'Admin',
+		// 98	=> 'God',
+ 		99	=> 'Disabled'
 	);
 
 	// If you add stuff to the above, you'll need to call this function immediately after.
