@@ -24,15 +24,9 @@
 			
 			$this->excluded = explode(' ', $settings['exclude']);
 			
-			if ($action == 'all' || $action == 'post' || $action == 'post-thread' || $action == 'post-delete') {
-				$action = generation_strategy('sb_recent', array());
-				if ($action == 'delete') {
-					file_unlink($config['dir']['home'] . $settings['html']);
-				}
-				elseif ($action == 'rebuild') {
-					file_write($config['dir']['home'] . $settings['html'], $this->homepage($settings));
-				}
-			}
+				  			
+ 			if ($action == 'all' || $action == 'post' || $action == 'post-thread' || $action == 'post-delete')
+ 				file_write($config['dir']['home'] . $settings['html'], $this->homepage($settings));
 		}
 		
 		// Build news page

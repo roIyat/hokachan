@@ -2,22 +2,11 @@
 	require 'info.php';
 	
 	function ukko_build($action, $settings) {
-		global $config;
-
 		$ukko = new ukko();
 		$ukko->settings = $settings;
 
 		if (! ($action == 'all' || $action == 'post' || $action == 'post-thread' || $action == 'post-delete')) {
 			return;
-		}
-
-		$action = generation_strategy('sb_ukko', array());
-
-		if ($action == 'delete') {
-			file_unlink($settings['uri'] . '/index.html');
-		}
-		elseif ($action == 'rebuild') {
-			file_write($settings['uri'] . '/index.html', $ukko->build());
 		}
 	}
 	

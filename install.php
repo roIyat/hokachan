@@ -1,7 +1,7 @@
 <?php
 
 // Installation/upgrade file	
-define('VERSION', '6.0.0 dev3');
+define('VERSION', '6.0.0 dev4');
 
 require 'inc/functions.php';
 
@@ -586,6 +586,7 @@ if (file_exists($config['has_installed'])) {
 			  PRIMARY KEY (`cookie`,`extra`),
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;') or error(db_error());
 		case '6.0.0 dev2':
+		case '6.0.0 dev3':
 		case false:
 			// TODO: enhance Tinyboard -> vichan upgrade path.
 			query("CREATE TABLE IF NOT EXISTS ``search_queries`` (  `ip` varchar(39) NOT NULL,  `time` int(11) NOT NULL,  `query` text NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8;") or error(db_error());
