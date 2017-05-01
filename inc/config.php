@@ -1028,6 +1028,7 @@
 	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
 	$config['additional_javascript'][] = 'js/ajax.js';
 	$config['additional_javascript'][] = 'js/captcha.js';
+	$config['additional_javascript'][] = 'js/post-menu.js';
 	$config['additional_javascript'][] = 'js/download-original.js';
 	$config['additional_javascript'][] = 'js/expand-all-images.js';
 	$config['additional_javascript'][] = 'js/expand-too-long.js';
@@ -1058,7 +1059,6 @@
 	$config['additional_javascript'][] = 'js/quote-selection.js';
 	$config['additional_javascript'][] = 'js/ajax-post-controls.js';
 	$config['additional_javascript'][] = 'js/multi-image.js';
-	$config['additional_javascript'][] = 'js/upload-selection.js';
 	$config['additional_javascript'][] = 'js/style-switcher.js';
 	$config['additional_javascript'][] = 'js/options/user-css.js';
 	$config['additional_javascript'][] = 'js/options/user-js.js';
@@ -1067,12 +1067,13 @@
 	$config['additional_javascript'][] = 'js/inline.js';
 	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
 	$config['additional_javascript'][] = 'js/mobile-style.js';
+	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
+	$config['additional_javascript'][] = 'js/wpaint.js';
+	$config['additional_javascript'][] = 'js/upload-selection.js';
+	$config['additional_javascript'][] = 'js/post-filter.js';
 	
 	// Optional JS (probably has bugs)  (don't use the addyour.js is an example if you need to add js)
 	// $config['additional_javascript'][] = 'js/auto-reload.js';
-	// $config['additional_javascript'][] = 'js/post-filter.js';
-	// $config['additional_javascript'][] = 'js/post-menu.js';
-	// $config['additional_javascript'][] = 'js/fix-report-delete-submit.js';
 	// $config['additional_javascript'][] = 'js/addyour.js';
 
 	// Where these script files are located on the web. Defaults to $config['root'].
