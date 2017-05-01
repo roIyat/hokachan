@@ -647,69 +647,6 @@ div.pages form input {
 
 /*
  * ========================
- * COMPACT BOARDLIST
- * ========================
- */	
-.compact-boardlist {
-  padding: 3px;
-  padding-bottom: 0;
-}
-.compact-boardlist .cb-item {
-  display: inline-block;
-  vertical-align: middle;
-}
-.compact-boardlist .cb-icon {
-  padding-bottom: 1px;
-}
-.compact-boardlist .cb-fa {
-  font-size: 21px;
-  padding: 2px;
-  padding-top: 0;
-}
-.compact-boardlist .cb-cat {
-  padding: 5px 6px 8px 6px;
-}
-.cb-menuitem {
-  display: table-row;
-}
-.cb-menuitem span {
-  padding: 5px;
-  display: table-cell;
-  text-align: left;
-  border-top: 1px solid rgba(0,0,0,0.5);
-}
-.cb-menuitem span.cb-uri {
-  text-align: right;
-}
-.boardlist:not(.compact-boardlist) #watch-pinned::before {
-  content: " [ ";
-}
-.boardlist:not(.compact-boardlist) #watch-pinned::after {
-  content: " ] ";
-}
-.boardlist:not(.compact-boardlist) #watch-pinned {
-  display: inline;
-}
-.boardlist:not(.compact-boardlist) #watch-pinned a {
-  margin-left: 3pt;
-}
-.boardlist:not(.compact-boardlist) #watch-pinned a:first-child {
-  margin-left: 0pt;
-}
-.compact-boardlist #watch-pinned {
-  display: inline-block;
-  vertical-align: middle;
-}
-.new-posts {
-  opacity: 0.6;
-  margin-top: 1em;
-}
-.new-threads {
-  text-align: center;
-}
-
-/*
- * ========================
  * OPTIONS AND ALERTS
  * ========================
  */
@@ -1084,6 +1021,10 @@ div.post div.body {
   word-wrap: break-word;
   white-space: pre-wrap;
 }
+.new-posts {
+  opacity: 0.6;
+  margin-top: 1em;
+}
 
 /*
  * ========================
@@ -1130,6 +1071,9 @@ div.post div.body {
 #post-moderation-fields {
 	float: right;
 	text-align: right;
+}
+.new-threads {
+  text-align: center;
 }
 
 /*
