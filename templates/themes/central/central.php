@@ -1,5 +1,4 @@
 <head>
-	<meta name="google-site-verification" content="Xlvojm6eNE6IcKIqtEomm2OcnLXBRZc-w7B17nY3m6Y" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<script type="text/javascript">
