@@ -45,5 +45,4 @@ Thumbs.db
 !/tmp/locks/.gitkeep
 
 #vichan custom
-favicon.ico
 /static/spoiler.png

@@ -1269,7 +1269,7 @@
 	// $config['url_javascript'] = 'http://static.example.org/main.js';
 
 	// Website favicon.
-	$config['url_favicon'] = '/favicon.ico';
+	$config['url_favicon'] = '/static/favicon.ico';
 	
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
