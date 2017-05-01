@@ -4,7 +4,7 @@
  *  Copyright (c) 2010-2013 Tinyboard, 2013-2017 Vichan and 2016-2017 H0K4CH4N Development Group
  *  
  *  WARNING: This is a project-wide configuration file and is overwritten when upgrading to a newer
- *  version of Tinyboard. Please leave this file unchanged, or it will be a lot harder for you to upgrade.
+ *  version of H0K4CH4N. Please leave this file unchanged, or it will be a lot harder for you to upgrade.
  *  If you would like to make instance-specific changes to your own setup, please use instance-config.php.
  *
  *  This is the default configuration. You can copy values from here and use them in
@@ -15,11 +15,11 @@
  *  from here and use them in your per-board configuration files.
  *
  *  Some directives are commented out. This is either because they are optional and examples, or because
- *  they are "optionally configurable", and given their default values by Tinyboard's code later if unset.
+ *  they are "optionally configurable", and given their default values by H0K4CH4N's code later if unset.
  *
  *  More information: coming soon
  *
- *  Tinyboard documentation: coming soon
+ *  H0K4CH4N documentation: coming soon
  *
  */
 
@@ -81,7 +81,7 @@
  */
 
 	// Database driver (http://www.php.net/manual/en/pdo.drivers.php)
-	// Only MySQL is supported by Tinyboard at the moment, sorry.
+	// Only MySQL is supported by H0K4CH4N at the moment, sorry.
 	$config['db']['type'] = 'mysql';
 	// Hostname, IP address or Unix socket (prefixed with ":")
 	$config['db']['server'] = 'localhost';
@@ -90,7 +90,7 @@
 	// Login
 	$config['db']['user'] = '';
 	$config['db']['password'] = '';
-	// Tinyboard database
+	// H0K4CH4N database
 	$config['db']['database'] = '';
 	// Table prefix (optional)
 	$config['db']['prefix'] = '';
@@ -122,7 +122,7 @@
 	// Timeout for cached objects such as posts and HTML.
 	$config['cache']['timeout'] = 60 * 60 * 48; // 48 hours
 
-	// Optional prefix if you're running multiple Tinyboard instances on the same machine.
+	// Optional prefix if you're running multiple H0K4CH4N instances on the same machine.
 	$config['cache']['prefix'] = '';
 
 	// Memcached servers to use. Read more: http://www.php.net/manual/en/memcached.addservers.php
@@ -131,8 +131,8 @@
 	);
 
 	// Redis server to use. Location, port, password, database id.
-	// Note that Tinyboard may clear the database at times, so you may want to pick a database id just for
-	// Tinyboard to use.
+	// Note that H0K4CH4N may clear the database at times, so you may want to pick a database id just for
+	// H0K4CH4N to use.
 	$config['cache']['redis'] = array('localhost', 6379, '', 1);
 
 /*
@@ -177,7 +177,7 @@
 	 * addresses published through the Internet Domain Name Service (DNS) either as a zone file that can be
 	 * used by DNS server software, or as a live DNS zone that can be queried in real-time.
 	 *
-	 * Read more: coming... someday
+	 * Read more: https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information
 	 */
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
@@ -242,7 +242,7 @@
 	// Whether to use Unicode characters in hidden input names and values.
 	$config['spam']['unicode'] = true;
 
-	// These are fields used to confuse the bots. Make sure they aren't actually used by Tinyboard, or it won't work.
+	// These are fields used to confuse the bots. Make sure they aren't actually used by H0K4CH4N, or it won't work.
 	$config['spam']['hidden_input_names'] = array(
 		'user',
 		'username',
@@ -285,7 +285,7 @@
 		'tag'
 	);
 
-	// Enable reCaptcha to make spam even harder. Rarely necessary.
+	// Enable reCaptcha to make spam even harder. Rarely necessary. (Still thinking about removing this since we have the new captcha)
 	$config['recaptcha'] = false;
 
 	// Public and private key pair from https://www.google.com/recaptcha/admin/create
@@ -446,7 +446,7 @@
 	
 	// Filter flood prevention conditions ("flood-match") depend on a table which contains a cache of recent
 	// posts across all boards. This table is automatically purged of older posts, determining the maximum
-	// "age" by looking at each filter. However, when determining the maximum age, Tinyboard does not look
+	// "age" by looking at each filter. However, when determining the maximum age, H0K4CH4N does not look
 	// outside the current board. This means that if you have a special flood condition for a specific board
 	// (contained in a board configuration file) which has a flood-time greater than any of those in the
 	// global configuration, you need to set the following variable to the maximum flood-time condition value.
@@ -505,14 +505,13 @@
 	// Reply hard limit (stops allowing new replies when this is reached if not zero).
 	$config['reply_hard_limit'] = 0;
 
-
 	$config['robot_enable'] = false;
 	// Strip repeating characters when making hashes.
 	$config['robot_strip_repeating'] = true;
-	// Enabled mutes? Tinyboard uses ROBOT9000's original 2^x implementation where x is the number of times
+	// Enabled mutes? H0K4CH4N uses ROBOT9000's original 2^x implementation where x is the number of times
 	// you have been muted in the past.
 	$config['robot_mute'] = true;
-	// How long before Tinyboard forgets about a mute?
+	// How long before H0K4CH4N forgets about a mute?
 	$config['robot_mute_hour'] = 336; // 2 weeks
 	// If you want to alter the algorithm a bit. Default value is 2.
 	$config['robot_mute_multiplier'] = 2; // (n^x where x is the number of previous mutes)
@@ -527,7 +526,7 @@
 	$config['link_prefix'] = ''; 
 	$config['url_ads'] = &$config['link_prefix'];	 // leave alias
 	
-	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then Tinyboard will
+	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then H0K4CH4N will
 	// download it. Not usually recommended.
 	$config['allow_upload_by_url'] = true;
 	// The timeout for the above, in seconds.
@@ -633,7 +632,7 @@
 	// a link to an email address or IRC chat room to appeal the ban.
 	$config['ban_page_extra'] = '';
 
-	// Allow users to appeal bans through Tinyboard.
+	// Allow users to appeal bans through H0K4CH4N.
 	$config['ban_appeals'] = false;
 
 	// Do not allow users to appeal bans that are shorter than this length (in seconds).
@@ -668,7 +667,7 @@
 	$config['markup_repair_tidy'] = false;
 
 	// Always regenerate markup. This isn't recommended and should only be used for debugging; by default,
-	// Tinyboard only parses post markup when it needs to, and keeps post-markup HTML in the database. This
+	// H0K4CH4N only parses post markup when it needs to, and keeps post-markup HTML in the database. This
 	// will significantly impact performance when enabled.
 	$config['always_regenerate_markup'] = false;
 
@@ -710,7 +709,7 @@
 	 * Thumbnailing method:
 	 *
 	 *   'gd'		   PHP GD (default). Only handles the most basic image formats (GIF, JPEG, PNG).
-	 *				  GD is a prerequisite for Tinyboard no matter what method you choose.
+	 *				  GD is a prerequisite for H0K4CH4N no matter what method you choose.
 	 *
 	 *   'imagick'	  PHP's ImageMagick bindings. Fast and efficient, supporting many image formats. 
 	 *				  A few minor bugs. http://pecl.php.net/package/imagick
@@ -882,7 +881,7 @@
  * ====================
  */
 
-	// Tinyboard has been translated into a few langauges. See inc/locale for available translations.
+	// H0K4CH4N has been translated into a few langauges. See inc/locale for available translations.
 	$config['locale'] = 'en'; // (en, ru_RU.UTF-8, fi_FI.UTF-8, pl_PL.UTF-8)
 
 	// Timezone to use for displaying dates/tiems.
@@ -957,7 +956,7 @@
 	 * and bottom of board pages. They can be a list of links to boards and/or other pages such as status
 	 * blogs and social network profiles/pages.
 	 *
-	 * "Groups" in the boardlinks are marked with square brackets. Tinyboard allows for infinite recursion
+	 * "Groups" in the boardlinks are marked with square brackets. H0K4CH4N allows for infinite recursion
 	 * with groups. Each array() in $config['boards'] represents a new square bracket group.
 	 */
 
@@ -999,7 +998,7 @@
 	// Location of post flags/icons (where "%s" is the flag name). Defaults to static/flags/%s.png.
 	// $config['uri_flags'] = 'http://static.example.org/flags/%s.png';
 
-	// Width and height (and more?) of post flags. Can be overridden with the Tinyboard post modifier:
+	// Width and height (and more?) of post flags. Can be overridden with the H0K4CH4N post modifier:
 	// <tinyboard flag style>.
 	$config['flag_style'] = 'width:16px;height:11px;';
 
@@ -1129,27 +1128,27 @@
  */
 
 	// Error messages
-	$config['error']['bot']			= _('You look like a bot.');
-	$config['error']['referer']		= _('Your browser sent an invalid or no HTTP referer.');
-	$config['error']['toolong']		= _('The %s field was too long.');
+	$config['error']['bot']				= _('You look like a bot.');
+	$config['error']['referer']			= _('Your browser sent an invalid or no HTTP referer.');
+	$config['error']['toolong']			= _('The %s field was too long.');
 	$config['error']['toolong_body']	= _('The body was too long.');
 	$config['error']['tooshort_body']	= _('The body was too short or empty.');
-	$config['error']['noimage']		= _('You must upload an image.');
+	$config['error']['noimage']			= _('You must upload an image.');
 	$config['error']['toomanyimages'] 	= _('You have attempted to upload too many images!');
-	$config['error']['nomove']		= _('The server failed to handle your upload.');
-	$config['error']['fileext']		= _('Unsupported image format.');
-	$config['error']['noboard']		= _('Invalid board!');
+	$config['error']['nomove']			= _('The server failed to handle your upload.');
+	$config['error']['fileext']			= _('Unsupported image format.');
+	$config['error']['noboard']			= _('Invalid board!');
 	$config['error']['nonexistant']		= _('Thread specified does not exist.');
-	$config['error']['locked']		= _('Thread locked. You may not reply at this time.');
+	$config['error']['locked']			= _('Thread locked. You may not reply at this time.');
 	$config['error']['reply_hard_limit']	= _('Thread has reached its maximum reply limit.');
 	$config['error']['image_hard_limit']	= _('Thread has reached its maximum image limit.');
-	$config['error']['nopost']		= _('You didn\'t make a post.');
-	$config['error']['flood']		= _('Flood detected; Post discarded.');
-	$config['error']['spam']		= _('Your request looks automated; Post discarded.');
+	$config['error']['nopost']			= _('You didn\'t make a post.');
+	$config['error']['flood']			= _('Flood detected; Post discarded.');
+	$config['error']['spam']			= _('Your request looks automated; Post discarded.');
 	$config['error']['unoriginal']		= _('Unoriginal content!');
-	$config['error']['muted']		= _('Unoriginal content! You have been muted for %d seconds.');
+	$config['error']['muted']			= _('Unoriginal content! You have been muted for %d seconds.');
 	$config['error']['youaremuted']		= _('You are muted! Expires in %d seconds.');
-	$config['error']['dnsbl']		= _('Your IP address is listed in %s.');
+	$config['error']['dnsbl']			= _('Your IP address is listed in %s.');
 	$config['error']['toomanylinks']	= _('Too many links; flood detected.');
 	$config['error']['toomanycites']	= _('Too many cites; post discarded.');
 	$config['error']['toomanycross']	= _('Too many cross-board links; post discarded.');
@@ -1160,7 +1159,7 @@
 	$config['error']['invalidimg']		= _('Invalid image.');
 	$config['error']['unknownext']		= _('Unknown file extension.');
 	$config['error']['filesize']		= _('Maximum file size: %maxsz% bytes<br>Your file\'s size: %filesz% bytes');
-	$config['error']['maxsize']		= _('The file was too big.');
+	$config['error']['maxsize']			= _('The file was too big.');
 	$config['error']['genwebmerror']	= _('There was a problem processing your webm.');
 	$config['error']['webmerror'] 		= _('There was a problem processing your webm.');//Is this error used anywhere ?
 	$config['error']['invalidwebm'] 	= _('Invalid webm uploaded.');
@@ -1171,13 +1170,13 @@
 	$config['error']['delete_too_soon']	= _('You\'ll have to wait another %s before deleting that.');
 	$config['error']['mime_exploit']	= _('MIME type detection XSS exploit (IE) detected; post discarded.');
 	$config['error']['invalid_embed']	= _('Couldn\'t make sense of the URL of the video you tried to embed.');
-	$config['error']['captcha']		= _('You seem to have mistyped the verification.');
+	$config['error']['captcha']			= _('You seem to have mistyped the verification.');
 
 
 	// Moderator errors
 	$config['error']['toomanyunban']	= _('You are only allowed to unban %s users at a time. You tried to unban %u users.');
-	$config['error']['invalid']		= _('Invalid username and/or password.');
-	$config['error']['notamod']		= _('You are not a mod…');
+	$config['error']['invalid']			= _('Invalid username and/or password.');
+	$config['error']['notamod']			= _('You are not a mod…');
 	$config['error']['invalidafter']	= _('Invalid username and/or password. Your user may have been deleted or changed.');
 	$config['error']['malformed']		= _('Invalid/malformed cookies.');
 	$config['error']['missedafield']	= _('Your browser didn\'t submit an input when it should have.');
@@ -1186,10 +1185,10 @@
 	$config['error']['boardexists']		= _('There is already a %s board.');
 	$config['error']['noaccess']		= _('You don\'t have permission to do that.');
 	$config['error']['invalidpost']		= _('That post doesn\'t exist…');
-	$config['error']['404']			= _('Page not found.');
+	$config['error']['404']				= _('Page not found.');
 	$config['error']['modexists']		= _('That mod <a href="?/users/%d">already exists</a>!');
 	$config['error']['invalidtheme']	= _('That theme doesn\'t exist!');
-	$config['error']['csrf']		= _('Invalid security token! Please go back and try again.');
+	$config['error']['csrf']			= _('Invalid security token! Please go back and try again.');
 	$config['error']['badsyntax']		= _('Your code contained PHP syntax errors. Please go back and correct them. PHP says: ');
 
 /*
@@ -1198,7 +1197,7 @@
  * =========================
  */
 
-	// The root directory, including the trailing slash, for Tinyboard.
+	// The root directory, including the trailing slash, for H0K4CH4N.
 	// Examples: '/', 'http://boards.chan.org/', '/chan/'.
 	if (isset($_SERVER['REQUEST_URI'])) {
 		$request_uri = $_SERVER['REQUEST_URI'];
@@ -1242,7 +1241,7 @@
 
 	// Where to store the .html templates. This folder and the template files must exist.
 	$config['dir']['template'] = getcwd() . '/templates';
-	// Location of Tinyboard "themes".
+	// Location of H0K4CH4N "themes".
 	$config['dir']['themes'] = getcwd() . '/templates/themes';
 	// Same as above, but a URI (accessable by web interface).
 	$config['dir']['themes_uri'] = 'templates/themes';
@@ -1270,7 +1269,7 @@
 	// $config['url_javascript'] = 'http://static.example.org/main.js';
 
 	// Website favicon.
-	// $config['url_favicon'] = '/favicon.gif';
+	$config['url_favicon'] = '/favicon.ico';
 	
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
@@ -1691,8 +1690,8 @@
 	// $config['statcounter_project'] = '1234567';
 	// $config['statcounter_security'] = 'acbd1234';
 
-	// If you use Varnish, Squid, or any similar caching reverse-proxy in front of Tinyboard, you can
-	// configure Tinyboard to PURGE files when they're written to.
+	// If you use Varnish, Squid, or any similar caching reverse-proxy in front of H0K4CH4N, you can
+	// configure H0K4CH4N to PURGE files when they're written to.
 	// $config['purge'] = array(
 	// 	array('127.0.0.1', 80)
 	// 	array('127.0.0.1', 80, 'example.org')
