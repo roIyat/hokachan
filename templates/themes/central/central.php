@@ -25,10 +25,18 @@
 	
 <div class="box-wrap">
 	
-	<!-- Modify the Intro -->
+		<!-- Modify the Intro -->
 	<div class="box-wrap-board">
 	<br/>
-	<h4>Welcome to the central theme</h4>
+	<h4>{{ settings.intro }}</h4>
+	<img src="{{ settings.intro_logo }}">
+	<h6>{{ settings.warning }}
+	<br/>
+    <a href="{{ settings.warning_link }}">Go to safe space</a>
+	<br/>
+	<br/>
+	<iframe src="{{ settings.intro_embed }}"></iframe>
+	</h6>
 	<br/>
 	</div>
 		

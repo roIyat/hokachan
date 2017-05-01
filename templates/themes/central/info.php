@@ -5,7 +5,7 @@
 	$theme['name'] = 'CENTRAL';
 	// Description (you can use Tinyboard markup here)
 	$theme['description'] = 'This theme has it all';
-	$theme['version'] = 'v2.0';
+	$theme['version'] = 'v2.1';
 	
 	// Theme configuration	
 	$theme['config'] = Array();
@@ -15,6 +15,44 @@
 		'name' => 'title',
 		'type' => 'text',
 		'default' => 'CENTRAL'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro',
+		'name' => 'intro',
+		'type' => 'text',
+		'default' => 'Congratulations, you installed the central theme.'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo',
+		'name' => 'intro_logo',
+		'type' => 'text',
+		'default' => '../templates/themes/central/kekistan.png',
+		'comment' => '(Add an image)'
+	);
+	
+		$theme['config'][] = Array(
+		'title' => 'Intro Embed',
+		'name' => 'intro_embed',
+		'type' => 'text',
+		'default' => 'https://www.youtube.com/embed/hhh4t75LcbY?ecver=2',
+		'comment' => '(add an embed)'
+	);
+	
+		$theme['config'][] = Array(
+		'title' => 'Warning',
+		'name' => 'warning',
+		'type' => 'text',
+		'default' => 'This board contains content that is normie hostile. schroll down at your own risk, Minors should not visit this website and should leave now... yes now!'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Warning Link',
+		'name' => 'warning_link',
+		'type' => 'text',
+		'default' => 'https://duckduckgo.com',
+		'comment' => '(Add the warning url link)'
 	);
 	
 	$theme['config'][] = Array(
