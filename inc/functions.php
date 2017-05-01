@@ -54,40 +54,14 @@ $current_locale = 'en';
 
 
 function loadConfig() {
-	global $board, $config, $__ip, $debug, $__version, $microtime_start, $current_locale, $events;
+	global $board, $config, $__ip, $debug, $__version, $microtime_start, $current_locale;
 
 	$error = function_exists('error') ? 'error' : 'basic_error_function_because_the_other_isnt_loaded_yet';
 
-	$boardsuffix = isset($board['uri']) ? $board['uri'] : '';
+	reset_events();
 
 	if (!isset($_SERVER['REMOTE_ADDR']))
 		$_SERVER['REMOTE_ADDR'] = '0.0.0.0';
-
-	if (file_exists('tmp/cache/cache_config.php')) {
-		require_once('tmp/cache/cache_config.php');
-	}
-
-
-	if (isset($config['cache_config']) && 
-	    $config['cache_config'] &&
-            $config = Cache::get('config_' . $boardsuffix ) ) {
-		$events = Cache::get('events_' . $boardsuffix );
-
-		define_groups();
-
-		if (file_exists('inc/instance-functions.php')) {
-			require_once('inc/instance-functions.php');
-		}
-
-		if ($config['locale'] != $current_locale) {
-                	$current_locale = $config['locale'];
-                	init_locale($config['locale'], $error);
-        	}
-	}
-	else {
-		$config = array();
-
-		reset_events();	
 
 		$arrays = array(
 			'db',
@@ -116,6 +90,7 @@ function loadConfig() {
 			'dashboard_links'
 		);
 
+		$config = array();
 		foreach ($arrays as $key) {
 			$config[$key] = array();
 		}
@@ -128,7 +103,7 @@ function loadConfig() {
 		// Those calls are expensive. Unfortunately, our cache system is not initialized at this point.
 		// So, we may store the locale in a tmp/ filesystem.
 
-		if (file_exists($fn = 'tmp/cache/locale_' . $boardsuffix ) ) {
+		if (file_exists($fn = 'tmp/cache/locale_' . ( isset($board['uri']) ? $board['uri'] : '' ) ) ) {
 			$config['locale'] = @file_get_contents($fn);
 		}
 		else {
@@ -153,6 +128,7 @@ function loadConfig() {
 			$current_locale = $config['locale'];
 			init_locale($config['locale'], $error);
 		}
+		
 
 		require 'inc/config.php';
 
@@ -166,6 +142,8 @@ function loadConfig() {
 			$current_locale = $config['locale'];
 			init_locale($config['locale'], $error);
 		}
+		
+		date_default_timezone_set($config['timezone']);
 
 		if (!isset($config['global_message']))
 			$config['global_message'] = false;
@@ -246,20 +224,7 @@ function loadConfig() {
 		if (!isset($config['user_flags']))
 			$config['user_flags'] = array();
 
-		if (!isset($__version))
-			$__version = file_exists('.installed') ? trim(file_get_contents('.installed')) : false;
-		$config['version'] = $__version;
-
-		if ($config['allow_roll'])
-			event_handler('post', 'diceRoller');
-
-		if (is_array($config['anonymous']))
-			$config['anonymous'] = $config['anonymous'][array_rand($config['anonymous'])];
-
-	}
 	// Effectful config processing below:
-
-	date_default_timezone_set($config['timezone']);
 
 	if ($config['root_file']) {
 		chdir($config['root_file']);
@@ -273,6 +238,10 @@ function loadConfig() {
 	if (preg_match('/^\:\:(ffff\:)?(\d+\.\d+\.\d+\.\d+)$/', $__ip, $m))
 		$_SERVER['REMOTE_ADDR'] = $m[2];
 
+	if (!isset($__version))		
+ 		$__version = file_exists('.installed') ? trim(file_get_contents('.installed')) : false;		
+		$config['version'] = $__version;
+ 
 	if ($config['verbose_errors']) {
 		set_error_handler('verbose_error_handler');
 		error_reporting(E_ALL);
@@ -296,22 +265,13 @@ function loadConfig() {
 		event_handler('post', 'postHandler');
 	}
 
-	event('load-config');
+	if (is_array($config['anonymous']))
+ 		$config['anonymous'] = $config['anonymous'][array_rand($config['anonymous'])];
 
-	if ($config['cache_config'] && !isset ($config['cache_config_loaded'])) {
-		file_put_contents('tmp/cache/cache_config.php', '<?php '.
-			'$config = array();'.
-			'$config[\'cache\'] = '.var_export($config['cache'], true).';'.
-			'$config[\'cache_config\'] = true;'.
-			'$config[\'debug\'] = '.var_export($config['debug'], true).';'.
-			'require_once(\'inc/cache.php\');'
-		);
+	if ($config['allow_roll'])
+		event_handler('post', 'diceRoller');
 
-		$config['cache_config_loaded'] = true;
-
-		Cache::set('config_'.$boardsuffix, $config);
-		Cache::set('events_'.$boardsuffix, $events);
-	}
+		event('load-config');
 	
 	if ($config['debug']) {
 		if (!isset($debug)) {
