@@ -310,9 +310,6 @@
  	//Require solving a captcha to post a thread. 
  	//Default off.
  	 $config['new_thread_capt'] = false;
- 	 
- 	// Use CAPTCHA for reports?
-	$config['report_captcha'] = false;
 
 	// Custom captcha get provider path (if not working get the absolute path aka your url.)
 	$config['captcha']['provider_get'] = '../inc/captcha/entrypoint.php';
