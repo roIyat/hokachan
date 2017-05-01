@@ -2,18 +2,10 @@
 H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 ========================================================
 
-Important Notice
+Introduction
 ------------
 I created this fork because it looks like [Vichan](https://engine.vichan.net/) is dying... Since there are no more major
 updates for almost a year. 
-
-Use this fork at your own risk.
-Don't use this fork if you have no knowledge of fixing your own database and content. 
-If I screw something up I know how to fix my database and restore my content. You may not.
-
-I might remove this fork like before although now that I know how github desktop works I probably won't.
-
-When a stable version releases (not dev versions) you can use it if you have no knowledge of web developing. If you have knowledge of this script and know how to fix problems feel free to use it. 
 
 <strike> Maybe it's because of [INFINITY](https://github.com/ctrlcctrlv/infinity), being sold to a Jim Wat...Kin,
 and the complete clusterfuck of josh's [infinity never](https://github.com/infinity-next/infinity-next).
@@ -22,6 +14,15 @@ Leading to a NTEC or whatever license that makes it illegal for hotwheels etc...
 Seems like Infinity is reborn here: [OpenIB](https://github.com/OpenIB/OpenIB) 
 
 I only created this fork out of necessity... To have my own hentai board, that (hopefully) will work for the coming decades. 
+
+Important Notice
+------------
+
+I will release dev5 soon and probably stay on that version for a while. to see if everything is working. Feel free to test dev 5 and report bugs.
+
+Use this fork at your own risk.
+Don't use this fork if you have no knowledge of fixing your own database and content. 
+If I screw something up I know how to fix my database and restore my content. You may not.
 
 Special Thanks
 ------------
@@ -98,12 +99,12 @@ Upgrade
 -------
 To upgrade from any version of Tinyboard, Vichan or H0K4CH4N:
 
-backup your ```inc/instance-config.php```, replace all your files in place, 
-or remove the instance-config.php from the new version.
-Remove the config file in the captcha folder if using.
-Make sure you didn't modify the config.php
-(don't remove boards etc.), then put ```inc/instance-config.php``` back and
-finally run ```install.php```.
+1.	backup your ```inc/instance-config.php```, replace all your files in place, or remove the instance-config.php from the new version.
+2.	Remove the config file in the captcha folder if using.
+3.	Make sure you didn't modify the config.php
+4.	If you use central theme and modified it. Remove the central.php file and add the changes manually
+6.	(don't remove boards etc.), then put ```inc/instance-config.php``` back
+7.	finally run ```install.php```.
 
 To migrate from a Kusaba X board, use http://github.com/vichan-devel/Tinyboard-Migration
 
