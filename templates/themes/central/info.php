@@ -11,6 +11,14 @@
 	$theme['config'] = Array();
 	
 	$theme['config'][] = Array(
+		'title' => 'Title Logo',
+		'name' => 'title_logo',
+		'type' => 'text',
+		'default' => '../templates/themes/central/hokachan.png',
+		'comment' => '(50px image is best for this)'
+	);
+	
+	$theme['config'][] = Array(
 		'title' => 'Title',
 		'name' => 'title',
 		'type' => 'text',

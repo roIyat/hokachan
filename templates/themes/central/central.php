@@ -17,7 +17,7 @@
 	{{ boardlist.top }}
 	
 <header>
-	<center><img src="../templates/themes/central/hokachan.png" style="width: 75px;"></center>
+	<img src="{{ settings.title_logo }}" style="max-width: 50px; display:block; margin-left: auto; margin-right: auto;">
 	<h1>{{ settings.title }}</h1> 
 	<div class="subtitle">{{ settings.subtitle }}</div> 
 </header>
