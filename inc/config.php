@@ -103,7 +103,7 @@
 
 /*
  * ====================
- *  Cache settings
+ * Cache, lock and queue settings
  * ====================
  */
 
@@ -118,6 +118,7 @@
 	// $config['cache']['enabled'] = 'apc';
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
+	// $config['cache']['enabled'] = 'fs';
 
 	// Timeout for cached objects such as posts and HTML.
 	$config['cache']['timeout'] = 60 * 60 * 48; // 48 hours
@@ -134,6 +135,12 @@
 	// Note that H0K4CH4N may clear the database at times, so you may want to pick a database id just for
 	// H0K4CH4N to use.
 	$config['cache']['redis'] = array('localhost', 6379, '', 1);
+	
+	// Define a lock driver.		
+ 	$config['lock']['enabled'] = 'fs';		
+ 		
+ 	// Define a queue driver.		
+ 	$config['queue']['enabled'] = 'fs';
 
 /*
  * ====================
