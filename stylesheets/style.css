@@ -444,7 +444,7 @@ div.post.reply div.body span.spoiler a {
   color: black;
 }
 div.styles {
-  float: right;
+  text-align: center;
   padding-bottom: 20px;
 }
 div.styles a {
