@@ -4,7 +4,7 @@
 	// Theme name
 	$theme['name'] = 'News';
 	// Description (you can use Tinyboard markup here)
-	$theme['description'] = 'Extremely basic news listing for the homepage. Enabling boardlinks is recommended for this theme.';
+	$theme['description'] = 'Extremely basic news listing. Enabling boardlinks is recommended for this theme.';
 	$theme['version'] = 'v1.0.0';
 	
 	// Theme configuration	
@@ -14,14 +14,14 @@
 		'title' => 'Site title',
 		'name' => 'title',
 		'type' => 'text',
-		'default' => 'Fake News Central'
+		'default' =>'Fake News Central'
 	);
 	
 	$theme['config'][] = Array(
 		'title' => 'Slogan',
 		'name' => 'subtitle',
 		'type' => 'text',
-		'default' => 'Must be the Russians',
+		'default' =>'Your source for daily fake news, and proud of it!',
 		'comment' => '(optional)'
 	);
 	
@@ -37,7 +37,7 @@
 		'title' => '# of recent entries',
 		'name' => 'no_recent',
 		'type' => 'text',
-		'default' => 3,
+		'default' => 5,
 		'size' => 3,
 		'comment' => '(number of recent news entries to display; "0" is infinite)'
 	);
