@@ -1907,7 +1907,7 @@ function markup(&$body, $track_cites = false, $op = false) {
 			if (isset($cited_posts[$cite])) {
 				$replacement = '<a onclick="highlightReply(\''.$cite.'\', event);" href="' .
 					$config['root'] . $board['dir'] . $config['dir']['res'] .
-					link_for(array('id' => $cite, 'thread' => $cited_posts[$cite])) . '#' . $cite . '">' .
+					($cited_posts[$cite] ? $cited_posts[$cite] : $cite) . '.html#' . $cite . '">' .
 					'&gt;&gt;' . $cite .
 					'</a>';
 
@@ -1978,7 +1978,7 @@ function markup(&$body, $track_cites = false, $op = false) {
 				
 				while ($cite = $query->fetch(PDO::FETCH_ASSOC)) {
 					$cited_posts[$_board][$cite['id']] = $config['root'] . $board['dir'] . $config['dir']['res'] .
-						link_for($cite) . '#' . $cite['id'];
+						($cite['thread'] ? $cite['thread'] : $cite['id']) . '.html#' . $cite['id'];
 				}
 			}
 			
