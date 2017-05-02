@@ -1069,8 +1069,8 @@ div.post div.body {
     margin-right: 10px;
 }
 #post-moderation-fields {
-	float: right;
-	text-align: right;
+    text-align: center;
+    margin-top: 20px;
 }
 .new-threads {
   text-align: center;

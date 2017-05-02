@@ -120,6 +120,38 @@ form#quick-reply {
   padding-right:1px;
   border: 1px solid #111;
 }
+.dropzone {
+    color: #fff;
+    cursor: default;
+    margin: auto;
+    padding: 0px 4px;
+    text-align: center;
+    min-height: 50px;
+    max-height: 140px;
+    transition: 0.2s;
+    background-color: rgb(40, 42, 46);
+    overflow-y: auto;
+}
+.dropzone .remove-btn {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    display: inline-block;
+    vertical-align: bottom;
+    bottom: 10px;
+    position: relative;
+    margin-right: 5px;
+    font-size: 20px;
+}
+.dropzone .file-hint {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 5px;
+    padding: 10px 0px;
+    top: 5px;
+    transition: 0.2s;
+    border: 2px dashed rgba(125, 125, 125, 0.4);
+}
 
 /*
  * THREADS
