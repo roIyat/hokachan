@@ -1031,6 +1031,7 @@ div.post div.body {
     padding: 10px;
     border: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+	border-radius: 15px;
 }
 .new-posts {
   opacity: 0.6;
