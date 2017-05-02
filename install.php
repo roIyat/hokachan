@@ -1,7 +1,7 @@
 <?php
 
 // Installation/upgrade file	
-define('VERSION', '6.0.0 dev4');
+define('VERSION', '6.0.0 dev5');
 
 require 'inc/functions.php';
 
@@ -550,12 +550,9 @@ if (file_exists($config['has_installed'])) {
 		case '4.9.90':
 		case '4.9.91':
 		case '4.9.92':
-                        foreach ($boards as &$board) {
-                                query(sprintf('ALTER TABLE ``posts_%s`` ADD `slug` VARCHAR(255) DEFAULT NULL AFTER `embed`;', $board['uri'])) or error(db_error());
-			}
-                case '4.9.93':
-                        query('ALTER TABLE ``mods`` CHANGE `password` `password` VARCHAR(255) NOT NULL;') or error(db_error());
-                        query('ALTER TABLE ``mods`` CHANGE `salt` `salt` VARCHAR(64) NOT NULL;') or error(db_error());
+        case '4.9.93':
+			query('ALTER TABLE ``mods`` CHANGE `password` `password` VARCHAR(255) NOT NULL;') or error(db_error());
+            query('ALTER TABLE ``mods`` CHANGE `salt` `salt` VARCHAR(64) NOT NULL;') or error(db_error());
 		case '5.0.0':
 			query('ALTER TABLE ``mods`` CHANGE `salt` `version` VARCHAR(64) NOT NULL;') or error(db_error());
 		case '5.0.1':
@@ -587,6 +584,10 @@ if (file_exists($config['has_installed'])) {
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;') or error(db_error());
 		case '6.0.0 dev2':
 		case '6.0.0 dev3':
+		case '6.0.0 dev4':
+			foreach ($boards as &$board) {
+				query(sprintf('ALTER TABLE ``posts_%s`` DROP `slug`', $board['uri'])) or error(db_error());
+			}
 		case false:
 			// TODO: enhance Tinyboard -> vichan upgrade path.
 			query("CREATE TABLE IF NOT EXISTS ``search_queries`` (  `ip` varchar(39) NOT NULL,  `time` int(11) NOT NULL,  `query` text NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8;") or error(db_error());

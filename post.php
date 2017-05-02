@@ -78,8 +78,6 @@ if (isset($_POST['delete'])) {
 			}
 			
 			_syslog(LOG_INFO, 'Deleted post: ' .
-				// link_for gives error when deleting OP's thread with user password. 
-				// '/' . $board['dir'] . $config['dir']['res'] . link_for($post) . ($post['thread'] ? '#' . $id : '')
 				'/' . $board['dir'] . $config['dir']['res'] . sprintf($config['file_page'], $post['thread'] ? $post['thread'] : $id) . ($post['thread'] ? '#' . $id : '')
 			);
 		}
@@ -158,7 +156,7 @@ if (isset($_POST['delete'])) {
 		
 		if ($config['syslog'])
 			_syslog(LOG_INFO, 'Reported post: ' .
-				'/' . $board['dir'] . $config['dir']['res'] . link_for($post) . ($post['thread'] ? '#' . $id : '') .
+				'/' . $board['dir'] . $config['dir']['res'] . sprintf($config['file_page'], $thread ? $thread : $id) . ($thread ? '#' . $id : '') .
 				' for "' . $reason . '"'
 			);
 		$query = prepare("INSERT INTO ``reports`` VALUES (NULL, :time, :ip, :board, :post, :reason)");
@@ -281,7 +279,7 @@ if (isset($_POST['delete'])) {
 	
 	//Check if thread exists
 	if (!$post['op']) {
-		$query = prepare(sprintf("SELECT `sticky`,`locked`,`cycle`,`sage`,`slug` FROM ``posts_%s`` WHERE `id` = :id AND `thread` IS NULL LIMIT 1", $board['uri']));
+		$query = prepare(sprintf("SELECT `sticky`,`locked`,`cycle`,`sage` FROM ``posts_%s`` WHERE `id` = :id AND `thread` IS NULL LIMIT 1", $board['uri']));
 		$query->bindValue(':id', $post['thread'], PDO::PARAM_INT);
 		$query->execute() or error(db_error());
 		
@@ -289,11 +287,7 @@ if (isset($_POST['delete'])) {
 			// Non-existant
 			error($config['error']['nonexistant']);
 		}
-	}
-	else {
-		$thread = false;
-	}
-		
+	}	
 	
 	// Check for an embed field
 	if ($config['enable_embedding'] && isset($_POST['embed']) && !empty($_POST['embed'])) {
@@ -854,7 +848,6 @@ if (isset($_POST['delete'])) {
 	$post['num_files'] = sizeof($post['files']);
 	
 	$post['id'] = $id = post($post);
-	$post['slug'] = slugify($post);
 	
 	insertFloodPost($post);
 
@@ -901,20 +894,19 @@ if (isset($_POST['delete'])) {
 	
 	if ($noko) {
 		$redirect = $root . $board['dir'] . $config['dir']['res'] .
-			link_for($post, false, false, $thread) . (!$post['op'] ? '#' . $id : '');
+			sprintf($config['file_page'], $post['op'] ? $id:$post['thread']) . (!$post['op'] ? '#' . $id : '');
 	   	
 		if (!$post['op'] && isset($_SERVER['HTTP_REFERER'])) {
 			$regex = array(
 				'board' => str_replace('%s', '(\w{1,8})', preg_quote($config['board_path'], '/')),
 				'page' => str_replace('%d', '(\d+)', preg_quote($config['file_page'], '/')),
-				'page50' => '(' . str_replace('%d', '(\d+)', preg_quote($config['file_page50'], '/')) . '|' .
-						  str_replace(array('%d', '%s'), array('(\d+)', '[a-z0-9-]+'), preg_quote($config['file_page50_slug'], '/')) . ')',
+				'page50' => str_replace('%d', '(\d+)', preg_quote($config['file_page50'], '/')),
 				'res' => preg_quote($config['dir']['res'], '/'),
 			);
 
 			if (preg_match('/\/' . $regex['board'] . $regex['res'] . $regex['page50'] . '([?&].*)?$/', $_SERVER['HTTP_REFERER'])) {
 				$redirect = $root . $board['dir'] . $config['dir']['res'] .
-					link_for($post, true, false, $thread) . (!$post['op'] ? '#' . $id : '');
+					sprintf($config['file_page50'], $post['op'] ? $id:$post['thread']) . (!$post['op'] ? '#' . $id : '');
 			}
 		}
 	} else {
@@ -926,7 +918,7 @@ if (isset($_POST['delete'])) {
 	
 	if ($config['syslog'])
 		_syslog(LOG_INFO, 'New post: /' . $board['dir'] . $config['dir']['res'] .
-			link_for($post) . (!$post['op'] ? '#' . $id : ''));
+			sprintf($config['file_page'], $post['op'] ? $id : $post['thread']) . (!$post['op'] ? '#' . $id : ''));
 	
 	if (!$post['mod']) header('X-Associated-Content: "' . $redirect . '"');
 

@@ -1219,7 +1219,7 @@ function mod_move_reply($originBoard, $postID) {
 		$post = $query->fetch(PDO::FETCH_ASSOC);
 
 		// redirect
-		header('Location: ?/' . sprintf($config['board_path'], $board['uri']) . $config['dir']['res'] . link_for($post) . '#' . $newID, true, $config['redirect_http']);
+		header('Location: ?/' . sprintf($config['board_path'], $board['uri']) . $config['dir']['res'] . sprintf($config['file_page'], $post['thread'] ? $post['thread'] : $newID) . '#' . $newID, true, $config['redirect_http']);
 	}
 
 	else {
@@ -1395,7 +1395,7 @@ function mod_move($originBoard, $postID) {
 			$query->execute() or error(db_error($query));
 			
 			// leave a reply, linking to the new thread
-			$spost = array(
+			$post = array(
 				'mod' => true,
 				'subject' => '',
 				'email' => '',
@@ -1409,11 +1409,11 @@ function mod_move($originBoard, $postID) {
 				'op' => false
 			);
 
-			$spost['body'] = $spost['body_nomarkup'] =  sprintf($config['mod']['shadow_mesage'], '>>>/' . $targetBoard . '/' . $newID);
+			$post['body'] = $post['body_nomarkup'] =  sprintf($config['mod']['shadow_mesage'], '>>>/' . $targetBoard . '/' . $newID);
 			
-			markup($spost['body']);
+			markup($post['body']);
 			
-			$botID = post($spost);
+			$botID = post($post);
 			buildThread($postID);
 			
 			buildIndex();
@@ -1425,7 +1425,7 @@ function mod_move($originBoard, $postID) {
 			buildIndex();
 			
 			openBoard($targetBoard);
-			header('Location: ?/' . sprintf($config['board_path'], $newboard['uri']) . $config['dir']['res'] . link_for($op, false, $newboard), true, $config['redirect_http']);
+			header('Location: ?/' . sprintf($config['board_path'], $board['uri']) . $config['dir']['res'] . sprintf($config['file_page'], $newID), true, $config['redirect_http']);
 		}
 	}
 	
@@ -1566,7 +1566,7 @@ function mod_edit_post($board, $edit_raw_html, $postID) {
 
 		rebuildThemes('post', $board);
 		
-		header('Location: ?/' . sprintf($config['board_path'], $board) . $config['dir']['res'] . link_for($post) . '#' . $postID, true, $config['redirect_http']);
+		header('Location: ?/' . sprintf($config['board_path'], $board) . $config['dir']['res'] . sprintf($config['file_page'], $post['thread'] ? $post['thread'] : $postID) . '#' . $postID, true, $config['redirect_http']);
 	} else {
 		// Remove modifiers
 		$post['body_nomarkup'] = remove_modifiers($post['body_nomarkup']);
