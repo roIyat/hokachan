@@ -1021,6 +1021,17 @@ div.post div.body {
   word-wrap: break-word;
   white-space: pre-wrap;
 }
+#post-moderation-fields {
+    text-align: center;
+    margin-top: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #282a2e;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
 .new-posts {
   opacity: 0.6;
   margin-top: 1em;
@@ -1067,10 +1078,6 @@ div.post div.body {
     display: inline;
     margin-left: 10px;
     margin-right: 10px;
-}
-#post-moderation-fields {
-    text-align: center;
-    margin-top: 20px;
 }
 .new-threads {
   text-align: center;
