@@ -18,7 +18,10 @@ I only created this fork out of necessity... To have my own hentai board, that (
 Important Notice
 ------------
 
-I will release dev5 soon and probably stay on that version for a while. to see if everything is working. Feel free to test dev 5 and report bugs.
+For news includes bug fixes and state of this vichan clone.
+[H0k4CH4N N3WS](https://hokachan.com/news.html)
+
+I will release dev5 sooner and probably stay on that version for a while. to see if everything is working. Feel free to test dev 5 and report bugs when it's released.
 
 Use this fork at your own risk.
 Don't use this fork if you have no knowledge of fixing your own database and content. 
