@@ -8,6 +8,7 @@
 		if (! ($action == 'all' || $action == 'post' || $action == 'post-thread' || $action == 'post-delete')) {
 			return;
 		}
+		file_write($settings['uri'] . '/index.html', $ukko->build());
 	}
 	
 	class ukko {
