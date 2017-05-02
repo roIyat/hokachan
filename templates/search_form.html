@@ -18,7 +18,6 @@
 		<p>
 			<input id="search" name="search" type="text" size="40" value="{{ search }}">
 			<select name="board">
-				<option value="none">{% trans %}Select board{% endtrans %}&hellip;</option>
 				{% for b in boards %}
 					<option value="{{ b }}"{% if b == board %} selected{% endif %}>/{{ b }}/</option>
 				{% endfor %}
