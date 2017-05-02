@@ -32,9 +32,10 @@
     margin-bottom: 20px;
 }
 .banlist-opts .buttons * {
-  display: inline-block;
-  width: 49%;
-  font-size: 18pt;
+    display: inline-block;
+    width: 49%;
+    font-size: 18pt;
+    float: right;
 }
 
 tr.tblhead {
