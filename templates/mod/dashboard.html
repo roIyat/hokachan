@@ -29,6 +29,10 @@
 		{% if mod|hasPermission(config.mod.newboard) %}
 			<li style="margin-top:15px"><a href="?/new-board"><strong>{% trans 'Create new board' %}</strong></a></li>
 		{% endif %}
+		
+		{% if mod|hasPermission(config.mod.edit_pages) %}
+			<li><a href="?/edit_pages">{% trans 'Manage Global Static Pages' %}</a></li>
+		{% endif %}
 	</ul>
 </fieldset>
 
@@ -95,9 +99,6 @@
 		{% endif %}
 		{% if mod|hasPermission(config.mod.modlog) %}
 			<li><a href="?/log">{% trans 'Moderation log' %}</a></li>
-		{% endif %}
-		{% if mod|hasPermission(config.mod.edit_pages) %}
-			<li><a href="?/edit_pages">{% trans 'Global static pages' %}</a></li>
 		{% endif %}
 		{% if mod|hasPermission(config.mod.recent) %}
 			<li><a href="?/recent/25">{% trans 'Recent posts' %}</a></li>
