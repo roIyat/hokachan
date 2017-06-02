@@ -122,10 +122,6 @@ class Api {
 			}
 		}
 
-		if ($config['slugify'] && !$post->thread) {
-			$apiPost['semantic_url'] = $post->slug;
-		}
-
 		// Handle files
 		// Note: 4chan only supports one file, so only the first file is taken into account for 4chan-compatible API.
 		if (isset($post->files) && $post->files && !$threadsPage) {

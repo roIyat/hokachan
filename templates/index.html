@@ -56,6 +56,12 @@
 	{% endif %}
 	
 	{% if config.global_message %}<hr /><div class="blotter">{{ config.global_message }}</div>{% endif %}
+	<!-- This belongs in the style-switcher.js file but I have trouble adding it -->
+	{% if config.grid %}
+	<div id="board" style="text-align:right"><a class="unimportant" href="#" onclick="setActiveStyleSheet('default'); return false;">Board</a></div>
+	<div id="grid" style="text-align:right"><a class="unimportant" href="#" onclick="setActiveStyleSheet('alternate'); return false;">Grid</a></div>
+	{% endif %}
+	<!-- This belongs in the style-switcher.js file but I have trouble adding it -->
 	<hr />
 	<form name="postcontrols" action="{{ config.post_url }}" method="post">
 	<input type="hidden" name="board" value="{{ board.uri }}" />
@@ -78,11 +84,10 @@
 	{{ config.ad.bottom }}
 
 	<footer>
-		<p class="unimportant" style="margin-top:20px;text-align:center;">- Tinyboard + 
-			<a href="https://engine.vichan.net/">vichan</a> {{ config.version }} -
-		<br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group
-		<br><a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel</p>
-
+		<p class="unimportant" style="margin-top:20px;text-align:center;">
+		- <a href="https://github.com/savetheinternet/Tinyboard/">© TINYBOARD</a> + 
+		<a href="https://engine.vichan.net/"> © VICHAN</a> + 
+		<a href="https://hokachan.com/">© H0K4CH4N</a> {{ config.version }} - </p>
 		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
 	</footer>
 	<script type="text/javascript">{% raw %}

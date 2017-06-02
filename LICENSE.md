@@ -1,5 +1,7 @@
-# License of vichan
-Copyright (c) 2012-2015 vichan-devel
+# License of H0K4CH4N
+Copyright (c) 2012-2014 TINYBOARD
+Copyright (c) 2012-2017 VICHAN
+Copyright (c) 2016-2017 H0K4CH4N
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -10,8 +12,11 @@ furnished to do so, subject to the following conditions:
 
 All copyright notices and permission notices (including this file) shall be
 included and remain unedited in all copies or substantial portions of the
-Software. This explicitly includes but is not limited to the vichan copyright
-notices found in the footers of some template files.
+Software. This explicitly includes but is not limited to the 
+H0K4CH4N/Vichan/Tinyboard copyright notices found in the footers of some template files.
+
+Have respect for the developers who created this script and keep the copyright intact. 
+I minimized the copyright notices as much as possible. I Might have violated the MIT license law though. 
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -21,9 +26,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-# License of Tinyboard
-This code is licensed under BOTH a vichan license and a Tinyboard license.
-You must agree to both (not either) licensing terms in order to use this
+# License of Tinyboard and Vichan
+This code is licensed under a vichan license, Tinyboard license and H0K4CH4N lican.
+You must agree t0 all licensing terms in order to use this
 software. The original Tinyboard license can be found in a LICENSE.Tinyboard.md
 file, it is included below for your convenience:
 

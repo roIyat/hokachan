@@ -295,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `ban_appeals` (
   `denied` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ban_id` (`ban_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -303,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `ban_appeals` (
 -- Table structure for table `pages`
 --
 
-CREATE TABLE `pages` (
+CREATE TABLE  IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `board` varchar(58) CHARACTER SET utf8 DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -317,21 +317,16 @@ CREATE TABLE `pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nntp_references`
+-- Table structure for table `captchas`
 --
 
-CREATE TABLE `nntp_references` (
-  `board` varchar(30) NOT NULL,
-  `id` int(11) unsigned NOT NULL,
-  `message_id` varchar(255) CHARACTER SET ascii NOT NULL,
-  `message_id_digest` varchar(40) CHARACTER SET ascii NOT NULL,
-  `own` tinyint(1) NOT NULL,
-  `headers` text,
-  PRIMARY KEY (`message_id_digest`),
-  UNIQUE KEY `message_id` (`message_id`),
-  UNIQUE KEY `u_board_id` (`board`, `id`)
+CREATE TABLE IF NOT EXISTS `captchas` (
+  `cookie` VARCHAR(50),
+  `extra` VARCHAR(200),
+  `text` VARCHAR(255),
+  `created_at` INT(11),
+  PRIMARY KEY (`cookie`,`extra`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

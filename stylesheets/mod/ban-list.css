@@ -18,24 +18,24 @@
   border: 1px solid black;
   padding: 1px;
 }
-.banlist-opts {
-}
 .banlist-opts .checkboxes {
   float: left;
   width: 50%;
 }
 .banlist-opts .checkboxes label {
   display: block;
-  color: black;
+  color: olivedrab;
 }
 .banlist-opts .buttons {
-  float: left;
-  width: 50%;
+    float: left;
+    width: 50%;
+    margin-bottom: 20px;
 }
 .banlist-opts .buttons * {
-  display: inline-block;
-  width: 49%;
-  font-size: 18pt;
+    display: inline-block;
+    width: 49%;
+    font-size: 18pt;
+    float: right;
 }
 
 tr.tblhead {

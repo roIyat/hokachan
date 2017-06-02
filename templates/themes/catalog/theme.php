@@ -16,27 +16,11 @@
 		if ($action == 'all') {
 			foreach ($boards as $board) {
 				$b = new Catalog();
-
-				$action = generation_strategy("sb_catalog", array($board));
-				if ($action == 'delete') {
-					file_unlink($config['dir']['home'] . $board . '/catalog.html');
-					file_unlink($config['dir']['home'] . $board . '/index.rss');
-				}
-				elseif ($action == 'rebuild') {
-					$b->build($settings, $board);
-				}
+				$b->build($settings, $board);
 			}
 		} elseif ($action == 'post-thread' || ($settings['update_on_posts'] && $action == 'post') || ($settings['update_on_posts'] && $action == 'post-delete') && in_array($board, $boards)) {
 			$b = new Catalog();
-
-			$action = generation_strategy("sb_catalog", array($board));
-			if ($action == 'delete') {
-				file_unlink($config['dir']['home'] . $board . '/catalog.html');
-				file_unlink($config['dir']['home'] . $board . '/index.rss');
-			}
-			elseif ($action == 'rebuild') {
-				$b->build($settings, $board);
-			}
+			$b->build($settings, $board);
 		}
 	}
 	
@@ -44,12 +28,8 @@
 	class Catalog {
 		public function build($settings, $board_name) {
 			global $config, $board;
-
-			if ($board['uri'] != $board_name) {			
-				if (!openBoard($board_name)) {
-					error(sprintf(_("Board %s doesn't exist"), $board_name));
-				}
-			}
+			
+			openBoard($board_name);
 			
 			$recent_images = array();
 			$recent_posts = array();
@@ -62,7 +42,7 @@
 			$board_name, $board_name, $board_name, $board_name, $board_name)) or error(db_error());
 			
 			while ($post = $query->fetch(PDO::FETCH_ASSOC)) {
-				$post['link'] = $config['root'] . $board['dir'] . $config['dir']['res'] . link_for($post);
+				$post['link'] = $config['root'] . $board['dir'] . $config['dir']['res'] . sprintf($config['file_page'], ($post['thread'] ? $post['thread'] : $post['id']));
 				$post['board_name'] = $board['name'];
 
 				if ($post['embed'] && preg_match('/^https?:\/\/(\w+\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9\-_]{10,11})(&.+)?$/i', $post['embed'], $matches)) {
@@ -98,7 +78,6 @@
 				}
 
 				if (empty($post['image_count'])) $post['image_count'] = 0;
-				$post['pubdate'] = date('r', $post['time']);
 				$recent_posts[] = $post;
 			}
 			
@@ -118,12 +97,6 @@
 				'stats' => $stats,
 				'board' => $board_name,
 				'link' => $config['root'] . $board['dir']
-			)));
-
-			file_write($config['dir']['home'] . $board_name . '/index.rss', Element('themes/catalog/index.rss', Array(
-				'config' => $config,
-				'recent_posts' => $recent_posts,
-				'board' => $board
 			)));
 		}
 	};

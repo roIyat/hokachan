@@ -1,10 +1,10 @@
 <?php
 
 /*
- *  Copyright (c) 2010-2013 Tinyboard Development Group
+ *  Copyright (c) 2010-2013 Tinyboard, 2013-2017 Vichan and 2016-2017 H0K4CH4N Development Group
  *  
  *  WARNING: This is a project-wide configuration file and is overwritten when upgrading to a newer
- *  version of Tinyboard. Please leave this file unchanged, or it will be a lot harder for you to upgrade.
+ *  version of H0K4CH4N. Please leave this file unchanged, or it will be a lot harder for you to upgrade.
  *  If you would like to make instance-specific changes to your own setup, please use instance-config.php.
  *
  *  This is the default configuration. You can copy values from here and use them in
@@ -15,11 +15,11 @@
  *  from here and use them in your per-board configuration files.
  *
  *  Some directives are commented out. This is either because they are optional and examples, or because
- *  they are "optionally configurable", and given their default values by Tinyboard's code later if unset.
+ *  they are "optionally configurable", and given their default values by H0K4CH4N's code later if unset.
  *
- *  More information: http://tinyboard.org/docs/?p=Config
+ *  More information: coming soon
  *
- *  Tinyboard documentation: http://tinyboard.org/docs/
+ *  H0K4CH4N documentation: coming soon
  *
  */
 
@@ -36,7 +36,7 @@
 	// $config['global_message'] = 'This is an important announcement!';
 	$config['blotter'] = &$config['global_message'];
 
-	// Automatically check if a newer version of Tinyboard is available when an administrator logs in.
+	// Automatically check if a newer version of hokachan is available when an administrator logs in.
 	$config['check_updates'] = true;
 	// How often to check for updates
 	$config['check_updates_time'] = 43200; // 12 hours
@@ -81,7 +81,7 @@
  */
 
 	// Database driver (http://www.php.net/manual/en/pdo.drivers.php)
-	// Only MySQL is supported by Tinyboard at the moment, sorry.
+	// Only MySQL is supported by H0K4CH4N at the moment, sorry.
 	$config['db']['type'] = 'mysql';
 	// Hostname, IP address or Unix socket (prefixed with ":")
 	$config['db']['server'] = 'localhost';
@@ -90,7 +90,7 @@
 	// Login
 	$config['db']['user'] = '';
 	$config['db']['password'] = '';
-	// Tinyboard database
+	// H0K4CH4N database
 	$config['db']['database'] = '';
 	// Table prefix (optional)
 	$config['db']['prefix'] = '';
@@ -103,7 +103,7 @@
 
 /*
  * ====================
- *  Cache, lock and queue settings
+ *  Cache settings
  * ====================
  */
 
@@ -111,8 +111,6 @@
 	 * On top of the static file caching system, you can enable the additional caching system which is
 	 * designed to minimize SQL queries and can significantly increase speed when posting or using the 
 	 * moderator interface. APC is the recommended method of caching.
-	 *
-	 * http://tinyboard.org/docs/index.php?p=Config/Cache
 	 */
 
 	$config['cache']['enabled'] = 'php';
@@ -120,12 +118,11 @@
 	// $config['cache']['enabled'] = 'apc';
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
-	// $config['cache']['enabled'] = 'fs';
 
 	// Timeout for cached objects such as posts and HTML.
 	$config['cache']['timeout'] = 60 * 60 * 48; // 48 hours
 
-	// Optional prefix if you're running multiple Tinyboard instances on the same machine.
+	// Optional prefix if you're running multiple H0K4CH4N instances on the same machine.
 	$config['cache']['prefix'] = '';
 
 	// Memcached servers to use. Read more: http://www.php.net/manual/en/memcached.addservers.php
@@ -134,20 +131,9 @@
 	);
 
 	// Redis server to use. Location, port, password, database id.
-	// Note that Tinyboard may clear the database at times, so you may want to pick a database id just for
-	// Tinyboard to use.
+	// Note that H0K4CH4N may clear the database at times, so you may want to pick a database id just for
+	// H0K4CH4N to use.
 	$config['cache']['redis'] = array('localhost', 6379, '', 1);
-
-	// EXPERIMENTAL: Should we cache configs? Warning: this changes board behaviour, i'd say, a lot.
-	// If you have any lambdas/includes present in your config, you should move them to instance-functions.php
-	// (this file will be explicitly loaded during cache hit, but not during cache miss).
-	$config['cache_config'] = false;
-
-	// Define a lock driver.
-	$config['lock']['enabled'] = 'fs';
-
-	// Define a queue driver.
-	$config['queue']['enabled'] = 'fs'; // xD
 
 /*
  * ====================
@@ -191,12 +177,16 @@
 	 * addresses published through the Internet Domain Name Service (DNS) either as a zone file that can be
 	 * used by DNS server software, or as a live DNS zone that can be queried in real-time.
 	 *
-	 * Read more: http://tinyboard.org/docs/?p=Config/DNSBL
+	 * Read more: https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information
 	 */
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
 	// of the strong anonymity associated with it.
-	$config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1);
+	// Example: $config['dnsbl'][] = 'another.blacklist.net'; // 
+	// $config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1); //sectoor.de site is dead. the number stands for (an) ip adress(es) I guess. 
+	
+	// Replacement for sectoor will be the new one if sectoor stays dead
+	$config['dnsbl'][] = 'torexit.dan.me.uk';
 
 	// http://www.sorbs.net/using.shtml
 	// $config['dnsbl'][] = array('dnsbl.sorbs.net', array(2, 3, 4, 5, 6, 7, 8, 9));
@@ -220,22 +210,22 @@
 	$config['dnsbl_exceptions'][] = '127.0.0.1';
 
 	/*
-	 * Introduction to Tinyboard's spam filter:
+	 * Introduction to H0K4CH4N's spam filter:
 	 *
 	 * In simple terms, whenever a posting form on a page is generated (which happens whenever a
-	 * post is made), Tinyboard will add a random amount of hidden, obscure fields to it to
+	 * post is made), H0K4CH4N will add a random amount of hidden, obscure fields to it to
 	 * confuse bots and upset hackers. These fields and their respective obscure values are
 	 * validated upon posting with a 160-bit "hash". That hash can only be used as many times
 	 * as you specify; otherwise, flooding bots could just keep reusing the same hash.
 	 * Once a new set of inputs (and the hash) are generated, old hashes for the same thread
 	 * and board are set to expire. Because you have to reload the page to get the new set
 	 * of inputs and hash, if they expire too quickly and more than one person is viewing the
-	 * page at a given time, Tinyboard would return false positives (depending on how long the
+	 * page at a given time, H0K4CH4N would return false positives (depending on how long the
 	 * user sits on the page before posting). If your imageboard is quite fast/popular, set
 	 * $config['spam']['hidden_inputs_max_pass'] and $config['spam']['hidden_inputs_expire'] to
 	 * something higher to avoid false positives.
 	 *
-	 * See also: http://tinyboard.org/docs/?p=Your_request_looks_automated
+	 * See also: Coming ... Someday
 	 *
 	 */
 
@@ -252,7 +242,7 @@
 	// Whether to use Unicode characters in hidden input names and values.
 	$config['spam']['unicode'] = true;
 
-	// These are fields used to confuse the bots. Make sure they aren't actually used by Tinyboard, or it won't work.
+	// These are fields used to confuse the bots. Make sure they aren't actually used by H0K4CH4N, or it won't work.
 	$config['spam']['hidden_input_names'] = array(
 		'user',
 		'username',
@@ -284,6 +274,8 @@
 		'embed',
 		'recaptcha_challenge_field',
 		'recaptcha_response_field',
+		'captcha_cookie',
+		'captcha_text',
 		'spoiler',
 		'page',
 		'file_url',
@@ -293,12 +285,32 @@
 		'tag'
 	);
 
-	// Enable reCaptcha to make spam even harder. Rarely necessary.
+	// Enable reCaptcha to make spam even harder. Rarely necessary. (Still thinking about removing this since we have the new captcha)
 	$config['recaptcha'] = false;
 
 	// Public and private key pair from https://www.google.com/recaptcha/admin/create
 	$config['recaptcha_public'] = '6LcXTcUSAAAAAKBxyFWIt2SO8jwx4W7wcSMRoN3f';
 	$config['recaptcha_private'] = '6LcXTcUSAAAAAOGVbVdhmEM1_SyRF4xTKe8jbzf_';
+
+	// Enable Custom Captcha you need to change a couple of settings 
+	//Read more at: /captcha/instructions.md
+	 $config['captcha'] = array();
+
+	// Enable custom captcha provider
+	$config['captcha']['enabled'] = false;
+
+	//New thread captcha
+ 	//Require solving a captcha to post a thread. 
+ 	//Default off.
+ 	 $config['new_thread_capt'] = false;
+
+	// Custom captcha get provider path (if not working get the absolute path aka your url.)
+	$config['captcha']['provider_get'] = '../inc/captcha/entrypoint.php';
+	// Custom captcha check provider path
+	$config['captcha']['provider_check'] = '../inc/captcha/entrypoint.php';
+
+	// Custom captcha extra field (eg. charset)
+	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
 	
 	// Ability to lock a board for normal users and still allow mods to post.  Could also be useful for making an archive board
 	$config['board_locked'] = false;
@@ -431,7 +443,7 @@
 	
 	// Filter flood prevention conditions ("flood-match") depend on a table which contains a cache of recent
 	// posts across all boards. This table is automatically purged of older posts, determining the maximum
-	// "age" by looking at each filter. However, when determining the maximum age, Tinyboard does not look
+	// "age" by looking at each filter. However, when determining the maximum age, H0K4CH4N does not look
 	// outside the current board. This means that if you have a special flood condition for a specific board
 	// (contained in a board configuration file) which has a flood-time greater than any of those in the
 	// global configuration, you need to set the following variable to the maximum flood-time condition value.
@@ -448,7 +460,7 @@
 	// Do you need a body for new threads?
 	$config['force_body_op'] = true;
 	// Require an image for threads?
-	$config['force_image_op'] = true;
+	$config['force_image_op'] = false;
 
 	// Strip superfluous new lines at the end of a post.
 	$config['strip_superfluous_returns'] = true;
@@ -456,7 +468,7 @@
 	$config['strip_combining_chars'] = true;
 
 	// Maximum post body length.
-	$config['max_body'] = 1800;
+	$config['max_body'] = 180000;
 	// Maximum number of post body lines to show on the index page.
 	$config['body_truncate'] = 15;
 	// Maximum number of characters to show on the index page.
@@ -490,14 +502,13 @@
 	// Reply hard limit (stops allowing new replies when this is reached if not zero).
 	$config['reply_hard_limit'] = 0;
 
-
 	$config['robot_enable'] = false;
 	// Strip repeating characters when making hashes.
 	$config['robot_strip_repeating'] = true;
-	// Enabled mutes? Tinyboard uses ROBOT9000's original 2^x implementation where x is the number of times
+	// Enabled mutes? H0K4CH4N uses ROBOT9000's original 2^x implementation where x is the number of times
 	// you have been muted in the past.
 	$config['robot_mute'] = true;
-	// How long before Tinyboard forgets about a mute?
+	// How long before H0K4CH4N forgets about a mute?
 	$config['robot_mute_hour'] = 336; // 2 weeks
 	// If you want to alter the algorithm a bit. Default value is 2.
 	$config['robot_mute_multiplier'] = 2; // (n^x where x is the number of previous mutes)
@@ -512,9 +523,9 @@
 	$config['link_prefix'] = ''; 
 	$config['url_ads'] = &$config['link_prefix'];	 // leave alias
 	
-	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then Tinyboard will
+	// Allow "uploading" images via URL as well. Users can enter the URL of the image and then H0K4CH4N will
 	// download it. Not usually recommended.
-	$config['allow_upload_by_url'] = false;
+	$config['allow_upload_by_url'] = true;
 	// The timeout for the above, in seconds.
 	$config['upload_by_url_timeout'] = 15;
 
@@ -585,7 +596,7 @@
 	
 	// List of user_flag the user can choose. Flags must be placed in the directory set by $config['uri_flags']
 	$config['user_flags'] = array();
-	/* example: 
+	/* example: 
 	$config['user_flags'] = array (
 		'nz' => 'Nazi',
 		'cm' => 'Communist',
@@ -596,12 +607,6 @@
 	// Allow dice rolling: an email field of the form "dice XdY+/-Z" will result in X Y-sided dice rolled and summed,
 	// with the modifier Z added, with the result displayed at the top of the post body.
 	$config['allow_roll'] = false;
-
-	// Use semantic URLs for threads, like /b/res/12345/daily-programming-thread.html
-	$config['slugify'] = false;
-	
-	// Max size for slugs
-	$config['slug_max_size'] = 80;
 
 /*
 * ====================
@@ -619,7 +624,7 @@
 	// a link to an email address or IRC chat room to appeal the ban.
 	$config['ban_page_extra'] = '';
 
-	// Allow users to appeal bans through Tinyboard.
+	// Allow users to appeal bans through H0K4CH4N.
 	$config['ban_appeals'] = false;
 
 	// Do not allow users to appeal bans that are shorter than this length (in seconds).
@@ -654,7 +659,7 @@
 	$config['markup_repair_tidy'] = false;
 
 	// Always regenerate markup. This isn't recommended and should only be used for debugging; by default,
-	// Tinyboard only parses post markup when it needs to, and keeps post-markup HTML in the database. This
+	// H0K4CH4N only parses post markup when it needs to, and keeps post-markup HTML in the database. This
 	// will significantly impact performance when enabled.
 	$config['always_regenerate_markup'] = false;
 
@@ -666,7 +671,7 @@
 	// Maximum number of images allowed. Increasing this number enabled multi image.
 	// If you make it more than 1, make sure to enable the below script for the post form to change.
 	// $config['additional_javascript'][] = 'js/multi-image.js';
-	$config['max_images'] = 1;
+	$config['max_images'] = 3;
 
 	// Method to use for determing the max filesize. 
 	// "split" means that your max filesize is split between the images. For example, if your max filesize
@@ -676,11 +681,11 @@
 	$config['multiimage_method'] = 'split';
 
 	// For resizing, maximum thumbnail dimensions.
-	$config['thumb_width'] = 255;
-	$config['thumb_height'] = 255;
+	$config['thumb_width'] = 200;
+	$config['thumb_height'] = 200;
 	// Maximum thumbnail dimensions for thread (OP) images.
-	$config['thumb_op_width'] = 255;
-	$config['thumb_op_height'] = 255;
+	$config['thumb_op_width'] = 200;
+	$config['thumb_op_height'] = 200;
 
 	// Thumbnail extension ("png" recommended). Leave this empty if you want the extension to be inherited
 	// from the uploaded file.
@@ -696,7 +701,7 @@
 	 * Thumbnailing method:
 	 *
 	 *   'gd'		   PHP GD (default). Only handles the most basic image formats (GIF, JPEG, PNG).
-	 *				  GD is a prerequisite for Tinyboard no matter what method you choose.
+	 *				  GD is a prerequisite for H0K4CH4N no matter what method you choose.
 	 *
 	 *   'imagick'	  PHP's ImageMagick bindings. Fast and efficient, supporting many image formats. 
 	 *				  A few minor bugs. http://pecl.php.net/package/imagick
@@ -760,8 +765,8 @@
 	$config['allowed_ext_op'] = false;
 
 	// Allowed additional file extensions (not images; downloadable files).
-	// $config['allowed_ext_files'][] = 'txt';
-	// $config['allowed_ext_files'][] = 'zip';
+	$config['allowed_ext_files'][] = 'txt';
+	$config['allowed_ext_files'][] = 'zip';
 
 	// An alternative function for generating image filenames, instead of the default UNIX timestamp.
 	// $config['filename_func'] = function($post) {
@@ -811,7 +816,7 @@
 	$config['webm']['ffprobe_path'] = 'ffprobe';
 
 	// Display image identification links for ImgOps, regex.info/exif, Google Images and iqdb.
-	$config['image_identification'] = false;
+	$config['image_identification'] = true;
 	// Which of the identification links to display. Only works if $config['image_identification'] is true.
 	$config['image_identification_imgops'] = true;
 	$config['image_identification_exif'] = true;
@@ -825,15 +830,6 @@
 	// Set this to true if you're using Linux and you can execute `md5sum` binary.
 	$config['gnu_md5'] = false;
 
-	// Use Tesseract OCR to retrieve text from images, so you can use it as a spamfilter.
-	$config['tesseract_ocr'] = false;
-
-	// Tesseract parameters
-	$config['tesseract_params'] = '';
-
-	// Tesseract preprocess command
-	$config['tesseract_preprocess_command'] = 'convert -monochrome %s -';
-
 	// Number of posts in a "View Last X Posts" page
 	$config['noko50_count'] = 50;
 	// Number of posts a thread needs before it gets a "View Last X Posts" page.
@@ -846,11 +842,11 @@
  */
 
 	// Maximum amount of threads to display per page.
-	$config['threads_per_page'] = 10;
+	$config['threads_per_page'] = 20;
 	// Maximum number of pages. Content past the last page is automatically purged.
-	$config['max_pages'] = 10;
+	$config['max_pages'] = 100;
 	// Replies to show per thread on the board index page.
-	$config['threads_preview'] = 5;
+	$config['threads_preview'] = 1;
 	// Same as above, but for stickied threads.
 	$config['threads_preview_sticky'] = 1;
 
@@ -868,13 +864,16 @@
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
 	$config['allow_subtitle_html'] = false;
 
+	// Enable the Grid board layout
+	$config['grid'] = true;
+
 /*
  * ====================
  *  Display settings
  * ====================
  */
 
-	// Tinyboard has been translated into a few langauges. See inc/locale for available translations.
+	// H0K4CH4N has been translated into a few langauges. See inc/locale for available translations.
 	$config['locale'] = 'en'; // (en, ru_RU.UTF-8, fi_FI.UTF-8, pl_PL.UTF-8)
 
 	// Timezone to use for displaying dates/tiems.
@@ -912,16 +911,28 @@
 
 	// Custom stylesheets available for the user to choose. See the "stylesheets/" folder for a list of
 	// available stylesheets (or create your own).
-	$config['stylesheets']['Yotsuba B'] = ''; // Default; there is no additional/custom stylesheet for this.
-	$config['stylesheets']['Yotsuba'] = 'yotsuba.css';
-	// $config['stylesheets']['Futaba'] = 'futaba.css';
-	// $config['stylesheets']['Dark'] = 'dark.css';
+	$config['stylesheets']['SH4D1L4Y']          = 'shadilay.css'; //Default
+	$config['stylesheets']['Yotsuba B']         = ''; // style.css previous default theme 
+	$config['stylesheets']['Yotsuba']           = 'yotsuba.css';
+	$config['stylesheets']['Burichan']          = 'burichan.css';
+	$config['stylesheets']['Dark Roach']        = 'dark_roach.css';
+	$config['stylesheets']['Favela']            = 'favela.css';
+	$config['stylesheets']['Luna']              = 'luna.css';
+	$config['stylesheets']['Miku']              = 'miku.css';
+	$config['stylesheets']['Northboard']        = 'northboard_cb.css';
+	$config['stylesheets']['Photon']            = 'photon.css';
+	$config['stylesheets']['Ricechan']          = 'ricechan.css';
+	$config['stylesheets']['Roach']             = 'roach.css';
+	$config['stylesheets']['Rugby']             = 'rugby.css';
+	$config['stylesheets']['Stripes']           = 'stripes.css';
+	$config['stylesheets']['V8CH']              = 'v8ch.css';
+	
 
 	// The prefix for each stylesheet URI. Defaults to $config['root']/stylesheets/
 	// $config['uri_stylesheets'] = 'http://static.example.org/stylesheets/';
 
 	// The default stylesheet to use.
-	$config['default_stylesheet'] = array('Yotsuba B', $config['stylesheets']['Yotsuba B']);
+	$config['default_stylesheet'] = array('SH4D1L4Y', $config['stylesheets']['SH4D1L4Y']);
 
 	// Make stylesheet selections board-specific.
 	$config['stylesheets_board'] = false;
@@ -937,40 +948,28 @@
 	 * and bottom of board pages. They can be a list of links to boards and/or other pages such as status
 	 * blogs and social network profiles/pages.
 	 *
-	 * "Groups" in the boardlinks are marked with square brackets. Tinyboard allows for infinite recursion
+	 * "Groups" in the boardlinks are marked with square brackets. H0K4CH4N allows for infinite recursion
 	 * with groups. Each array() in $config['boards'] represents a new square bracket group.
 	 */
 
-	// $config['boards'] = array(
-	// 	array('a', 'b'),
+	$config['boards'] = array(
+	 	array('Home' => '/'),
+		array('b'),
 	// 	array('c', 'd', 'e', 'f', 'g'),
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
-	// 	array('status' => 'http://status.example.org/')
-	// );
+		array('Search' => '/search.php'), 
+		array('Manager' => '/mod.php')
+	 );
 
 	// Whether or not to put brackets around the whole board list
 	$config['boardlist_wrap_bracket'] = false;
 
 	// Show page navigation links at the top as well.
-	$config['page_nav_top'] = false;
+	$config['page_nav_top'] = true;
 
 	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to false to disable.
-	$config['catalog_link'] = 'catalog.html';
-
-	// Board categories. Only used in the "Categories" theme.
-	// $config['categories'] = array(
-	// 	'Group Name' => array('a', 'b', 'c'),
-	// 	'Another Group' => array('d')
-	// );
-	// Optional for the Categories theme. This is an array of name => (title, url) groups for categories
-	// with non-board links.
-	// $config['custom_categories'] = array(
-	// 	'Links' => array(
-	// 		'Tinyboard' => 'http://tinyboard.org',
-	// 		'Donate' => 'donate.html'
-	// 	)
-	// );
+	// $config['catalog_link'] = 'catalog.html';
 
 	// Automatically remove unnecessary whitespace when compiling HTML files from templates.
 	$config['minify_html'] = true;
@@ -991,7 +990,7 @@
 	// Location of post flags/icons (where "%s" is the flag name). Defaults to static/flags/%s.png.
 	// $config['uri_flags'] = 'http://static.example.org/flags/%s.png';
 
-	// Width and height (and more?) of post flags. Can be overridden with the Tinyboard post modifier:
+	// Width and height (and more?) of post flags. Can be overridden with the H0K4CH4N post modifier:
 	// <tinyboard flag style>.
 	$config['flag_style'] = 'width:16px;height:11px;';
 
@@ -1002,7 +1001,7 @@
  */
 
 	// Additional Javascript files to include on board index and thread pages. See js/ for available scripts.
-	$config['additional_javascript'][] = 'js/inline-expanding.js';
+	// $config['additional_javascript'][] = 'js/inline-expanding.js';
 	// $config['additional_javascript'][] = 'js/local-time.js';
 
 	// Some scripts require jQuery. Check the comments in script files to see what's needed. When enabling
@@ -1010,11 +1009,63 @@
 	// "js/inline-expanding.js" or else the inline-expanding script might not interact properly with other
 	// scripts.
 	// $config['additional_javascript'] = array();
-	// $config['additional_javascript'][] = 'js/jquery.min.js';
-	// $config['additional_javascript'][] = 'js/inline-expanding.js';
-	// $config['additional_javascript'][] = 'js/auto-reload.js';
-	// $config['additional_javascript'][] = 'js/post-hover.js';
-	// $config['additional_javascript'][] = 'js/style-select.js';
+	$config['additional_javascript'] = array();
+    $config['additional_javascript'][] = 'js/jquery.min.js';
+	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
+	$config['additional_javascript'][] = 'js/ajax.js';
+	$config['additional_javascript'][] = 'js/captcha.js';
+	$config['additional_javascript'][] = 'js/download-original.js';
+	$config['additional_javascript'][] = 'js/expand-all-images.js';
+	$config['additional_javascript'][] = 'js/expand-too-long.js';
+	$config['additional_javascript'][] = 'js/expand-video.js';
+	$config['additional_javascript'][] = 'js/expand.js';
+	$config['additional_javascript'][] = 'js/file-selector.js';
+	$config['additional_javascript'][] = 'js/gallery-view.js';
+	$config['additional_javascript'][] = 'js/hide-images.js';
+	$config['additional_javascript'][] = 'js/hide-threads.js';
+	$config['additional_javascript'][] = 'js/infinite-scroll.js';
+	$config['additional_javascript'][] = 'js/inline-expanding.js';
+	$config['additional_javascript'][] = 'js/options.js';
+	$config['additional_javascript'][] = 'js/options/general.js';
+	$config['additional_javascript'][] = 'js/post-hover.js';
+	$config['additional_javascript'][] = 'js/quick-post-controls.js';
+	$config['additional_javascript'][] = 'js/show-backlinks.js';
+	$config['additional_javascript'][] = 'js/show-op.js';
+	$config['additional_javascript'][] = 'js/show-own-posts.js';
+	$config['additional_javascript'][] = 'js/thread-stats.js';
+	$config['additional_javascript'][] = 'js/toggle-images.js';
+	$config['additional_javascript'][] = 'js/toggle-locked-threads.js';
+	$config['additional_javascript'][] = 'js/treeview.js';
+	$config['additional_javascript'][] = 'js/thread-watcher.js';
+	$config['additional_javascript'][] = 'js/youtube.js';
+	$config['additional_javascript'][] = 'js/comment-toolbar.js';
+	$config['additional_javascript'][] = 'js/settings.js';
+	$config['additional_javascript'][] = 'js/quick-reply.js';
+	$config['additional_javascript'][] = 'js/quote-selection.js';
+	$config['additional_javascript'][] = 'js/ajax-post-controls.js';
+	$config['additional_javascript'][] = 'js/multi-image.js';
+	$config['additional_javascript'][] = 'js/style-switcher.js';
+	$config['additional_javascript'][] = 'js/options/user-css.js';
+	$config['additional_javascript'][] = 'js/options/user-js.js';
+	$config['additional_javascript'][] = 'js/webm-settings.js';
+	$config['additional_javascript'][] = 'js/image-hover.js';
+	$config['additional_javascript'][] = 'js/inline.js';
+	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
+	$config['additional_javascript'][] = 'js/mobile-style.js';
+	$config['additional_javascript'][] = 'js/wpaint/8ch.js';
+	$config['additional_javascript'][] = 'js/wpaint.js';
+	$config['additional_javascript'][] = 'js/upload-selection.js';
+	
+	// Optional JS (some probably has bugs)
+	// $config['additional_javascript'][] = 'js/auto-reload.js';		//I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
+	// $config['additional_javascript'][] = 'js/live-index.js';
+	// $config['additional_javascript'][] = 'js/post-menu.js'; 
+	// $config['additional_javascript'][] = 'js/post-filter.js';		// You need post-menu.js also for this one. 
+	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
+	// $config['additional_javascript'][] = 'js/id_colors.js';			// If you enabled id you can use this
+	
+	// EXAMPLE JS
+	// $config['additional_javascript'][] = 'js/addyour.js';
 
 	// Where these script files are located on the web. Defaults to $config['root'].
 	// $config['additional_javascript_url'] = 'http://static.example.org/tinyboard-javascript-stuff/';
@@ -1025,10 +1076,6 @@
 	// Minify Javascript using http://code.google.com/p/minify/.
 	$config['minify_js'] = false;
 
-	// Dispatch thumbnail loading and image configuration with JavaScript. It will need a certain javascript
-	// code to work.
-	$config['javascript_image_dispatch'] = false;
-
 /*
  * ====================
  *  Video embedding
@@ -1036,18 +1083,18 @@
  */
 
 	// Enable embedding (see below).
-	$config['enable_embedding'] = false;
+	$config['enable_embedding'] = true;
 
 	// Custom embedding (YouTube, vimeo, etc.)
 	// It's very important that you match the entire input (with ^ and $) or things will not work correctly.
 	$config['embedding'] = array(
 		array(
 			'/^https?:\/\/(\w+\.)?youtube\.com\/watch\?v=([a-zA-Z0-9\-_]{10,11})(&.+)?$/i',
-			'<iframe style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%" frameborder="0" id="ytplayer" src="http://www.youtube.com/embed/$2"></iframe>'
+			'<iframe style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%" frameborder="0" id="ytplayer" src="https://www.youtube.com/embed/$2"></iframe>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?vimeo\.com\/(\d{2,10})(\?.+)?$/i',
-			'<object style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="%%tb_width%%" height="%%tb_height%%"></object>'
+			'<object style="float: left;margin: 10px 20px;" width="%%tb_width%%" height="%%tb_height%%"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="https://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="https://vimeo.com/moogaloop.swf?clip_id=$2&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="%%tb_width%%" height="%%tb_height%%"></object>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?dailymotion\.com\/video\/([a-zA-Z0-9]{2,10})(_.+)?$/i',
@@ -1055,21 +1102,21 @@
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?metacafe\.com\/watch\/(\d+)\/([a-zA-Z0-9_\-.]+)\/(\?[^\'"<>]+)?$/i',
-			'<div style="float:left;margin:10px 20px;width:%%tb_width%%px;height:%%tb_height%%px"><embed flashVars="playerVars=showStats=no|autoPlay=no" src="http://www.metacafe.com/fplayer/$2/$3.swf" width="%%tb_width%%" height="%%tb_height%%" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_$2" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></div>'
+			'<div style="float:left;margin:10px 20px;width:%%tb_width%%px;height:%%tb_height%%px"><embed flashVars="playerVars=showStats=no|autoPlay=no" src="https://www.metacafe.com/fplayer/$2/$3.swf" width="%%tb_width%%" height="%%tb_height%%" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_$2" pluginspage="https://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></div>'
 		),
 		array(
 			'/^https?:\/\/video\.google\.com\/videoplay\?docid=(\d+)([&#](.+)?)?$/i',
-			'<embed src="http://video.google.com/googleplayer.swf?docid=$1&hl=en&fs=true" style="width:%%tb_width%%px;height:%%tb_height%%px;float:left;margin:10px 20px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>'
+			'<embed src="https://video.google.com/googleplayer.swf?docid=$1&hl=en&fs=true" style="width:%%tb_width%%px;height:%%tb_height%%px;float:left;margin:10px 20px" allowFullScreen="true" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>'
 		),
 		array(
 			'/^https?:\/\/(\w+\.)?vocaroo\.com\/i\/([a-zA-Z0-9]{2,15})$/i',
-			'<object style="float: left;margin: 10px 20px;" width="148" height="44"><param name="movie" value="http://vocaroo.com/player.swf?playMediaID=$2&autoplay=0"><param name="wmode" value="transparent"><embed src="http://vocaroo.com/player.swf?playMediaID=$2&autoplay=0" width="148" height="44" wmode="transparent" type="application/x-shockwave-flash"></object>'
+			'<object style="float: left;margin: 10px 20px;" width="148" height="44"><param name="movie" value="https://vocaroo.com/player.swf?playMediaID=$2&autoplay=0"><param name="wmode" value="transparent"><embed src="https://vocaroo.com/player.swf?playMediaID=$2&autoplay=0" width="148" height="44" wmode="transparent" type="application/x-shockwave-flash"></object>'
 		)
 	);
 
 	// Embedding width and height.
 	$config['embed_width'] = 300;
-	$config['embed_height'] = 246;
+	$config['embed_height'] = 200;
 
 /*
  * ====================
@@ -1078,27 +1125,27 @@
  */
 
 	// Error messages
-	$config['error']['bot']			= _('You look like a bot.');
-	$config['error']['referer']		= _('Your browser sent an invalid or no HTTP referer.');
-	$config['error']['toolong']		= _('The %s field was too long.');
+	$config['error']['bot']				= _('You look like a bot.');
+	$config['error']['referer']			= _('Your browser sent an invalid or no HTTP referer.');
+	$config['error']['toolong']			= _('The %s field was too long.');
 	$config['error']['toolong_body']	= _('The body was too long.');
 	$config['error']['tooshort_body']	= _('The body was too short or empty.');
-	$config['error']['noimage']		= _('You must upload an image.');
-	$config['error']['toomanyimages'] = _('You have attempted to upload too many images!');
-	$config['error']['nomove']		= _('The server failed to handle your upload.');
-	$config['error']['fileext']		= _('Unsupported image format.');
-	$config['error']['noboard']		= _('Invalid board!');
+	$config['error']['noimage']			= _('You must upload an image.');
+	$config['error']['toomanyimages'] 	= _('You have attempted to upload too many images!');
+	$config['error']['nomove']			= _('The server failed to handle your upload.');
+	$config['error']['fileext']			= _('Unsupported image format.');
+	$config['error']['noboard']			= _('Invalid board!');
 	$config['error']['nonexistant']		= _('Thread specified does not exist.');
-	$config['error']['locked']		= _('Thread locked. You may not reply at this time.');
+	$config['error']['locked']			= _('Thread locked. You may not reply at this time.');
 	$config['error']['reply_hard_limit']	= _('Thread has reached its maximum reply limit.');
 	$config['error']['image_hard_limit']	= _('Thread has reached its maximum image limit.');
-	$config['error']['nopost']		= _('You didn\'t make a post.');
-	$config['error']['flood']		= _('Flood detected; Post discarded.');
-	$config['error']['spam']		= _('Your request looks automated; Post discarded.');
+	$config['error']['nopost']			= _('You didn\'t make a post.');
+	$config['error']['flood']			= _('Flood detected; Post discarded.');
+	$config['error']['spam']			= _('Your request looks automated; Post discarded.');
 	$config['error']['unoriginal']		= _('Unoriginal content!');
-	$config['error']['muted']		= _('Unoriginal content! You have been muted for %d seconds.');
+	$config['error']['muted']			= _('Unoriginal content! You have been muted for %d seconds.');
 	$config['error']['youaremuted']		= _('You are muted! Expires in %d seconds.');
-	$config['error']['dnsbl']		= _('Your IP address is listed in %s.');
+	$config['error']['dnsbl']			= _('Your IP address is listed in %s.');
 	$config['error']['toomanylinks']	= _('Too many links; flood detected.');
 	$config['error']['toomanycites']	= _('Too many cites; post discarded.');
 	$config['error']['toomanycross']	= _('Too many cross-board links; post discarded.');
@@ -1109,7 +1156,7 @@
 	$config['error']['invalidimg']		= _('Invalid image.');
 	$config['error']['unknownext']		= _('Unknown file extension.');
 	$config['error']['filesize']		= _('Maximum file size: %maxsz% bytes<br>Your file\'s size: %filesz% bytes');
-	$config['error']['maxsize']		= _('The file was too big.');
+	$config['error']['maxsize']			= _('The file was too big.');
 	$config['error']['genwebmerror']	= _('There was a problem processing your webm.');
 	$config['error']['webmerror'] 		= _('There was a problem processing your webm.');//Is this error used anywhere ?
 	$config['error']['invalidwebm'] 	= _('Invalid webm uploaded.');
@@ -1120,13 +1167,13 @@
 	$config['error']['delete_too_soon']	= _('You\'ll have to wait another %s before deleting that.');
 	$config['error']['mime_exploit']	= _('MIME type detection XSS exploit (IE) detected; post discarded.');
 	$config['error']['invalid_embed']	= _('Couldn\'t make sense of the URL of the video you tried to embed.');
-	$config['error']['captcha']		= _('You seem to have mistyped the verification.');
+	$config['error']['captcha']			= _('You seem to have mistyped the verification.');
 
 
 	// Moderator errors
 	$config['error']['toomanyunban']	= _('You are only allowed to unban %s users at a time. You tried to unban %u users.');
-	$config['error']['invalid']		= _('Invalid username and/or password.');
-	$config['error']['notamod']		= _('You are not a mod…');
+	$config['error']['invalid']			= _('Invalid username and/or password.');
+	$config['error']['notamod']			= _('You are not a mod…');
 	$config['error']['invalidafter']	= _('Invalid username and/or password. Your user may have been deleted or changed.');
 	$config['error']['malformed']		= _('Invalid/malformed cookies.');
 	$config['error']['missedafield']	= _('Your browser didn\'t submit an input when it should have.');
@@ -1135,10 +1182,10 @@
 	$config['error']['boardexists']		= _('There is already a %s board.');
 	$config['error']['noaccess']		= _('You don\'t have permission to do that.');
 	$config['error']['invalidpost']		= _('That post doesn\'t exist…');
-	$config['error']['404']			= _('Page not found.');
+	$config['error']['404']				= _('Page not found.');
 	$config['error']['modexists']		= _('That mod <a href="?/users/%d">already exists</a>!');
 	$config['error']['invalidtheme']	= _('That theme doesn\'t exist!');
-	$config['error']['csrf']		= _('Invalid security token! Please go back and try again.');
+	$config['error']['csrf']			= _('Invalid security token! Please go back and try again.');
 	$config['error']['badsyntax']		= _('Your code contained PHP syntax errors. Please go back and correct them. PHP says: ');
 
 /*
@@ -1147,7 +1194,7 @@
  * =========================
  */
 
-	// The root directory, including the trailing slash, for Tinyboard.
+	// The root directory, including the trailing slash, for H0K4CH4N.
 	// Examples: '/', 'http://boards.chan.org/', '/chan/'.
 	if (isset($_SERVER['REQUEST_URI'])) {
 		$request_uri = $_SERVER['REQUEST_URI'];
@@ -1170,10 +1217,8 @@
 
 	// Location of files.
 	$config['file_index'] = 'index.html';
-	$config['file_page'] = '%d.html'; // NB: page is both an index page and a thread
+	$config['file_page'] = '%d.html';
 	$config['file_page50'] = '%d+50.html';
-	$config['file_page_slug'] = '%d-%s.html';
-	$config['file_page50_slug'] = '%d-%s+50.html';
 	$config['file_mod'] = 'mod.php';
 	$config['file_post'] = 'post.php';
 	$config['file_script'] = 'main.js';
@@ -1191,7 +1236,7 @@
 
 	// Where to store the .html templates. This folder and the template files must exist.
 	$config['dir']['template'] = getcwd() . '/templates';
-	// Location of Tinyboard "themes".
+	// Location of H0K4CH4N "themes".
 	$config['dir']['themes'] = getcwd() . '/templates/themes';
 	// Same as above, but a URI (accessable by web interface).
 	$config['dir']['themes_uri'] = 'templates/themes';
@@ -1219,79 +1264,10 @@
 	// $config['url_javascript'] = 'http://static.example.org/main.js';
 
 	// Website favicon.
-	// $config['url_favicon'] = '/favicon.gif';
+	$config['url_favicon'] = '/static/favicon.ico';
 	
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
-
-/*
- * ====================
- *  Advanced build
- * ====================
- */
-
-	// Strategies for file generation. Also known as an "advanced build". If you don't have performance
-	// issues, you can safely ignore that part, because it's hard to configure and won't even work on
-	// your free webhosting.
-	//
-	// A strategy is a function, that given the PHP environment and ($fun, $array) variable pair, returns
-	// an $action array or false.
-	//
-	// $fun - a controller function name, see inc/controller.php. This is named after functions, so that
-	//        we can generate the files in daemon.
-	//
-	// $array - arguments to be passed
-	//
-	// $action - action to be taken. It's an array, and the first element of it is one of the following:
-	//   * "immediate" - generate the page immediately
-	//   * "defer" - defer page generation to a moment a worker daemon gets to build it (serving a stale
-	//               page in the meantime). The remaining arguments are daemon-specific. Daemon isn't
-	//               implemented yet :DDDD inb4 while(true) { generate(Queue::Get()) }; (which is probably it).
-	//   * "build_on_load" - defer page generation to a moment, when the user actually accesses the page.
-	//                       This is a smart_build behaviour. You shouldn't use this one too much, if you
-	//                       use it for active boards, the server may choke due to a possible race condition.
-	//                       See my blog post: https://engine.vichan.net/blog/res/2.html
-	//
-	// So, let's assume we want to build a thread 1324 on board /b/, because a new post appeared there.
-	// We try the first strategy, giving it arguments: 'sb_thread', array('b', 1324). The strategy will
-	// now return a value $action, denoting an action to do. If $action is false, we try another strategy.
-	//
-	// As I said, configuration isn't easy.
-	//
-	// 1. chmod 0777 directories: tmp/locks/ and tmp/queue/.
-	// 2. serve 403 and 404 requests to go thru smart_build.php
-	//    for nginx, this blog post contains config snippets: https://engine.vichan.net/blog/res/2.html
-	// 3. disable indexes in your webserver
-	// 4. launch any number of daemons (eg. twice your number of threads?) using the command:
-	//    $ tools/worker.php
-	//    You don't need to do that step if you are not going to use the "defer" option.
-	// 5. enable smart_build_helper (see below)
-	// 6. edit the strategies (see inc/functions.php for the builtin ones). You can use lambdas. I will test
-	//    various ones and include one that works best for me.
-	$config['generation_strategies'] = array();
-	// Add a sane strategy. It forces to immediately generate a page user is about to land on. Otherwise,
-	// it has no opinion, so it needs a fallback strategy.
-	$config['generation_strategies'][] = 'strategy_sane';
-	// Add an immediate catch-all strategy. This is the default function of imageboards: generate all pages
-	// on post time.
-	$config['generation_strategies'][] = 'strategy_immediate';
-	// NOT RECOMMENDED: Instead of an all-"immediate" strategy, you can use an all-"build_on_load" one (used
-	// to be initialized using $config['smart_build']; ) for all pages instead of those to be build
-	// immediately. A rebuild done in this mode should remove all your static files
-	// $config['generation_strategies'][1] = 'strategy_smart_build';
-
-	// Deprecated. Leave it false. See above.
-	$config['smart_build'] = false;
-
-	// Use smart_build.php for dispatching missing requests. It may be useful without smart_build or advanced
-	// build, for example it will regenerate the missing files.
-	$config['smart_build_helper'] = true;
-
-	// smart_build.php: when a file doesn't exist, where should we redirect?
-	$config['page_404'] = '/404.html';
-
-	// Extra controller entrypoints. Controller is used only by smart_build and advanced build.
-	$config['controller_entrypoints'] = array();
 
 /*
  * ====================
@@ -1421,7 +1397,7 @@
 		20	=> 'Mod',
 		30	=> 'Admin',
 		// 98	=> 'God',
-		99	=> 'Disabled'
+ 		99	=> 'Disabled'
 	);
 
 	// If you add stuff to the above, you'll need to call this function immediately after.
@@ -1483,7 +1459,7 @@
 	// Edit posts
 	$config['mod']['editpost'] = ADMIN;
 	// "Move" a thread to another board (EXPERIMENTAL; has some known bugs)
-	$config['mod']['move'] = DISABLED;
+	$config['mod']['move'] = ADMIN;
 	// Bypass "field_disable_*" (forced anonymity, etc.)
 	$config['mod']['bypass_field_disable'] = MOD;
 	// Post bypass unoriginal content check on robot-enabled boards
@@ -1625,7 +1601,7 @@
 	// File board. Like 4chan /f/
 	$config['file_board'] = false;
 
-	// Thread tags. Set to false to disable
+	// Thread tags. Set to false to disable (not working... there is no output.)
 	// Example: array('A' => 'Chinese cartoons', 'M' => 'Music', 'P' => 'Pornography');
 	$config['allowed_tags'] = false;
 
@@ -1639,7 +1615,7 @@
 	$config['search'] = array();
 
 	// Enable the search form
-	$config['search']['enable'] = false;
+	$config['search']['enable'] = true;
 
 	// Maximal number of queries per IP address per minutes
 	$config['search']['queries_per_minutes'] = Array(15, 2);
@@ -1691,45 +1667,6 @@
 	// $config['api']['extra_fields'] = array('body_nomarkup' => 'com_nomarkup');
 
 /*
- * ==================
- *  NNTPChan settings
- * ==================
- */
-
-/*
- * Please keep in mind that NNTPChan support in vichan isn't finished yet / is in an experimental
- * state. Please join #nntpchan on Rizon in order to peer with someone.
- */
-
-	$config['nntpchan'] = array();
-
-	// Enable NNTPChan integration
-	$config['nntpchan']['enabled'] = false;
-
-	// NNTP server
-	$config['nntpchan']['server'] = "localhost:1119";
-
-	// Global dispatch array. Add your boards to it to enable them. Please make
-	// sure that this setting is set in a global context.
-	$config['nntpchan']['dispatch'] = array(); // 'overchan.test' => 'test'
-
-	// Trusted peer - an IP address of your NNTPChan instance. This peer will have
-	// increased capabilities, eg.: will evade spamfilter.
-	$config['nntpchan']['trusted_peer'] = '127.0.0.1';
-
-	// Salt for message ID generation. Keep it long and secure.
-	$config['nntpchan']['salt'] = 'change_me+please';
-
-	// A local message ID domain. Make sure to change it.
-	$config['nntpchan']['domain'] = 'example.vichan.net';
-
-	// An NNTPChan group name.
-	// Please set this setting in your board/config.php, not globally.
-	$config['nntpchan']['group'] = false; // eg. 'overchan.test'
-
-
-
-/*
  * ====================
  *  Other/uncategorized
  * ====================
@@ -1748,8 +1685,8 @@
 	// $config['statcounter_project'] = '1234567';
 	// $config['statcounter_security'] = 'acbd1234';
 
-	// If you use Varnish, Squid, or any similar caching reverse-proxy in front of Tinyboard, you can
-	// configure Tinyboard to PURGE files when they're written to.
+	// If you use Varnish, Squid, or any similar caching reverse-proxy in front of H0K4CH4N, you can
+	// configure H0K4CH4N to PURGE files when they're written to.
 	// $config['purge'] = array(
 	// 	array('127.0.0.1', 80)
 	// 	array('127.0.0.1', 80, 'example.org')
@@ -1825,9 +1762,6 @@
 	// If set to 0, it won't upgrade hashes using old password encryption schema, only create new.
 	// You can set it to a higher value, to further migrate to other password hashing function.
 	$config['password_crypt_version'] = 1;
-
-	// Use CAPTCHA for reports?
-	$config['report_captcha'] = false;
 
 	// Allowed HTML tags in ?/edit_pages.
 	$config['allowed_html'] = 'a[href|title],p,br,li,ol,ul,strong,em,u,h2,b,i,tt,div,img[src|alt|title],hr';
