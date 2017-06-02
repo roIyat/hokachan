@@ -4,16 +4,8 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 
 Introduction
 ------------
-I created this fork because it looks like [Vichan](https://engine.vichan.net/) is dying... Since there are no more major
-updates for almost a year. 
 
-<strike> Maybe it's because of [INFINITY](https://github.com/ctrlcctrlv/infinity), being sold to a Jim Wat...Kin,
-and the complete clusterfuck of josh's [infinity never](https://github.com/infinity-next/infinity-next).
-Leading to a NTEC or whatever license that makes it illegal for hotwheels etc... to update the code.. </strike>
-
-Seems like Infinity is reborn here: [OpenIB](https://github.com/OpenIB/OpenIB) 
-
-I only created this fork out of necessity... To have my own hentai board, that (hopefully) will work for the coming decades. 
+And we are back
 
 Important Notice
 ------------
