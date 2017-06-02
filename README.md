@@ -10,14 +10,18 @@ And we are back
 Important Notice
 ------------
 
-For news includes bug fixes and state of this vichan clone.
+For news including bug fixes and state of this vichan clone.
 [H0k4CH4N N3WS](https://hokachan.com/news.html)
-
-I will release dev5 sooner and probably stay on that version for a while. to see if everything is working. Feel free to test dev 5 and report bugs when it's released.
 
 Use this fork at your own risk.
 Don't use this fork if you have no knowledge of fixing your own database and content. 
 If I screw something up I know how to fix my database and restore my content. You may not.
+
+Our future releases are as follows:
+
+dev5 currently stay on this one until september.
+dev6 focusing on fixes inprovements.
+oficial version 6 release. 
 
 Special Thanks
 ------------
@@ -33,7 +37,7 @@ H0K4CH4N WIKI
 ------------
 Credits go to @savetheinternet for making most of the [WIKI](https://github.com/horija/hokachan/wiki).
 
-Important wiki links
+Important wiki links (under development)
 * [DNSBL Setup](https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information)
 
 
