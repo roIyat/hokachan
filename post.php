@@ -154,7 +154,7 @@ if (isset($_POST['delete'])) {
 		
 		$post = $query->fetch(PDO::FETCH_ASSOC);
 		
-	        $error = event('report', array('ip' => $_SERVER['REMOTE_ADDR'], 'board' => $board['uri'], 'post' => $post, 'reason' => $reason, 'link' => link_for($post)));
+	        $error = event('report', array('ip' => $_SERVER['REMOTE_ADDR'], 'board' => $board['uri'], 'post' => $post, 'reason' => $reason));
 
 	        if ($error) {
 	                error($error);
