@@ -48,10 +48,12 @@
 
 	{% if config.page_nav_top %}
 		<div class="pages top">
+			{{ btn.prev }} {{ btn.next }} 	<a id="displayText" style="margin: 5px;" href="javascript:pagination();">Show Pagination</a>
+			<div id="toggleText" style="display: none">
 			{% for page in pages %}
 			 [<a {% if page.selected %}class="selected"{% endif %}{% if not page.selected %}href="{{ page.link }}"{% endif %}>{{ page.num }}</a>]{% if loop.last %} {% endif %}
 			{% endfor %}
-			{{ btn.next }}
+			</div>
 		</div>
 	{% endif %}
 	
@@ -92,7 +94,22 @@
 	</footer>
 	<script type="text/javascript">{% raw %}
 		ready();
-	{% endraw %}</script>
+	{% endraw %}
+	</script>
+	
+	<script type="text/javascript">
+        function pagination() {
+		var ele = document.getElementById("toggleText");
+		var text = document.getElementById("displayText");
+		if(ele.style.display == "block") {
+    		ele.style.display = "none";
+		text.innerHTML = "Show Pagination";
+  			} else {
+				ele.style.display = "block";
+				text.innerHTML = "Hide Pagination";
+				}
+		    } 
+    </script>
 	
 </body>
 </html>
