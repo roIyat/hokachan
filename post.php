@@ -126,23 +126,6 @@ if (isset($_POST['delete'])) {
 	
 	if (count($report) > $config['report_limit'])
 		error($config['error']['toomanyreports']);
-
-	if ($config['report_captcha'] && !isset($_POST['captcha_text'], $_POST['captcha_cookie'])) {
-		error($config['error']['bot']);
-	}
-
-	if ($config['report_captcha']) {
-		$resp = file_get_contents($config['captcha']['provider_check'] . "?" . http_build_query([
-			'mode' => 'check',
-			'text' => $_POST['captcha_text'],
-			'extra' => $config['captcha']['extra'],
-			'cookie' => $_POST['captcha_cookie']
-		]));
-
-		if ($resp !== '1') {
-                        error($config['error']['captcha']);
-		}
-	}
 	
 	$reason = escape_markup_modifiers($_POST['reason']);
 	markup($reason);
