@@ -1,6 +1,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-    	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Software is like entropy. It is difficult to grasp, weighs nothing, and obeys the second law of thermodynamics; i.e. it always increases.">
+    <meta name="keywords" content="Anonymous,Imageboard,Chan">
 	<script type="text/javascript">
 		var active_page = "index";
 	</script>
@@ -24,7 +26,7 @@
 	
 <div class="box-wrap">
 	
-		<!-- Modify the Intro -->
+	<!-- Modify the Intro -->
 	<div class="box-wrap-board">
 	<br/>
 	<h4>{{ settings.intro }}</h4>
@@ -67,43 +69,52 @@
 	<!--Links and Other content-->
 	<div class="box-wrap-board">
 		<h4> 
-		<br/>
+	    <br/>
 		You can place anything you like here.
 		<br/>		
 			<div id="contentBox">
-				<div id="column" style="float:left; margin:0; width:50%;">
+				<div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
-						<li><a href="../*/index.html" title="See the latest thread">OverBoard</a></li>
+					    <!-- Add left links -->
+						<li><a href="../overkin/index.html" title="See the latest thread">OverKin</a></li>
+						<li><a href="/bans.html" title="check if your IP is banned.">Ban List</a></li>
 					</ul>
 				</div>
-				<div id="column" style="float:left; margin:0;width:50%;">
+				<div id="column" style="float:left; margin:0;width:33.33%;">
 					<ul>
+					    <!-- Add center links -->
+						<li><a href="/news.html" title="Search the site">News</a></li>
+					</ul>
+		 		</div>
+				<div id="column" style="float:left; margin:0;width:33.33%;">
+					<ul>
+					    <!-- Add right links -->
 						<li><a href="/search.php" title="Search the site">Search</a></li>
+						<li><a href="/banned.php" title="Are yah banned?">Banned?</a></li>
 					</ul>
 		 		</div>
 			</div>
 		</h4>
 	</div>
 	
-	<!-- Add your boards names -->
+	<!-- Add your boards -->
 	<div class="box-wrap-board">	
 		<h2>Boards</h2>
 			<div id="contentBox">
-				<div id="column" style="float:left; margin:0; width:100%;">
+				<div id="column" style="float:left; margin:0; width:50%;">
 					<ul>
-						<!-- Add your left board names -->
-						<li><a href="/b/" title="Anything you want">Random</a>
+						<!-- Add left boards -->
+						<h4>Common</h4>
+						<li><a href="/a/" title="Animu">Animu</a>
 					</ul>
-
+                </div>
+			    	<div id="column" style="float:left; margin:0;width:50%;">
+					<ul>
+					<!-- Add right boards -->
+						<h4>Adult</h4>
+						<li><a href="/b/" title="Random">Random</a>
+					</ul>
 				</div>
-
-		<!--	<div id="column" style="float:left; margin:0;width:50%;">
-					<ul>-->
-						<!-- Add your right board names -->
-					<!--<li><a href=/b/" title="Anything you want">Random</a>
-						<li><a href="/b/" title="BAnything you want">Random</a>
-					</ul>
-				</div>-->
 			</div>
 	</div>	
 
@@ -134,8 +145,8 @@
 				</li>
 			{% endfor %}
 		</ul>
-	</div>	
-
+	</div>
+	
 	<!-- Useful Links Remove or add the ones you like -->			
 	 <div class="box linkage">
 		 <ul>
@@ -193,6 +204,7 @@
 		<p class="unimportant" style="margin-top:20px;text-align:center;">
 		- <a href="https://github.com/savetheinternet/Tinyboard/">© TINYBOARD</a> + 
 		<a href="https://engine.vichan.net/"> © VICHAN</a> + 
-		<a href="https://hokachan.com/">© H0K4CH4N</a> {{ config.version }} - 
+		<a href="https://hokachan.com/">© H0K4CH4N</a> {{ config.version }} -
+		</p>
 		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
 </footer>
