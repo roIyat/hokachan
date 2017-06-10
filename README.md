@@ -23,6 +23,8 @@ Our future releases are as follows:
 * dev6: focusing on stability bug fixes and maybe catalog removal while adding lazy load, dev6 lasts until september.
 * dev7: Looking if all works as intended. 
 * H0K4CH4N Version 6 Release around october.
+
+
 Special Thanks
 ------------
 * [Vichan](https://engine.vichan.net/) @czaks
