@@ -210,6 +210,11 @@ h2 {
   margin: 0;
   padding: 0;
 }
+/*h6 is used for warning messages*/
+h6 {
+    font-size: 16px;
+    color: red;
+}
 header {
   margin: 1em 0;
 }
