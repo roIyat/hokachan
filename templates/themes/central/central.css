@@ -22,6 +22,7 @@
 }
 .box-wrap-board {
     margin: 25px auto;
+	padding: 5px;
     overflow: auto;
     border-radius: 20px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
@@ -80,5 +81,9 @@
 	border-right: 1px solid #060;
 	border-bottom: 1px solid #060;
 	}
+
+h4{
+    margin: 5px;
+    }
 
 	
