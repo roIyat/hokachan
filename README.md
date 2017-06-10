@@ -19,15 +19,14 @@ If I screw something up I know how to fix my database and restore my content. Yo
 
 Our future releases are as follows:
 
-dev5 currently stay on this one until september.
-dev6 focusing on fixes inprovements.
-oficial version 6 release. 
-
+* dev5: current release, we stay on this one until 20th june if all goes fine.
+* dev6: focusing on stability bug fixes and maybe catalog removal while adding lazy load, dev6 lasts until september.
+* dev7: Looking if all works as intended. 
+* H0K4CH4N Version 6 Release around october.
 Special Thanks
 ------------
 * [Vichan](https://engine.vichan.net/) @czaks
 * [Tinyboard](http://github.com/savetheinternet/Tinyboard) @savetheinternet 
-  Support him by going to this site: [stop nerds](http://stopnerds.org/) 
 * [Infinity](https://github.com/ctrlcctrlv/infinity) @ctrcctrlv
 * [OpenIB](https://github.com/OpenIB/OpenIB) @Cipherwraith
 * [Lainchan](https://github.com/lainchan/lainchan)
@@ -35,10 +34,10 @@ Special Thanks
 
 H0K4CH4N WIKI
 ------------
-Credits go to @savetheinternet for making most of the [WIKI](https://github.com/horija/hokachan/wiki).
+Credits go to @savetheinternet for making most of the [WIKI](https://github.com/H0K4/hokachan/wiki).
 
 Important wiki links (under development)
-* [DNSBL Setup](https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information)
+* [DNSBL Setup](https://github.com/H0K4hokachan/wiki/DNS-Blacklists-(DNSBL)-Information)
 
 
 About
@@ -46,7 +45,7 @@ About
 H0K4CH4N is a free light-weight, fast, highly configurable and user-friendly
 imageboard software package. It is written in PHP and has few dependencies.
 
-H0K4CH4Nn is a fork of the (almost defunc'd) [Vichan](https://engine.vichan.net/) and (now defunc'd) 
+H0K4CH4Nn is a fork of [Vichan](https://engine.vichan.net/) and (now defunc'd) 
 [Tinyboard](http://github.com/savetheinternet/Tinyboard),
 
 H0K4CH4N tries to combine useful features of Infinity, Vichan and TinyBoard.
@@ -54,7 +53,7 @@ While removing useless/outdated/unfinished/broken code.
 
 Requirements
 ------------
-1.	PHP >= 5.6 (PHP 7.0 is recommended)
+1.	PHP >= 5.6 (PHP 5.6 is recommended it works on php 7.0 but I won't focus on bug fixes on php 7.0)
 2.	MySQL/MariaDB server
 3.	[mbstring](http://www.php.net/manual/en/mbstring.installation.php) 
 4.	[PHP GD](http://www.php.net/manual/en/intro.image.php)
@@ -159,5 +158,5 @@ https://github.com/vichan-devel/vichan-API/ .
 
 License
 --------
-See [LICENSE.md](https://github.com/horija/H0K4CH4N/blob/H0K4M4ST3R/LICENSE.md).
+See [LICENSE.md](https://github.com/H0K4/H0K4CH4N/blob/H0K4M4ST3R/LICENSE.md).
 
