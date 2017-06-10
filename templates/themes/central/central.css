@@ -1,9 +1,20 @@
+/*
+ *==================================
+ * CENTRAL THEME CSS
+ *==================================
+ */
+
+/* Wrapper */
 .box-wrap {
 	max-width: 600px;
 	min-width: 300px;
 	margin: 5px auto;
 	padding: 0;
 	text-align: center;
+}
+.box h2 {
+	padding: 3px 7px;
+	font-size: 12pt;
 }
 .box ul li {
 	list-style: none;
@@ -23,6 +34,7 @@
 	margin: 0;
 	text-align: center;
 }
+/* Image Box */
 .box.image ul  {
 	display: flex;
 	flex-wrap: wrap;
@@ -30,7 +42,24 @@
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     justify-content: center; /* align horizontal */
     align-items: center;
-    margin: 0;
+    -webkit-padding-start: 0px;
+}
+.box video {
+	float: left;
+    margin: 2px;
+    height: 70px;
+    border-radius: 115px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+.box.linkage {
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1) !important;
+}
+.box.linkage ul li{
+	width: 50%;
+	float: left;
+	text-align: center;
 }
 #column1,#column2,#column3 {
 	background: #efe;
@@ -39,6 +68,7 @@
 	margin:0;
 	width:33.236%;
 	}
+/* Board Link Collumns */
 .column1 {
 	border-left: 1px solid #060;
 	border-bottom: 1px solid #060;
@@ -50,15 +80,5 @@
 	border-right: 1px solid #060;
 	border-bottom: 1px solid #060;
 	}
-.box h2 {
-	padding: 3px 7px;
-	font-size: 12pt;
-}
-.box video {
-	float: left;
-    margin: 2px;
-    height: 70px;
-    border-radius: 115px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
-}
+
 	
