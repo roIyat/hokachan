@@ -1012,10 +1012,10 @@
 	$config['additional_javascript'] = array();
     $config['additional_javascript'][] = 'js/jquery.min.js';
 	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
+	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
 	$config['additional_javascript'][] = 'js/ajax.js';
 	$config['additional_javascript'][] = 'js/captcha.js';
 	$config['additional_javascript'][] = 'js/download-original.js';
-	$config['additional_javascript'][] = 'js/expand-all-images.js';
 	$config['additional_javascript'][] = 'js/expand-too-long.js';
 	$config['additional_javascript'][] = 'js/expand-video.js';
 	$config['additional_javascript'][] = 'js/expand.js';
@@ -1063,6 +1063,7 @@
 	// $config['additional_javascript'][] = 'js/post-filter.js';		// You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/id_colors.js';			// If you enabled id you can use this
+	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';
@@ -1071,7 +1072,7 @@
 	// $config['additional_javascript_url'] = 'http://static.example.org/tinyboard-javascript-stuff/';
 
 	// Compile all additional scripts into one file ($config['file_script']) instead of including them seperately.
-	$config['additional_javascript_compile'] = false;
+	$config['additional_javascript_compile'] = true;
 
 	// Minify Javascript using http://code.google.com/p/minify/.
 	$config['minify_js'] = false;
