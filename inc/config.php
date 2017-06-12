@@ -1050,7 +1050,7 @@
 	$config['additional_javascript'][] = 'js/inline.js';
 	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
 	$config['additional_javascript'][] = 'js/mobile-style.js';
-	$config['additional_javascript'][] = 'js/wpaint/8ch.js';
+	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
 	$config['additional_javascript'][] = 'js/wpaint.js';
 	$config['additional_javascript'][] = 'js/upload-selection.js';
 	
