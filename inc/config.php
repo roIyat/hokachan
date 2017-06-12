@@ -1055,8 +1055,8 @@
 	$config['additional_javascript'][] = 'js/upload-selection.js';
 	
 	// Optional JS (some probably has bugs)
-	// $config['additional_javascript'][] = 'js/auto-reload.js';		//I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
-	// $config['additional_javascript'][] = 'js/live-index.js';
+	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
+	// $config['additional_javascript'][] = 'js/live-index.js';			// same as above. only use when you have a very active board
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
