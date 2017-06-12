@@ -1037,13 +1037,11 @@
 	$config['additional_javascript'][] = 'js/toggle-locked-threads.js';
 	$config['additional_javascript'][] = 'js/treeview.js';
 	$config['additional_javascript'][] = 'js/thread-watcher.js';
-	$config['additional_javascript'][] = 'js/youtube.js';
 	$config['additional_javascript'][] = 'js/comment-toolbar.js';
 	$config['additional_javascript'][] = 'js/settings.js';
 	$config['additional_javascript'][] = 'js/quick-reply.js';
 	$config['additional_javascript'][] = 'js/quote-selection.js';
 	$config['additional_javascript'][] = 'js/ajax-post-controls.js';
-	$config['additional_javascript'][] = 'js/multi-image.js';
 	$config['additional_javascript'][] = 'js/style-switcher.js';
 	$config['additional_javascript'][] = 'js/options/user-css.js';
 	$config['additional_javascript'][] = 'js/options/user-js.js';
@@ -1060,10 +1058,12 @@
 	// $config['additional_javascript'][] = 'js/auto-reload.js';		//I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
 	// $config['additional_javascript'][] = 'js/live-index.js';
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 
-	// $config['additional_javascript'][] = 'js/post-filter.js';		// You need post-menu.js also for this one. 
+	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/id_colors.js';			// If you enabled id you can use this
+	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
+	// $config['additional_javascript'][] = 'js/youtube.js';            // Doesn't seem to do much, if you know if it still works feel free to explain what it is supposed to do.
+	// $config['additional_javascript'][] = 'js/multi-image.js';        // Doesn't seem to do much either. 
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';
