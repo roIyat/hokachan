@@ -11,7 +11,7 @@
 	{% endif %}
 >
 	{% if post.thumb|extension == 'webm' or post.thumb|extension == 'mp4' %}
-		<video autoplay class="post-image" data-original="{{ config.uri_thumb }}{{ post.thumb }}"
+		<video autoplay class="post-image" src="{{ config.uri_thumb }}{{ post.thumb }}"
 			 poster="
 				{{ config.root }}
 				{% if config.file_icons[post.filename|extension] %}
