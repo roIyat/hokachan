@@ -168,7 +168,7 @@
 
 /*
  * ====================
- *  Flood/spam settings
+ *  Flood/spam settings 
  * ====================
  */
 
@@ -186,7 +186,7 @@
 	// $config['dnsbl'][] = array('tor.dnsbl.sectoor.de', 1); //sectoor.de site is dead. the number stands for (an) ip adress(es) I guess. 
 	
 	// Replacement for sectoor will be the new one if sectoor stays dead
-	$config['dnsbl'][] = 'torexit.dan.me.uk';
+	// $config['dnsbl'][] = 'torexit.dan.me.uk';
 
 	// http://www.sorbs.net/using.shtml
 	// $config['dnsbl'][] = array('dnsbl.sorbs.net', array(2, 3, 4, 5, 6, 7, 8, 9));
@@ -338,11 +338,11 @@
 	 */
 
 	// Minimum time between between each post by the same IP address.
-	$config['flood_time'] = 10;
+	$config['flood_time'] = 5;
 	// Minimum time between between each post with the exact same content AND same IP address.
-	$config['flood_time_ip'] = 120;
+	$config['flood_time_ip'] = 5;
 	// Same as above but by a different IP address. (Same content, not necessarily same IP address.)
-	$config['flood_time_same'] = 30;
+	$config['flood_time_same'] = 5;
 
 	// Minimum time between posts by the same IP address (all boards).
 	$config['filters'][] = array(
@@ -767,6 +767,7 @@
 	// Allowed additional file extensions (not images; downloadable files).
 	$config['allowed_ext_files'][] = 'txt';
 	$config['allowed_ext_files'][] = 'zip';
+	$config['allowed_ext_files'][] = 'webm';
 
 	// An alternative function for generating image filenames, instead of the default UNIX timestamp.
 	// $config['filename_func'] = function($post) {
@@ -810,7 +811,7 @@
 
 	// WebM Settings
 	$config['webm']['use_ffmpeg'] = false;
-	$config['webm']['allow_audio'] = false;
+	$config['webm']['allow_audio'] = true;
 	$config['webm']['max_length'] = 120;
 	$config['webm']['ffmpeg_path'] = 'ffmpeg';
 	$config['webm']['ffprobe_path'] = 'ffprobe';
@@ -1023,7 +1024,6 @@
 	$config['additional_javascript'][] = 'js/gallery-view.js';
 	$config['additional_javascript'][] = 'js/hide-images.js';
 	$config['additional_javascript'][] = 'js/hide-threads.js';
-	$config['additional_javascript'][] = 'js/infinite-scroll.js';
 	$config['additional_javascript'][] = 'js/inline-expanding.js';
 	$config['additional_javascript'][] = 'js/options.js';
 	$config['additional_javascript'][] = 'js/options/general.js';
@@ -1053,17 +1053,23 @@
 	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
 	$config['additional_javascript'][] = 'js/wpaint.js';
 	$config['additional_javascript'][] = 'js/upload-selection.js';
+	$config['additional_javascript'][] = 'js/multi-image.js'; 
+	
+	// Let's implement the Catalog Theme
+	// $config['additional_javascript'][] = 'js/catalog.js';
+	// $config['additional_javascript'][] = 'js/catalog-link.js';
+	// $config['additional_javascript'][] = 'js/catalog-search.js';
 	
 	// Optional JS (some probably has bugs)
-	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
-	// $config['additional_javascript'][] = 'js/live-index.js';			// same as above. only use when you have a very active board
+	// $config['additional_javascript'][] = 'js/auto-reload.js';		//I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
+	// $config['additional_javascript'][] = 'js/live-index.js';         // same as above. only use when you have a very active board
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
+	//$config['additional_javascript'][] = 'js/infinite-scroll.js';     // Conflicts with lazyload. need to find a fix for this and the top one.
 	// $config['additional_javascript'][] = 'js/youtube.js';            // Doesn't seem to do much, if you know if it still works feel free to explain what it is supposed to do.
-	// $config['additional_javascript'][] = 'js/multi-image.js';        // Doesn't seem to do much either. 
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';
@@ -1325,7 +1331,7 @@
 	//);
 
 	// Enable the moving of single replies
-	$config['move_replies'] = false;
+	$config['move_replies'] = true;
 
 	// How often (minimum) to purge the ban list of expired bans (which have been seen). Only works when
 	//  $config['cache'] is enabled and working.
@@ -1625,7 +1631,7 @@
 	$config['search']['queries_per_minutes_all'] = Array(50, 2);
 
 	// Limit of search results
-	$config['search']['search_limit'] = 100;
+	$config['search']['search_limit'] = 1000;
 		
 	// Boards for searching
 	//$config['search']['boards'] = array('a', 'b', 'c', 'd', 'e');
