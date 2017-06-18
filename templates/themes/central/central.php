@@ -1,8 +1,10 @@
+<!doctype html>
+<html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="Software is like entropy. It is difficult to grasp, weighs nothing, and obeys the second law of thermodynamics; i.e. it always increases.">
-    <meta name="keywords" content="Anonymous,Imageboard,Chan">
+    <meta name="keywords" content="Free Speech,Anonymous,Hokachan,Coding,Github">
 	<script type="text/javascript">
 		var active_page = "index";
 	</script>
@@ -14,7 +16,7 @@
 	{% if config.font_awesome %}<link rel="stylesheet" href="{{ config.root }}{{ config.font_awesome_css }}">{% endif %}
 	{% include 'header.html' %}
 </head>
-
+<body>
 	{{ boardlist.top }}
 	
 <header>
@@ -28,50 +30,31 @@
 	
 	<!-- Modify the Intro -->
 	<div class="box-wrap-board">
-	<br/>
 	<h4>{{ settings.intro }}</h4>
-	<img src="{{ settings.intro_logo }}">
+	<br/>
+	<h2>Memetic sacrificial for K3K</h2>
+	<a href= "{{ settings.meme_link }}"><img src="{{ settings.meme_logo }}" class="meme-img"></a>
+	<br/>
 	<h6>{{ settings.warning }}
 	<br/>
-    <a href="{{ settings.warning_link }}">Go to safe space</a>
+    <a href="{{ settings.warning_link }}">Go to safe space</a></h6>
+	<br style="clear:both" /> <!-- So dirty! -->
+	<h2>Images of the now</h2>
+	<div class="intro-images">
+	<a href= "{{ settings.intro_logo_link }}"><img src="{{ settings.intro_logo }}" class="img-of-now"></a>
+    <a href= "{{ settings.intro_logo_link2 }}"><img src="{{ settings.intro_logo2 }}" class="img-of-now"></a>
+    <a href= "{{ settings.intro_logo_link3 }}"><img src="{{ settings.intro_logo3 }}" class="img-of-now"></a>
+	<br style="clear:both" /> <!-- So dirty! -->
+	</div>
+	<br style="clear:both" /> <!-- So dirty! -->
+	<h2>Quote of the now</h2>
+	<h4>{{ settings.quote }}</h4>
 	<br/>
-	<br/>
+	<h2>Video of the now</h2>
 	<iframe src="{{ settings.intro_embed }}"></iframe>
-	</h6>
 	<br/>
-	</div>
-		
-	<!--Search-->
-	<?php
-	require 'templates/themes/central/central_search.php';
-	?>
-	
-	<!--News Module-->
-	<div class="box-wrap-board">
-		{% if news|count == 0 %}
-			<p style="text-align:center" class="unimportant">(No news to show.)</p>
-		{% else %}
-			{% for entry in news %}
-				<h2 id="{{ entry.id }}">
-					{% if entry.subject %}
-						{{ entry.subject }}
-					{% else %}
-						<em>no subject</em>
-					{% endif %}
-					<br/>
-					<span class="unimportant"> &mdash; by {{ entry.name }} at {{ entry.time|date(config.post_date, config.timezone) }}</span>
-				</h2>
-				<p>{{ entry.body }}</p>
-			{% endfor %}
-		{% endif %}
-	</div>
-	
-	<!--Links and Other content-->
-	<div class="box-wrap-board">
-		<h4> 
+	<h4> 
 	    <br/>
-		You can place anything you like here.
-		<br/>		
 			<div id="contentBox">
 				<div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
@@ -97,24 +80,54 @@
 		</h4>
 	</div>
 	
+	<!--Search-->
+	<?php
+	require 'templates/themes/central/central_search.php';
+	?>
+	
+	<!--News Module-->
+	<div class="box-wrap-board">
+		{% if news|count == 0 %}
+			<p style="text-align:center" class="unimportant">(No news to show.)</p>
+		{% else %}
+			{% for entry in news %}
+				<h2 id="{{ entry.id }}">
+					{% if entry.subject %}
+						{{ entry.subject }}
+					{% else %}
+						<em>no subject</em>
+					{% endif %}
+					<br/>
+					<span class="unimportant"> &mdash; by {{ entry.name }} at {{ entry.time|date(config.post_date, config.timezone) }}</span>
+				</h2>
+				<p>{{ entry.body }}</p>
+			{% endfor %}
+		{% endif %}
+	</div>
+	
 	<!-- Add your boards -->
 	<div class="box-wrap-board">	
-		<h2>Boards</h2>
 			<div id="contentBox">
-				<div id="column" style="float:left; margin:0; width:50%;">
+			<h4> 
+				<div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
 						<!-- Add left boards -->
-						<h4>Common</h4>
-						<li><a href="/a/" title="Animu">Animu</a>
+					<li><a href="/kinfolk/" title="Kin who cannot shed their humanity.">KinFolk</a></li>
 					</ul>
                 </div>
-			    	<div id="column" style="float:left; margin:0;width:50%;">
+			    <div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
-					<!-- Add right boards -->
-						<h4>Adult</h4>
-						<li><a href="/b/" title="Random">Random</a>
+						<!-- Add center boards -->
+					    <li><a href="/otherkin/" title="Change is the only constant.">OtherKin</a></li>
 					</ul>
 				</div>
+				<div id="column" style="float:left; margin:0; width:33.33%;">
+					<ul>
+						<!-- Add center boards -->
+					    <li><a href="/vilekin/" title="Every family has their undesirables.">VileKin</a></li>
+					</ul>
+				</div>
+			</h4>
 			</div>
 	</div>	
 
@@ -186,6 +199,7 @@
 			<li><a href="https://www.reddit.com/r/CrackWatch/" target="_blank">Game Cracks Updates</a></li>
 			<li><a href="http://blackpigeonspeaks.com/" target="_blank">Black Pigeon Speaks</a></li>
 			<li><a href="http://www.opera.com/" target="_blank">Opera</a></li>
+			<li><a href="http://drudgereport.com" target="_blank">Drudge</a></li>
 			</ul>
 			<br style="clear:both" /> <!-- So dirty! -->
 		</div>
@@ -198,7 +212,7 @@
 			<li>Active content: {{ stats.active_content|filesize }}</li>
 		</ul>
 	</div>
-</div>
+</div> 
 	
 <footer>
 		<p class="unimportant" style="margin-top:20px;text-align:center;">
@@ -208,3 +222,5 @@
 		</p>
 		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
 </footer>
+</body>
+</html>

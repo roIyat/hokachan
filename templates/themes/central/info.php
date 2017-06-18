@@ -33,11 +33,74 @@
 	);
 	
 	$theme['config'][] = Array(
+		'title' => 'Memetics',
+		'name' => 'meme_logo',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add an image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Meme URL',
+		'name' => 'meme_link',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add a link for the meme)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Quote',
+		'name' => 'quote',
+		'type' => 'text',
+		'default' => 'Chemicals in the water turn the frogs gay.'
+	);
+	
+	$theme['config'][] = Array(
 		'title' => 'Intro Logo',
 		'name' => 'intro_logo',
 		'type' => 'text',
-		'default' => '../templates/themes/central/kekistan.png',
+		'default' => '...',
 		'comment' => '(Add an image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo URL',
+		'name' => 'intro_logo_link',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add a link to the first intro image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo2',
+		'name' => 'intro_logo2',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add an image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo URL2',
+		'name' => 'intro_logo_link2',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add a link to the second intro image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo3',
+		'name' => 'intro_logo3',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add an image)'
+	);
+	
+	$theme['config'][] = Array(
+		'title' => 'Intro Logo URL3',
+		'name' => 'intro_logo_link3',
+		'type' => 'text',
+		'default' => '...',
+		'comment' => '(Add a link to the third intro image)'
 	);
 	
 		$theme['config'][] = Array(
@@ -45,7 +108,7 @@
 		'name' => 'intro_embed',
 		'type' => 'text',
 		'default' => 'https://www.youtube.com/embed/hhh4t75LcbY?ecver=2',
-		'comment' => '(add an embed)'
+		'comment' => '(add an embed (needs to contain an embed url)'
 	);
 	
 		$theme['config'][] = Array(

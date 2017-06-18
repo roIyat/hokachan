@@ -293,7 +293,6 @@ div.ban {
   margin-left: auto;
   margin-right: auto;
   max-width: 650px;
-  background: #282a2e;
   overflow: auto;
   border-radius: 25px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
@@ -308,7 +307,7 @@ div.ban h2 {
   text-align: center!important;
 }
 div.ban p {
-  color: #81a2b9!important;
+  color: #8cb14c!important;
   font-size: 9pt!important;
 	} 
 

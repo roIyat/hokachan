@@ -20,9 +20,13 @@
 	list-style: none;
 	margin: 0;
 }
+.intro-images {
+    margin-left: auto;
+    margin-right: auto;
+}
 .box-wrap-board {
     margin: 25px auto;
-	padding: 5px;
+    padding: 5px;
     overflow: auto;
     border-radius: 20px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
@@ -51,6 +55,16 @@
     height: 70px;
     border-radius: 115px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+.img-of-now {
+    margin: 2px;
+    width: 100px;
+    border-radius: 5px;
+}
+.meme-img {
+    margin: 2px;
+    width: 150px;
+    border-radius: 5px;
 }
 .box.linkage {
     max-width: 600px;
@@ -81,9 +95,12 @@
 	border-right: 1px solid #060;
 	border-bottom: 1px solid #060;
 	}
-
 h4{
     margin: 5px;
     }
-
-	
+    
+.desktop-style .boardlist:nth-child(1) {
+    background-color: #1d1f21!important;
+    max-width: 600px!important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 1)!important;
+}
