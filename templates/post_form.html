@@ -67,18 +67,6 @@
 				{% endif %}
 			</td>
 		</tr>
-		{% if config.recaptcha %}
-		<tr>
-			<th>
-				{% trans %}Verification{% endtrans %}
-				{{ antibot.html() }}
-			</th>
-			<td>
-				<script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k={{ config.recaptcha_public }}"></script>
-				{{ antibot.html() }}
-			</td>
-		</tr>
-		{% endif %}
 		
 		{% if config.captcha.enabled %}
 		<tr class='captcha'>

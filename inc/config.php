@@ -114,8 +114,6 @@
 	 */
 
 	$config['cache']['enabled'] = 'php';
-	// $config['cache']['enabled'] = 'xcache'; //no longer needed dormant/dead replaced by opcache 
-	// $config['cache']['enabled'] = 'apc'; //no longer needed dormant/dead replaced by opcache
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
 
@@ -272,8 +270,6 @@
 		'lock',
 		'raw',
 		'embed',
-		'recaptcha_challenge_field',
-		'recaptcha_response_field',
 		'captcha_cookie',
 		'captcha_text',
 		'spoiler',
@@ -284,13 +280,6 @@
 		'no_country',
 		'tag'
 	);
-
-	// Enable reCaptcha to make spam even harder. Rarely necessary. (Still thinking about removing this since we have the new captcha)
-	$config['recaptcha'] = false;
-
-	// Public and private key pair from https://www.google.com/recaptcha/admin/create
-	$config['recaptcha_public'] = '6LcXTcUSAAAAAKBxyFWIt2SO8jwx4W7wcSMRoN3f';
-	$config['recaptcha_private'] = '6LcXTcUSAAAAAOGVbVdhmEM1_SyRF4xTKe8jbzf_';
 
 	// Enable Custom Captcha you need to change provider_get and provider_check below in order for it to work.
 	 $config['captcha'] = array();
@@ -320,6 +309,8 @@
 
 	// Custom captcha extra field (eg. charset)
 	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
+	 
+	
 	
 	// Ability to lock a board for normal users and still allow mods to post.  Could also be useful for making an archive board
 	$config['board_locked'] = false;
@@ -870,7 +861,7 @@
 	// Example: $config['anonymous'] = array('Bernd', 'Senpai', 'Jonne', 'ChanPro');
 	$config['anonymous'] = 'Anonymous';
 
-	// Number of reports you can create at once. does this even work?
+	// Number of reports you can create at once. does this even work, i guess not since you can create more reports than 3 at once?
 	$config['report_limit'] = 3;
 
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
@@ -981,7 +972,7 @@
 	// Show page navigation links at the top as well.
 	$config['page_nav_top'] = true;
 
-	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to comment it out to disable. Remove // slashes to enable.
+	// Show "Catalog" link in page navigation. Use with the Catalog theme. Comment it out (//) to disable. Remove // slashes to enable.
 	// $config['catalog_link'] = 'catalog.html';
 
 	// Automatically remove unnecessary whitespace when compiling HTML files from templates.
