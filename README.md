@@ -6,7 +6,9 @@ Introduction
 ------------
 
 Cool-php-captcha has been implemented. seems to work, but try it out.
-Czaks made a modification that has an issue with the installation. just import the database manually. i'm using 5.6 php so don't know if 7.0 has it too.
+
+Czaks made a modification that has an issue with the installation. just import the database manually. i'm using 5.6 php so don't know if 7.0 has it too. Will fix soon though.
+
 
 
 Important Notice
@@ -21,10 +23,18 @@ If I screw something up I know how to fix my database and restore my content. Yo
 
 Our future releases are as follows:
 
-* dev5: current release, we stay on this one until 20th june if all goes fine.
-* dev6: focusing on stability bug fixes and maybe catalog removal while adding lazy load, dev6 lasts until september.
-* dev7: Looking if all works as intended. 
-* H0K4CH4N Version 6 Release around october.
+* <strike>dev5: current release, we stay on this one until 20th june if all goes fine</strike> Moving on to dev 6.
+* dev6 current release: focusing on stability, bug fixes, using my weaponized autism to improve and remove dead code in the script, improving the central theme, 
+fixing apcu caching for 7.0, making H0K4CH4N operational for php 7.0 and 7.1 (no longer support for 5.6 then though) 
+removal of the outdated recaptcha (use 8chan-captcha is an improvement and I would recommend to not use any service of google unless there is no decent alternative like their search console or analytics.),  
+implementing report captcha again now that we have cool-php-captcha (maybe not sure), 
+Updating the post-form to resemble infinity more, implementing fixes from openIB/infinity 
+<strike>and maybe catalog removal</strike> Won't remove it but I will add a limit in the database php code of 1000 so no more than 1000 threads will get loaded (i'm still brainstorming in what is the best way to keep all threads). 
+<strike>while adding lazy load</strike> Added in dev 5, 
+I might add slugify again though, but only once I'm sure slugify has no more bugs, dev6 lasts until september.
+* dev7: Looking if all works as intended (would love to improve the search functionality in dev 7 and only allow search for threads and no comments since most comment in a thread are shitposts, referals to a post number/quote or has no comment.). 
+* dev8: Making it retard friendly. Almost everything can be done in the mod.php backend.
+* H0K4CH4N Version 6 Release (someday in the future, need to be 100% sure all works with no severe errors.)
 
 
 Special Thanks
@@ -89,12 +99,12 @@ Installation
 1.	Download and extract H0K4CH4N to your web directory.	
 2.	Navigate to ```install.php``` in your web browser and follow the
 	prompts.
-3.	If you have an error with instalation try to import the install.sql database file manually.
-3.	H0K4CH4N should now be installed. Log in to ```mod.php``` with the
+3.	If you have an error with instalation try to import the install.sql database file manually and add your info in instance.config.php.
+4.	H0K4CH4N should now be installed. Log in to ```mod.php``` with the
 	default username and password combination: **admin / password**. (Change this as soon as possible)
-4. 	You should delete the tools folder if you don't need it. (most tools don't work anyways)
-5.	Remove install.php if it is still inside your root folder. 
-6.	install the central theme if you want to have a front page like on [H0K4CH4N](https://hokachan.com/)
+5. 	You should delete the tools folder if you don't need it.
+6.	Remove install.php if it is still inside your root folder. 
+7.	install the central theme if you want to have a front page like on [H0K4CH4N](https://hokachan.com/)
 
 See also: [Configuration Basics](https://web.archive.org/web/20121003095922/http://tinyboard.org/docs/?p=Config).
 
