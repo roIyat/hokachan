@@ -177,7 +177,7 @@
 	 * addresses published through the Internet Domain Name Service (DNS) either as a zone file that can be
 	 * used by DNS server software, or as a live DNS zone that can be queried in real-time.
 	 *
-	 * Read more: https://github.com/horija/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information
+	 * Read more: https://github.com/H0K4/hokachan/wiki/DNS-Blacklists-(DNSBL)-Information
 	 */
 
 	// Prevents most Tor exit nodes from making posts. Recommended, as a lot of abuse comes from Tor because
@@ -297,7 +297,7 @@
 	 $config['captcha'] = array();
 	 
 	// Enable custom captcha provider
-  	$config['captcha']['enabled'] = true;
+  	$config['captcha']['enabled'] = false;
 
 	// Custom CAPTCHA provider general settings
 	// Captcha expiration:

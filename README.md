@@ -5,7 +5,9 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-And we are back
+Cool-php-captcha has been implemented. seems to work, but try it out.
+Czaks made a modification that has an issue with the installation. just import the database manually. i'm using 5.6 php so don't know if 7.0 has it too.
+
 
 Important Notice
 ------------
@@ -87,9 +89,10 @@ Installation
 1.	Download and extract H0K4CH4N to your web directory.	
 2.	Navigate to ```install.php``` in your web browser and follow the
 	prompts.
+3.	If you have an error with instalation try to import the install.sql database file manually.
 3.	H0K4CH4N should now be installed. Log in to ```mod.php``` with the
 	default username and password combination: **admin / password**. (Change this as soon as possible)
-4. 	You should delete the tools folder if you don't need it
+4. 	You should delete the tools folder if you don't need it. (most tools don't work anyways)
 5.	Remove install.php if it is still inside your root folder. 
 6.	install the central theme if you want to have a front page like on [H0K4CH4N](https://hokachan.com/)
 
