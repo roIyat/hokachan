@@ -20,6 +20,7 @@ require_once 'inc/events.php';
 require_once 'inc/api.php';
 require_once 'inc/mod/auth.php';
 require_once 'inc/polyfill.php';
+require_once '8chan-captcha/functions.php';
 @include_once 'inc/lib/parsedown/Parsedown.php'; // fail silently, this isn't a critical piece of code
 
 if (!extension_loaded('gettext')) {

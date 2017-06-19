@@ -295,19 +295,29 @@
 	// Enable Custom Captcha you need to change a couple of settings 
 	//Read more at: /captcha/instructions.md
 	 $config['captcha'] = array();
-
+	 
 	// Enable custom captcha provider
-	$config['captcha']['enabled'] = false;
+  	$config['captcha']['enabled'] = true;
+
+	// Custom CAPTCHA provider general settings
+	// Captcha expiration:
+	$config['captcha']['expires_in'] = 120; // 120 seconds
+	// Captcha length:
+	$config['captcha']['length'] = 6;
+	
+	/* 
+	 * Custom captcha provider path (You will need to change these depending on your configuration! It cannot be
+	 * automatically determined because provider_check requires curl which needs to know the domain of your site.)
+	 * 
+	 * Specify yourimageboard.com/$config['root']/8chan-captcha/entrypoint.php for the default provider or write your own
+	 */
+	$config['captcha']['provider_get']   = 'http://localhost/hokachan/8chan-captcha/entrypoint.php';
+	$config['captcha']['provider_check'] = 'http://localhost/hokachan/8chan-captcha/entrypoint.php';
 
 	//New thread captcha
  	//Require solving a captcha to post a thread. 
  	//Default off.
  	 $config['new_thread_capt'] = false;
-
-	// Custom captcha get provider path (if not working get the absolute path aka your url.)
-	$config['captcha']['provider_get'] = '../inc/captcha/entrypoint.php';
-	// Custom captcha check provider path
-	$config['captcha']['provider_check'] = '../inc/captcha/entrypoint.php';
 
 	// Custom captcha extra field (eg. charset)
 	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
