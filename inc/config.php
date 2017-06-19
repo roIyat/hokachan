@@ -292,8 +292,7 @@
 	$config['recaptcha_public'] = '6LcXTcUSAAAAAKBxyFWIt2SO8jwx4W7wcSMRoN3f';
 	$config['recaptcha_private'] = '6LcXTcUSAAAAAOGVbVdhmEM1_SyRF4xTKe8jbzf_';
 
-	// Enable Custom Captcha you need to change a couple of settings 
-	//Read more at: /captcha/instructions.md
+	// Enable Custom Captcha you need to change provider_get and provider_check below in order for it to work.
 	 $config['captcha'] = array();
 	 
 	// Enable custom captcha provider
@@ -315,7 +314,7 @@
 	$config['captcha']['provider_check'] = 'http://localhost/hokachan/8chan-captcha/entrypoint.php';
 
 	//New thread captcha
- 	//Require solving a captcha to post a thread. 
+ 	//Require solving a captcha to post a thread only, don't enable captcha above if you want to use this one. 
  	//Default off.
  	 $config['new_thread_capt'] = false;
 
@@ -616,6 +615,7 @@
 
 	// Allow dice rolling: an email field of the form "dice XdY+/-Z" will result in X Y-sided dice rolled and summed,
 	// with the modifier Z added, with the result displayed at the top of the post body.
+	// Incomplete code need to fix it from openIB.
 	$config['allow_roll'] = false;
 
 /*
@@ -777,7 +777,8 @@
 	// Allowed additional file extensions (not images; downloadable files).
 	$config['allowed_ext_files'][] = 'txt';
 	$config['allowed_ext_files'][] = 'zip';
-	$config['allowed_ext_files'][] = 'webm';
+	$config['allowed_ext_files'][] = 'webm'; //adding for testing purposes
+	$config['allowed_ext_files'][] = 'mp4'; //adding for testing purposes
 
 	// An alternative function for generating image filenames, instead of the default UNIX timestamp.
 	// $config['filename_func'] = function($post) {
@@ -869,7 +870,7 @@
 	// Example: $config['anonymous'] = array('Bernd', 'Senpai', 'Jonne', 'ChanPro');
 	$config['anonymous'] = 'Anonymous';
 
-	// Number of reports you can create at once.
+	// Number of reports you can create at once. does this even work?
 	$config['report_limit'] = 3;
 
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
@@ -884,7 +885,8 @@
  * ====================
  */
 
-	// H0K4CH4N has been translated into a few langauges. See inc/locale for available translations.
+	// H0K4CH4N has been translated into a few langauges. See inc/locale for available translations. 
+	// Note that language files are severely outdated for H0K4CH4N some translations aren't needed and a bunch of new translation need to be added.
 	$config['locale'] = 'en'; // (en, ru_RU.UTF-8, fi_FI.UTF-8, pl_PL.UTF-8)
 
 	// Timezone to use for displaying dates/tiems.
@@ -979,7 +981,7 @@
 	// Show page navigation links at the top as well.
 	$config['page_nav_top'] = true;
 
-	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to false to disable.
+	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to comment it out to disable. Remove // slashes to enable.
 	// $config['catalog_link'] = 'catalog.html';
 
 	// Automatically remove unnecessary whitespace when compiling HTML files from templates.
@@ -1065,20 +1067,18 @@
 	$config['additional_javascript'][] = 'js/upload-selection.js';
 	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
-	// Let's implement the Catalog Theme
-	// $config['additional_javascript'][] = 'js/catalog.js';
-	// $config['additional_javascript'][] = 'js/catalog-link.js';
+	// Catalog JS
 	// $config['additional_javascript'][] = 'js/catalog-search.js';
 	
 	// Optional JS (some probably has bugs)
-	// $config['additional_javascript'][] = 'js/auto-reload.js';		//I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
+	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
 	// $config['additional_javascript'][] = 'js/live-index.js';         // same as above. only use when you have a very active board
-	// $config['additional_javascript'][] = 'js/post-menu.js'; 
+	// $config['additional_javascript'][] = 'js/post-menu.js'; 			// replaces select-box in posts with an arrow (conflicts with thread deletion no option to enter a password)
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
-	//$config['additional_javascript'][] = 'js/infinite-scroll.js';     // Conflicts with lazyload. need to find a fix for this and the top one.
+	// $config['additional_javascript'][] = 'js/infinite-scroll.js';    // Conflicts with lazyload. need to find a fix for this and the top one.
 	// $config['additional_javascript'][] = 'js/youtube.js';            // Doesn't seem to do much, if you know if it still works feel free to explain what it is supposed to do.
 	
 	// EXAMPLE JS
