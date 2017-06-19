@@ -1554,8 +1554,6 @@
 	$config['mod']['news_custom'] = ADMIN;
 	// Delete news entries
 	$config['mod']['news_delete'] = ADMIN;
-	// Execute un-filtered SQL queries on the database (?/debug/sql)
-	$config['mod']['debug_sql'] = DISABLED;
 	// Edit the current configuration (via web interface)
 	$config['mod']['edit_config'] = ADMIN;
 	// View ban appeals
