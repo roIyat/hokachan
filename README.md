@@ -67,7 +67,7 @@ While removing useless/outdated/unfinished/broken code.
 
 Requirements
 ------------
-1.	PHP >= 5.6 (PHP 5.6 is recommended it works on php 7.0 but I won't focus on bug fixes on php 7.0)
+1.	PHP = 7.0 (PHP 7.0 is recommended and you should use this one if you want the get the least conflicts. 5.6 should work also but might not work when we improve it for 7.0)
 2.	MySQL/MariaDB server
 3.	[mbstring](http://www.php.net/manual/en/mbstring.installation.php) 
 4.	[PHP GD](http://www.php.net/manual/en/intro.image.php)
@@ -81,9 +81,10 @@ it need one.</strike>  H0K4CH4N will require one and will include an example soo
 1.	MySQL/MariaDB server >= 5.5.3
 2.	ImageMagick (command-line ImageMagick or GraphicsMagick preferred).
 3.	<strike>[APC (Alternative PHP Cache)](http://php.net/manual/en/book.apc.php)</strike> 
-	(from php 5.4 it changed to APCU and doesn't seem to work in php 7), 
-	[XCache](http://xcache.lighttpd.net/) or
+	(apc is dead no longer needed.), 
+	<strike>[XCache](http://xcache.lighttpd.net/) </strike> Same dead.
 	[Memcached](http://www.php.net/manual/en/intro.memcached.php) 
+	just keep cache on php unless you know what your are doing.
 
 Contributing
 ------------

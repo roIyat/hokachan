@@ -110,12 +110,12 @@
 	/*
 	 * On top of the static file caching system, you can enable the additional caching system which is
 	 * designed to minimize SQL queries and can significantly increase speed when posting or using the 
-	 * moderator interface. APC is the recommended method of caching.
+	 * moderator interface. keep it on php unless you know what you are doing.
 	 */
 
 	$config['cache']['enabled'] = 'php';
-	// $config['cache']['enabled'] = 'xcache';
-	// $config['cache']['enabled'] = 'apc';
+	// $config['cache']['enabled'] = 'xcache'; //no longer needed dormant/dead replaced by opcache 
+	// $config['cache']['enabled'] = 'apc'; //no longer needed dormant/dead replaced by opcache
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
 
