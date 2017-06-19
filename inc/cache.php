@@ -41,12 +41,6 @@ class Cache {
 					self::init();
 				$data = self::$cache->get($key);
 				break;
-			case 'apc':
-				$data = apc_fetch($key);
-				break;
-			case 'xcache':
-				$data = xcache_get($key);
-				break;
 			case 'php':
 				$data = isset(self::$cache[$key]) ? self::$cache[$key] : false;
 				break;
@@ -92,12 +86,6 @@ class Cache {
 					self::init();
 				self::$cache->setex($key, $expires, json_encode($value));
 				break;
-			case 'apc':
-				apc_store($key, $value, $expires);
-				break;
-			case 'xcache':
-				xcache_set($key, $value, $expires);
-				break;
 			case 'fs':
 				$key = str_replace('/', '::', $key);
 				$key = str_replace("\0", '', $key);
@@ -123,12 +111,6 @@ class Cache {
 					self::init();
 				self::$cache->delete($key);
 				break;
-			case 'apc':
-				apc_delete($key);
-				break;
-			case 'xcache':
-				xcache_unset($key);
-				break;
 			case 'fs':
 				$key = str_replace('/', '::', $key);
 				$key = str_replace("\0", '', $key);
@@ -150,8 +132,6 @@ class Cache {
 				if (!self::$cache)
 					self::init();
 				return self::$cache->flush();
-			case 'apc':
-				return apc_clear_cache('user');
 			case 'php':
 				self::$cache = array();
 				break;
