@@ -1016,7 +1016,6 @@
 	$config['additional_javascript'] = array();
     $config['additional_javascript'][] = 'js/jquery.min.js';
 	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
-	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
 	$config['additional_javascript'][] = 'js/ajax.js';
 	$config['additional_javascript'][] = 'js/captcha.js';
 	$config['additional_javascript'][] = 'js/download-original.js';
@@ -1056,6 +1055,9 @@
 	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
 	$config['additional_javascript'][] = 'js/wpaint.js';
 	$config['additional_javascript'][] = 'js/upload-selection.js';
+	$config['additional_javascript'][] = 'js/expand-all-images.js';  
+	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
+	$config['additional_javascript'][] = 'js/youtube.js';  
 	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
 	// Catalog JS
@@ -1067,10 +1069,7 @@
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 			// replaces select-box in posts with an arrow (conflicts with thread deletion no option to enter a password)
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
-	// $config['additional_javascript'][] = 'js/infinite-scroll.js';    // Conflicts with lazyload. need to find a fix for this and the top one.
-	// $config['additional_javascript'][] = 'js/youtube.js';            // Doesn't seem to do much, if you know if it still works feel free to explain what it is supposed to do.
+	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this   
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';

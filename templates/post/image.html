@@ -25,7 +25,7 @@
 		</video>
 	{% else %}
 		<img class="post-image" 
-			data-original="
+			src="
 				{% if post.thumb == 'file' %}
 					{{ config.root }}
 					{% if config.file_icons[post.filename|extension] %}
@@ -43,7 +43,3 @@
 		/>
 	{% endif %}
 </a>
-
-<script>
-$("img.post-image").lazyload();
-</script>
