@@ -114,8 +114,6 @@
 	 */
 
 	$config['cache']['enabled'] = 'php';
-	// $config['cache']['enabled'] = 'xcache'; //no longer needed dormant/dead replaced by opcache 
-	// $config['cache']['enabled'] = 'apc'; //no longer needed dormant/dead replaced by opcache
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
 
@@ -272,8 +270,6 @@
 		'lock',
 		'raw',
 		'embed',
-		'recaptcha_challenge_field',
-		'recaptcha_response_field',
 		'captcha_cookie',
 		'captcha_text',
 		'spoiler',
@@ -284,13 +280,6 @@
 		'no_country',
 		'tag'
 	);
-
-	// Enable reCaptcha to make spam even harder. Rarely necessary. (Still thinking about removing this since we have the new captcha)
-	$config['recaptcha'] = false;
-
-	// Public and private key pair from https://www.google.com/recaptcha/admin/create
-	$config['recaptcha_public'] = '6LcXTcUSAAAAAKBxyFWIt2SO8jwx4W7wcSMRoN3f';
-	$config['recaptcha_private'] = '6LcXTcUSAAAAAOGVbVdhmEM1_SyRF4xTKe8jbzf_';
 
 	// Enable Custom Captcha you need to change provider_get and provider_check below in order for it to work.
 	 $config['captcha'] = array();
@@ -320,6 +309,8 @@
 
 	// Custom captcha extra field (eg. charset)
 	 $config['captcha']['extra'] = 'abcdefghijklmnopqrstuvwxyz';
+	 
+	
 	
 	// Ability to lock a board for normal users and still allow mods to post.  Could also be useful for making an archive board
 	$config['board_locked'] = false;
@@ -870,7 +861,7 @@
 	// Example: $config['anonymous'] = array('Bernd', 'Senpai', 'Jonne', 'ChanPro');
 	$config['anonymous'] = 'Anonymous';
 
-	// Number of reports you can create at once. does this even work?
+	// Number of reports you can create at once. does this even work, i guess not since you can create more reports than 3 at once?
 	$config['report_limit'] = 3;
 
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
@@ -981,7 +972,7 @@
 	// Show page navigation links at the top as well.
 	$config['page_nav_top'] = true;
 
-	// Show "Catalog" link in page navigation. Use with the Catalog theme. Set to comment it out to disable. Remove // slashes to enable.
+	// Show "Catalog" link in page navigation. Use with the Catalog theme. Comment it out (//) to disable. Remove // slashes to enable.
 	// $config['catalog_link'] = 'catalog.html';
 
 	// Automatically remove unnecessary whitespace when compiling HTML files from templates.
@@ -1025,7 +1016,6 @@
 	$config['additional_javascript'] = array();
     $config['additional_javascript'][] = 'js/jquery.min.js';
 	$config['additional_javascript'][] = 'js/jquery-ui.custom.min.js';
-	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
 	$config['additional_javascript'][] = 'js/ajax.js';
 	$config['additional_javascript'][] = 'js/captcha.js';
 	$config['additional_javascript'][] = 'js/download-original.js';
@@ -1065,6 +1055,9 @@
 	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
 	$config['additional_javascript'][] = 'js/wpaint.js';
 	$config['additional_javascript'][] = 'js/upload-selection.js';
+	$config['additional_javascript'][] = 'js/expand-all-images.js';  
+	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
+	$config['additional_javascript'][] = 'js/youtube.js';  
 	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
 	// Catalog JS
@@ -1076,10 +1069,7 @@
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 			// replaces select-box in posts with an arrow (conflicts with thread deletion no option to enter a password)
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/expand-all-images.js';  // Conflicts with lazyload. you can use it but expect a lot of lagging.
-	// $config['additional_javascript'][] = 'js/infinite-scroll.js';    // Conflicts with lazyload. need to find a fix for this and the top one.
-	// $config['additional_javascript'][] = 'js/youtube.js';            // Doesn't seem to do much, if you know if it still works feel free to explain what it is supposed to do.
+	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this   
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';
@@ -1563,10 +1553,6 @@
 	$config['mod']['news_custom'] = ADMIN;
 	// Delete news entries
 	$config['mod']['news_delete'] = ADMIN;
-	// Execute un-filtered SQL queries on the database (?/debug/sql)
-	$config['mod']['debug_sql'] = DISABLED;
-	// Look through all cache values for debugging when APC is enabled (?/debug/apc)
-	$config['mod']['debug_apc'] = ADMIN;
 	// Edit the current configuration (via web interface)
 	$config['mod']['edit_config'] = ADMIN;
 	// View ban appeals

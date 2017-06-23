@@ -25,12 +25,12 @@ Our future releases are as follows:
 
 * <strike>dev5: current release, we stay on this one until 20th june if all goes fine</strike> Moving on to dev 6.
 * dev6 current release: focusing on stability, bug fixes, using my weaponized autism to improve and remove dead code in the script, improving the central theme, 
-fixing apcu caching for 7.0, making H0K4CH4N operational for php 7.0 and 7.1 (no longer support for 5.6 then though) 
-removal of the outdated recaptcha (use 8chan-captcha is an improvement and I would recommend to not use any service of google unless there is no decent alternative like their search console or analytics.),  
+<strike>fixing apcu caching for 7.0</strike> removed apc, 
+making H0K4CH4N operational for php 7.0, 
+<strike>removal of the outdated recaptcha (use 8chan-captcha is an improvement and I would recommend to not use any service of google unless there is no decent alternative like their search console or analytics.)</strike> removed,  
 implementing report captcha again now that we have cool-php-captcha (maybe not sure), 
-Updating the post-form to resemble infinity more, implementing fixes from openIB/infinity 
-<strike>and maybe catalog removal</strike> Won't remove it but I will add a limit in the database php code of 1000 so no more than 1000 threads will get loaded (i'm still brainstorming in what is the best way to keep all threads). 
-<strike>while adding lazy load</strike> Added in dev 5, 
+Updating the post-form to resemble infinity more, implementing fixes from openIB/infinity  
+<strike>Adding lazy load</strike> Added in dev 5, 
 I might add slugify again though, but only once I'm sure slugify has no more bugs, dev6 lasts until september.
 * dev7: Looking if all works as intended (would love to improve the search functionality in dev 7 and only allow search for threads and no comments since most comment in a thread are shitposts, referals to a post number/quote or has no comment.). 
 * dev8: Making it retard friendly. Almost everything can be done in the mod.php backend.

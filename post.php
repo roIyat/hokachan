@@ -194,22 +194,8 @@ if (isset($_POST['delete'])) {
 		$post['thread'] = round($_POST['thread']);
 	} else
 		$post['op'] = true;
-
-	// Check for CAPTCHA right after opening the board so the "return" link is in there
-	if ($config['recaptcha']) {
-		if (!isset($_POST['recaptcha_challenge_field']) || !isset($_POST['recaptcha_response_field']))
-			error($config['error']['bot']);
-		// Check what reCAPTCHA has to say...
-		$resp = recaptcha_check_answer($config['recaptcha_private'],
-			$_SERVER['REMOTE_ADDR'],
-			$_POST['recaptcha_challenge_field'],
-			$_POST['recaptcha_response_field']);
-		if (!$resp->is_valid) {
-			error($config['error']['captcha']);
-		}
-	}
 	
-	// Same, but now with our custom captcha provider
+	// Check for CAPTCHA right after opening the board so the "return" link is in there
  	if (($config['captcha']['enabled']) || (($post['op']) && ($config['new_thread_capt'])) ) {
 		$resp = file_get_contents($config['captcha']['provider_check'] . "?" . http_build_query([
 			'mode' => 'check',
