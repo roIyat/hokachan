@@ -5,7 +5,8 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-Cool-php-captcha has been implemented. seems to work, but try it out.
+Recaptcha of google has been successfully removed and apc and xcache functions have been purged considering they are dead. Php caching should be fine.
+Cool-PHP-Captcha seems to work with no issues. 
 
 Czaks made a modification that has an issue with the installation. just import the database manually. i'm using 5.6 php so don't know if 7.0 has it too. Will fix soon though.
 
@@ -23,17 +24,15 @@ If I screw something up I know how to fix my database and restore my content. Yo
 
 Our future releases are as follows:
 
-* <strike>dev5: current release, we stay on this one until 20th june if all goes fine</strike> Moving on to dev 6.
-* dev6 current release: focusing on stability, bug fixes, using my weaponized autism to improve and remove dead code in the script, improving the central theme, 
-<strike>fixing apcu caching for 7.0</strike> removed apc, 
-making H0K4CH4N operational for php 7.0, 
-<strike>removal of the outdated recaptcha (use 8chan-captcha is an improvement and I would recommend to not use any service of google unless there is no decent alternative like their search console or analytics.)</strike> removed,  
+* dev6 current release: focusing on stability, bug fixes, using my weaponized autism to improve and remove dead code in the script, 
+improving the central theme, 
+making H0K4CH4N operational for php 7.0,   
 implementing report captcha again now that we have cool-php-captcha (maybe not sure), 
-Updating the post-form to resemble infinity more, implementing fixes from openIB/infinity  
-<strike>Adding lazy load</strike> Added in dev 5, 
-I might add slugify again though, but only once I'm sure slugify has no more bugs, dev6 lasts until september.
-* dev7: Looking if all works as intended (would love to improve the search functionality in dev 7 and only allow search for threads and no comments since most comment in a thread are shitposts, referals to a post number/quote or has no comment.). 
-* dev8: Making it retard friendly. Almost everything can be done in the mod.php backend.
+Updating the post-form to resemble infinity more, 
+implementing fixes from openIB/infinity,  
+dev6 lasts until september.
+* dev7: Looking if all works as intended. 
+* dev8: reserved
 * H0K4CH4N Version 6 Release (someday in the future, need to be 100% sure all works with no severe errors.)
 
 
@@ -80,11 +79,7 @@ it need one.</strike>  H0K4CH4N will require one and will include an example soo
 ### Recommended
 1.	MySQL/MariaDB server >= 5.5.3
 2.	ImageMagick (command-line ImageMagick or GraphicsMagick preferred).
-3.	<strike>[APC (Alternative PHP Cache)](http://php.net/manual/en/book.apc.php)</strike> 
-	(apc is dead no longer needed.), 
-	<strike>[XCache](http://xcache.lighttpd.net/) </strike> Same dead.
-	[Memcached](http://www.php.net/manual/en/intro.memcached.php) 
-	just keep cache on php unless you know what your are doing.
+3.	 [Memcached](http://www.php.net/manual/en/intro.memcached.php) keep cache on php unless you know what your are doing.
 
 Contributing
 ------------
@@ -93,7 +88,7 @@ You can contribute to H0K4CH4N by:
 *	Providing feedback and suggestions
 *	Writing/editing documentation
 *	Fixing spelling errors. 
-*	<strike>Donating</strike> Just kidding... anyone alse noticed the extreme growth in e-beggars? 
+*	Become a degenerate and visit https://hokachan.com
 
 Installation
 -------------
@@ -114,11 +109,10 @@ Upgrade
 To upgrade from any version of Tinyboard, Vichan or H0K4CH4N:
 
 1.	backup your ```inc/instance-config.php```, replace all your files in place, or remove the instance-config.php from the new version.
-2.	Remove the config file in the captcha folder if using.
-3.	Make sure you didn't modify the config.php
-4.	If you use central theme and modified it. Remove the central.php file and add the changes manually
-6.	(don't remove boards etc.), then put ```inc/instance-config.php``` back
-7.	finally run ```install.php```.
+2.	Make sure you didn't modify the config.php
+3.	If you use central theme and modified it. Remove the central.php file and add the changes manually
+4.	(don't remove boards etc.), then put ```inc/instance-config.php``` back
+5.	finally run ```install.php```.
 
 To migrate from a Kusaba X board, use http://github.com/vichan-devel/Tinyboard-Migration
 

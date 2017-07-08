@@ -1060,9 +1060,6 @@
 	$config['additional_javascript'][] = 'js/youtube.js';  
 	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
-	// Catalog JS
-	// $config['additional_javascript'][] = 'js/catalog-search.js';
-	
 	// Optional JS (some probably has bugs)
 	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
 	// $config['additional_javascript'][] = 'js/live-index.js';         // same as above. only use when you have a very active board
@@ -1123,7 +1120,7 @@
 
 	// Embedding width and height.
 	$config['embed_width'] = 300;
-	$config['embed_height'] = 200;
+	$config['embed_height'] = 250;
 
 /*
  * ====================
