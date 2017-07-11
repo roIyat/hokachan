@@ -10,7 +10,6 @@ Let's look into integrating the search form into the boards.
 <strike>Czaks made a modification that has an issue with the installation.</strike> If you imported the code with git just import the database manually. I have no clue why it gives vichan.boards table doesn't exist when you install from git but works fine when you install it from zip file.
 
 
-
 Important Notice
 ------------
 
@@ -33,6 +32,13 @@ dev6 lasts until september.
 * dev7: Looking if all works as intended. 
 * dev8: reserved
 * H0K4CH4N Version 6 Release (someday in the future, need to be 100% sure all works with no severe errors.)
+
+
+Known Bugs
+------------
+* git installation database error (workaround is importing the instal.sql file manually in your database.)
+* minor issues with moving threads with deleted images.
+* ... 
 
 
 Special Thanks
