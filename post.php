@@ -46,7 +46,7 @@ if (isset($_POST['delete'])) {
 		error($config['error']['nodelete']);
 		
 	foreach ($delete as &$id) {
-		$query = prepare(sprintf("SELECT `id`,`thread`,`time`,`password` FROM ``posts_%s`` WHERE `id` = :id", $board['uri']));
+		$query = prepare(sprintf("SELECT `thread`,`time`,`password` FROM ``posts_%s`` WHERE `id` = :id", $board['uri']));
 		$query->bindValue(':id', $id, PDO::PARAM_INT);
 		$query->execute() or error(db_error($query));
 		
