@@ -5,10 +5,9 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-Recaptcha of google has been successfully removed and apc and xcache functions have been purged considering they are dead. Php caching should be fine.
-Cool-PHP-Captcha seems to work with no issues. 
+Let's look into integrating the search form into the boards. 
 
-Czaks made a modification that has an issue with the installation. just import the database manually. i'm using 5.6 php so don't know if 7.0 has it too. Will fix soon though.
+<strike>Czaks made a modification that has an issue with the installation.</.strike> If you imported the code with git just import the database manually. I have no clue why it gives vichan.boards table doesn't exist when you install from git but works fine when you install it from zip file.
 
 
 
