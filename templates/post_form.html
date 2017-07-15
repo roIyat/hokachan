@@ -102,12 +102,6 @@
 					</div>
 				</div>
 				<script type="text/javascript">init_file_selector({{ config.max_images }});</script>
-				{% if config.allow_upload_by_url %}
-					<div style="float:none;text-align:left" id="upload_url">
-						<label for="file_url">{% trans %}Or URL{% endtrans %}</label>: 
-						<input style="display:inline" type="text" id="file_url" name="file_url" size="35">
-					</div>
-				{% endif %}
 			</td>
 		</tr>
 		{% endif %}
@@ -145,6 +139,17 @@
 
 		{% if not config.force_flag %}
 			{{ flag_tr }}
+		{% endif %}
+		
+		{% if config.allow_upload_by_url %}
+		<tr id="upload_embed">
+			<th>
+						<label for="file_url">{% trans %}Image url{% endtrans %}</label>: 
+			</th>
+			<td>
+						<input style="display:inline" type="text" id="file_url" name="file_url" size="35">
+			</td>
+		</tr>
 		{% endif %}
 
 		{% if config.enable_embedding %}
