@@ -1,33 +1,29 @@
 <div id="post-form-outer">
 <div id="post-form-inner">
 <form name="post" onsubmit="return dopost(this);" enctype="multipart/form-data" action="{{ config.post_url }}" method="post">
-{{ antibot.html() }}
 {% if id %}<input type="hidden" name="thread" value="{{ id }}">{% endif %}
-{{ antibot.html() }}
 <input type="hidden" name="board" value="{{ board.uri }}">
-{{ antibot.html() }}
 {% if current_page %}
 	<input type="hidden" name="page" value="{{ current_page }}">
 {% endif %}
 {% if mod %}<input type="hidden" name="mod" value="1">{% endif %}
 	<table class="post-table"><tbody>
+		{% if thread.force_anon==0 %}
 		{% if not config.field_disable_name or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}<tr>
 			<th>
 				{% trans %}Name{% endtrans %}
-				{{ antibot.html() }}
 			</th>
 			<td>
-				<input type="text" name="name" size="25" maxlength="35" autocomplete="off"> {% if config.allow_no_country and config.country_flags %}<input id="no_country" name="no_country" type="checkbox"> <label for="no_country">{% trans %}Don't show my flag{% endtrans %}</label>{% endif %}
-				{{ antibot.html() }}
+				<input type="text" name="name" size="25" maxlength="35" autocomplete="off">
 			</td>
 		</tr>{% endif %}
+		{% endif %}
 		{% if not config.field_disable_email or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}<tr>
 			<th>
 				{% trans %}Email{% endtrans %}
-				{{ antibot.html() }}
 			</th>
 			<td>
-				{% if config.field_email_selectbox %}
+				{% if config.field_email_selectbox and not (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}
 				<select name="email" id="email_selectbox" autocomplete="off">
 					<option value=""></option>
 					<option value="sage">sage</option>
@@ -36,17 +32,14 @@
 				{% else %}
 				<input type="text" name="email" size="25" maxlength="40" autocomplete="off">
 				{% endif %}
-				{{ antibot.html() }}
 				{% if not (not (config.field_disable_subject or (id and config.field_disable_reply_subject)) or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				<input accesskey="s" style="margin-left:2px;" type="submit" name="post" value="{% if id %}{{ config.button_reply }}{% else %}{{ config.button_newtopic }}{% endif %}" />
 				{% endif %}
-				{{ antibot.html() }}
 			</td>
 		</tr>{% endif %}
 		{% if not (config.field_disable_subject or (id and config.field_disable_reply_subject)) or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}<tr>
 			<th>
-				{% trans %}Subject{% endtrans %}
-				{{ antibot.html() }}
+				{% trans %}Subject{% endtrans %} {% if config.force_subject_op and not id %}<span class="required-star">*</span>{% endif %}
 			</th>
 			<td>
 				<input style="float:left;" type="text" name="subject" size="25" maxlength="100" autocomplete="off">
@@ -56,12 +49,10 @@
 		{% endif %}
 		<tr>
 			<th>
-				{% trans %}Comment{% endtrans %}
-				{{ antibot.html() }}
+				{% trans %}Comment{% endtrans %} <span class="required-star">*</span>
 			</th>
 			<td>
-				<textarea name="body" id="body" rows="5" cols="25"></textarea>
-				{{ antibot.html() }}
+				<textarea name="body" id="body" rows="5" cols="35"></textarea>
 				{% if not (not (config.field_disable_subject or (id and config.field_disable_reply_subject)) or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				{% if not (not config.field_disable_email or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri))) %}
 				<input accesskey="s" style="margin-left:2px;" type="submit" name="post" value="{% if id %}{{ config.button_reply }}{% else %}{{ config.button_newtopic }}{% endif %}" />{% if config.spoiler_images %} <input id="spoiler" name="spoiler" type="checkbox"> <label for="spoiler">{% trans %}Spoiler Image{% endtrans %}</label>{% endif %}
@@ -111,7 +102,12 @@
 					</div>
 				</div>
 				<script type="text/javascript">init_file_selector({{ config.max_images }});</script>
-				{{ antibot.html() }}
+				{% if config.allow_upload_by_url %}
+					<div style="float:none;text-align:left" id="upload_url">
+						<label for="file_url">{% trans %}Or URL{% endtrans %}</label>: 
+						<input style="display:inline" type="text" id="file_url" name="file_url" size="35">
+					</div>
+				{% endif %}
 			</td>
 		</tr>
 		{% endif %}
@@ -150,17 +146,6 @@
 		{% if not config.force_flag %}
 			{{ flag_tr }}
 		{% endif %}
-		
-		{% if config.allow_upload_by_url %}
-		<tr id="upload_embed">
-			<th>
-						<label for="file_url">{% trans %}Or URL{% endtrans %}</label>: 
-			</th>
-			<td>
-						<input style="display:inline" type="text" id="file_url" name="file_url" size="35">
-			</td>
-		</tr>
-				{% endif %}
 
 		{% if config.enable_embedding %}
 		<tr id="upload_embed">
@@ -247,12 +232,10 @@
 		{% if not config.field_disable_password or (mod and post.mod|hasPermission(config.mod.bypass_field_disable, board.uri)) %}<tr>
 			<th>
 				{% trans %}Password{% endtrans %}
-				{{ antibot.html() }}
 			</th>
 			<td>
 				<input type="text" name="password" value="" size="12" maxlength="18" autocomplete="off"> 
-				<span class="unimportant">{% trans %}(For file and post deletion.){% endtrans %}</span>
-				{{ antibot.html() }}
+				<span class="unimportant hint">{% trans %}(For file and post deletion.){% endtrans %}</span>
 			</td>
 		</tr>{% endif %}
 		<tr>

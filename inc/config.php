@@ -1275,6 +1275,9 @@
 	
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
+	
+	// Enable the antibot
+	$config['enable_antibot'] = false;
 
 /*
  * ====================
