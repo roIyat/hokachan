@@ -101,6 +101,5 @@ h4{
     
 .desktop-style .boardlist:nth-child(1) {
     background-color: #1d1f21!important;
-    max-width: 600px!important;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 1)!important;
 }
