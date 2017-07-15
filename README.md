@@ -5,9 +5,11 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-Let's look into integrating the search form into the boards. 
+<strike>Let's look into integrating the search form into the boards.</strike> Changed my mind and won't implement for the time being.
 
-<strike>Czaks made a modification that has an issue with the installation.</strike> If you imported the code with git just import the database manually. I have no clue why it gives vichan.boards table doesn't exist when you install from git but works fine when you install it from zip file.
+1st implementation of the updated post form has been added from openIB/infinity let me know if you experience bugs with this modification. next version will focus on improved css and other fixes.
+
+If you imported the code with git just import the database manually. I have no clue why it gives vichan.boards table doesn't exist when you install from git but works fine when you install it from zip file.
 
 
 Important Notice
