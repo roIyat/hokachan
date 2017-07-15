@@ -1276,7 +1276,7 @@
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
 	
-	// Enable the antibot broken at the moment keep it false.
+	// Enable the antibot this should stay false and should not be a config setting in the first place. will fix it someday.
 	$config['enable_antibot'] = false;
 
 /*
