@@ -1123,10 +1123,6 @@ div.post.reply {
   max-width: 94%!important;
   border-radius: 15px;
 }
-#quick-reply {
-  padding-right:1px;
-  border: 1px solid #111;
-}
 #quick-reply input[type="text"], input[type="password"], #quick-reply textarea {
   max-width: 100%;
 }
