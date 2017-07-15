@@ -285,7 +285,7 @@
 	 $config['captcha'] = array();
 	 
 	// Enable custom captcha provider
-  	$config['captcha']['enabled'] = false;
+  	$config['captcha']['enabled'] = true;
 
 	// Custom CAPTCHA provider general settings
 	// Captcha expiration:
@@ -608,6 +608,9 @@
 	// with the modifier Z added, with the result displayed at the top of the post body.
 	// Incomplete code need to fix it from openIB.
 	$config['allow_roll'] = false;
+	
+	// Use oekaki?
+	$config['oekaki'] = true;
 
 /*
 * ====================
@@ -1054,11 +1057,9 @@
 	$config['additional_javascript'][] = 'js/mobile-style.js';
 	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
 	$config['additional_javascript'][] = 'js/wpaint.js';
-	$config['additional_javascript'][] = 'js/upload-selection.js';
 	$config['additional_javascript'][] = 'js/expand-all-images.js';  
 	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
 	$config['additional_javascript'][] = 'js/youtube.js';  
-	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
 	// Optional JS (some probably has bugs)
 	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
@@ -1066,7 +1067,9 @@
 	// $config['additional_javascript'][] = 'js/post-menu.js'; 			// replaces select-box in posts with an arrow (conflicts with thread deletion no option to enter a password)
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
-	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this   
+	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this  
+    //	$config['additional_javascript'][] = 'js/upload-selection.js';
+	//	$config['additional_javascript'][] = 'js/multi-image.js'; 
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';

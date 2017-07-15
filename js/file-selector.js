@@ -1,9 +1,8 @@
 /*
- * file-selector.js - Add support for drag and drop file selection, and paste from clipboard on supported browsers.
+ * file-selector.js - Add support for drag and drop file selection, and paste from clipbboard on supported browsers.
  *
  * Usage:
  *   $config['additional_javascript'][] = 'js/jquery.min.js';
- *   $config['additional_javascript'][] = 'js/ajax.js';
  *   $config['additional_javascript'][] = 'js/file-selector.js';
  */
 function init_file_selector(max_images) {
@@ -35,16 +34,8 @@ if (typeof max_images == 'undefined') {
 	var max_images = 1;
 }
 
-$('<div class="dropzone-wrap" style="display: none;">'+
-	'<div class="dropzone" tabindex="0">'+
-		'<div class="file-hint">'+_('Select/drop/paste files here')+'</div>'+
-			'<div class="file-thumbs"></div>'+
-		'</div>'+
-	'</div>'+
-'</div>').prependTo('#upload td');
-
 var files = [];
-$('#upload_file').remove();  // remove the original file selector
+$('#upload_file').hide();  // hide the original file selector
 $('.dropzone-wrap').css('user-select', 'none').show();  // let jquery add browser specific prefix
 
 function addFile(file) {
@@ -92,7 +83,6 @@ $(document).on('ajax_before_post', function (e, formData) {
 	for (var i=0; i<max_images; i++) {
 		var key = 'file';
 		if (i > 0) key += i + 1;
-		if (typeof files[i] === 'undefined') break;
 		formData.append(key, files[i]);
 	}
 });
@@ -109,7 +99,7 @@ var dropHandlers = {
 		e.stopPropagation();
 		e.preventDefault();
 
-		if (dragCounter === 0) $('.dropzone').addClass('dragover');
+		if (dragCounter === 0) $(this).addClass('dragover');
 		dragCounter++;
 	},
 	dragover: function (e) {
@@ -122,13 +112,13 @@ var dropHandlers = {
 		e.preventDefault();
 
 		dragCounter--;
-		if (dragCounter === 0) $('.dropzone').removeClass('dragover');
+		if (dragCounter === 0) $(this).removeClass('dragover');
 	},
 	drop: function (e) {
 		e.stopPropagation();
 		e.preventDefault();
 
-		$('.dropzone').removeClass('dragover');
+		$(this).removeClass('dragover');
 		dragCounter = 0;
 
 		var fileList = e.originalEvent.dataTransfer.files;
@@ -140,7 +130,7 @@ var dropHandlers = {
 
 
 // attach handlers
-$(document).on(dropHandlers);
+$(document).on(dropHandlers, '.dropzone');
 
 $(document).on('click', '.dropzone .remove-btn', function (e) {
 	e.stopPropagation();

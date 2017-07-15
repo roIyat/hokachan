@@ -25,7 +25,6 @@ $(function(){
     $("#upload_url").hide();
     $("#upload_embed").hide();
     $(".add_image").hide();
-    $(".dropzone-wrap").hide();
 
     $('[id^=upload_file]').each(function(i, v) {
         $(v).val('');
@@ -41,7 +40,6 @@ $(function(){
   enable_file = function() {
     disable_all();
     $("#upload").show();
-    $(".dropzone-wrap").show();
     $(".file_separator").show();
     $("[id^=upload_file]").show();
     $(".add_image").show();
