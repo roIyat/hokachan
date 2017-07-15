@@ -1068,8 +1068,8 @@
 	// $config['additional_javascript'][] = 'js/post-filter.js';        // You need post-menu.js also for this one. 
 	// $config['additional_javascript'][] = 'js/id_highlighter.js'; 	// If you enabled id you can use this
 	// $config['additional_javascript'][] = 'js/id_colors.js';		    // If you enabled id you can use this  
-    //	$config['additional_javascript'][] = 'js/upload-selection.js';
-	//	$config['additional_javascript'][] = 'js/multi-image.js'; 
+	// $config['additional_javascript'][] = 'js/upload-selection.js';
+	// $config['additional_javascript'][] = 'js/multi-image.js'; 
 	
 	// EXAMPLE JS
 	// $config['additional_javascript'][] = 'js/addyour.js';
@@ -1276,7 +1276,7 @@
 	// Try not to build pages when we shouldn't have to.
 	$config['try_smarter'] = true;
 	
-	// Enable the antibot
+	// Enable the antibot broken at the moment keep it false.
 	$config['enable_antibot'] = false;
 
 /*
