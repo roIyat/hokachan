@@ -366,6 +366,7 @@ function init() {
 		if (!window.optionsShowing) { 
 			$('.show-post-table-options').html('[&#9660; '+_('Hide post options &amp; limits')+']'); 
 			$('.post-table-options').css('display', 'table');
+			$('.post-table-options').css('margin-top', '30px');
 			window.optionsShowing = true;
 		} else { 
 			$('.show-post-table-options').html('[&#9654; '+_('Show post options &amp; limits')+']'); 
