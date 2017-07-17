@@ -195,6 +195,9 @@ if (isset($_POST['delete'])) {
 	} else
 		$post['op'] = true;
 	
+	// Check if banned
+	checkBan($board['uri']);
+	
 	// Check for CAPTCHA right after opening the board so the "return" link is in there
  	if (($config['captcha']['enabled']) || (($post['op']) && ($config['new_thread_capt'])) ) {
 		$resp = file_get_contents($config['captcha']['provider_check'] . "?" . http_build_query([
@@ -219,9 +222,6 @@ if (isset($_POST['delete'])) {
 		error($config['error']['referer']);
 	
 	checkDNSBL();
-		
-	// Check if banned
-	checkBan($board['uri']);
 
 	if ($post['mod'] = isset($_POST['mod']) && $_POST['mod']) {
 		check_login(false);
