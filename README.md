@@ -38,7 +38,7 @@ dev6 lasts until september.
 
 Known Bugs
 ------------
-* git installation database error (workaround is importing the instal.sql file manually in your database.)
+* <strike>git installation database error (workaround is importing the instal.sql file manually in your database.)</strike> seems to be fixed when I copied install.php and install.sql with the zip files.
 * minor issues with moving threads with deleted images.
 * ... 
 

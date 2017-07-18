@@ -16,11 +16,6 @@
  *
  *  Some directives are commented out. This is either because they are optional and examples, or because
  *  they are "optionally configurable", and given their default values by H0K4CH4N's code later if unset.
- *
- *  More information: coming soon
- *
- *  H0K4CH4N documentation: coming soon
- *
  */
 
 	defined('TINYBOARD') or exit;
@@ -555,7 +550,7 @@
 
 	// Allow users to mark their image as a "spoiler" when posting. The thumbnail will be replaced with a
 	// static spoiler image instead (see $config['spoiler_image']).
-	$config['spoiler_images'] = false;
+	$config['spoiler_images'] = true;
 
 	// With the following, you can disable certain superfluous fields or enable "forced anonymous".
 
@@ -622,14 +617,14 @@
 	$config['require_ban_view'] = true;
 
 	// Show the post the user was banned for on the "You are banned" page.
-	$config['ban_show_post'] = false;
+	$config['ban_show_post'] = true;
 
 	// Optional HTML to append to "You are banned" pages. For example, you could include instructions and/or
 	// a link to an email address or IRC chat room to appeal the ban.
 	$config['ban_page_extra'] = '';
 
 	// Allow users to appeal bans through H0K4CH4N.
-	$config['ban_appeals'] = false;
+	$config['ban_appeals'] = true;
 
 	// Do not allow users to appeal bans that are shorter than this length (in seconds).
 	$config['ban_appeals_min_length'] = 60 * 60 * 6; // 6 hours
@@ -638,7 +633,7 @@
 	$config['ban_appeals_max'] = 1;
 
 	// Show moderator name on ban page.
-	$config['show_modname'] = false;
+	$config['show_modname'] = true;
 
 /*
  * ====================
@@ -868,7 +863,7 @@
 	$config['report_limit'] = 3;
 
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
-	$config['allow_subtitle_html'] = false;
+	$config['allow_subtitle_html'] = true;
 
 	// Enable the Grid board layout
 	$config['grid'] = true;
@@ -1216,7 +1211,7 @@
 	$config['domain'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https://' : 'http://';
 	$config['domain'] .= isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 
-	// If for some reason the folders and static HTML index files aren't in the current working direcotry,
+	// If for some reason the folders and static HTML index files aren't in the current working directory,
 	// enter the directory path here. Otherwise, keep it false.
 	$config['root_file'] = false;
 
