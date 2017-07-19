@@ -104,7 +104,7 @@ function loadConfig() {
 		// Those calls are expensive. Unfortunately, our cache system is not initialized at this point.
 		// So, we may store the locale in a tmp/ filesystem.
 
-		if (file_exists($fn = 'tmp/cache/locale_' . ( isset($board['uri']) ? $board['uri'] : '' ) ) ) {
+		if (file_exists($fn = 'inc/cache/locale_' . ( isset($board['uri']) ? $board['uri'] : '' ) ) ) {
 			$config['locale'] = @file_get_contents($fn);
 		}
 		else {
