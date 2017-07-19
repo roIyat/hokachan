@@ -819,10 +819,10 @@ if ($step == 0) {
 		),
 		array(
 			'category' => 'Misc',
-			'name' => 'Caching available (Memcached or Redis)',
-			'result' => extension_loaded('memcached') || extension_loaded('redis'),
+			'name' => 'Caching available (PHP, Memcached or Redis)',
+			'result' => extension_loaded('memcached') || extension_loaded('redis') || extension_loaded('php'),
 			'required' => false,
-			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance. <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
+			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance.PHP, <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
 		),
 		array(
 			'category' => 'Misc',
