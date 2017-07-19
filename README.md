@@ -9,8 +9,6 @@ Introduction
 
 1st implementation of the updated post form has been added from openIB/infinity let me know if you experience bugs with this modification. next version will focus on improved css and other fixes.
 
-If you imported the code with git just import the database manually. I have no clue why it gives vichan.boards table doesn't exist when you install from git but works fine when you install it from zip file.
-
 
 Important Notice
 ------------
@@ -38,7 +36,7 @@ dev6 lasts until september.
 
 Known Bugs
 ------------
-* <strike>git installation database error (workaround is importing the instal.sql file manually in your database.)</strike> seems to be fixed when I copied install.php and install.sql with the zip files.
+* <strike>git installation database error (workaround is importing the instal.sql file manually in your database.)</strike> seems to be fixed when I copied install.php and install.sql from the zip files.
 * minor issues with moving threads with deleted images.
 * ... 
 
@@ -86,7 +84,6 @@ it need one.</strike>  H0K4CH4N will require one and will include an example soo
 ### Recommended
 1.	MySQL/MariaDB server >= 5.5.3
 2.	ImageMagick (command-line ImageMagick or GraphicsMagick preferred).
-3.	 [Memcached](http://www.php.net/manual/en/intro.memcached.php) keep cache on php unless you know what your are doing.
 
 Contributing
 ------------
