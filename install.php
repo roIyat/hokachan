@@ -805,10 +805,10 @@ if ($step == 0) {
 		),
 		array(
 			'category' => 'File permissions',
-			'name' => getcwd() . '/inc/cache',
-			'result' => is_dir('inc/cache') && is_writable('inc/cache'),
+			'name' => getcwd() . '/inc/locale/cache_locale',
+			'result' => is_dir('inc/locale/cache_locale') && is_writable('inc/locale/cache_locale'),
 			'required' => true,
-			'message' => 'You must give H0K4CH4N permission to write to the <code>inc/cache</code> directory.'
+			'message' => 'You must give H0K4CH4N permission to write to the <code>inc/locale/cache_locale</code> directory.'
 		),
 		array(
 			'category' => 'File permissions',
