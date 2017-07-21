@@ -11,9 +11,6 @@
 !/templates/*.html
 !/inc/config.php
 
-# minify
-/inc/lib/minify
-
 # instance-config
 /inc/instance-config.php
 
@@ -39,10 +36,8 @@ Thumbs.db
 *~
 
 # tmp filesystem
-/tmp/cache/*
-/tmp/locks/*
-!/tmp/cache/.gitkeep
-!/tmp/locks/.gitkeep
+/inc/locale/cache_locale/*
+!/inc/locale/cache_locale/.gitkeep
 
 #vichan custom
 /static/spoiler.png
