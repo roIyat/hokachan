@@ -109,7 +109,7 @@
 	 */
 
 	$config['cache']['enabled'] = 'php';
-	// $config['cache']['enabled'] = 'apc';
+	// $config['cache']['enabled'] = 'apc'; // Eperimental this is the best way of caching but don't know if it works use at your own risk.
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
 
