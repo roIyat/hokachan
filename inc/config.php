@@ -109,6 +109,7 @@
 	 */
 
 	$config['cache']['enabled'] = 'php';
+	// $config['cache']['enabled'] = 'apc';
 	// $config['cache']['enabled'] = 'memcached';
 	// $config['cache']['enabled'] = 'redis';
 
