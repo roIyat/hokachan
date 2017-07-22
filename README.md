@@ -5,9 +5,9 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-<strike>Let's look into integrating the search form into the boards.</strike> Changed my mind and won't implement for the time being.
-
-1st implementation of the updated post form has been added from openIB/infinity let me know if you experience bugs with this modification. next version will focus on improved css and other fixes.
+Dev 6 is coming along nicely. APC caching has been added again... well more like apcu caching and it works with php 7.0. the post form looks like 8chan. I fixed some code errors for 7.0 and possibly 7.1. 
+The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fix in the future.
+There still is a lot of work my priorities are dice rolling fix, report captcha re-implementation, looking into the anti-bot code I want to remove it but I don't like to touch the source code, and I think it's intertwined with the spam checks. 
 
 
 Important Notice
@@ -36,7 +36,7 @@ dev6 lasts until september.
 
 Known Bugs
 ------------
-* <strike>git installation database error (workaround is importing the instal.sql file manually in your database.)</strike> seems to be fixed when I copied install.php and install.sql from the zip files.
+* git installation database error (workaround is importing the instal.sql file manually in your database, or copy past the install files from the zip.)
 * minor issues with moving threads with deleted images.
 * ... 
 
