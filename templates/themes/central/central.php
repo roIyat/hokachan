@@ -3,8 +3,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Software is like entropy. It is difficult to grasp, weighs nothing, and obeys the second law of thermodynamics; i.e. it always increases.">
-    <meta name="keywords" content="Free Speech,Anonymous,Hokachan,Coding,Github">
+    <meta name="description" content="{{ settings.meta_description }}">
+    <meta name="keywords" content="{{ settings.meta_keywords }}">
 	<script type="text/javascript">
 		var active_page = "index";
 	</script>
