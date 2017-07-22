@@ -866,9 +866,6 @@
 	// Allow unfiltered HTML in board subtitle. This is useful for placing icons and links.
 	$config['allow_subtitle_html'] = true;
 
-	// Enable the Grid board layout
-	$config['grid'] = true;
-
 /*
  * ====================
  *  Display settings
@@ -1043,7 +1040,6 @@
 	$config['additional_javascript'][] = 'js/quick-reply.js';
 	$config['additional_javascript'][] = 'js/quote-selection.js';
 	$config['additional_javascript'][] = 'js/ajax-post-controls.js';
-	$config['additional_javascript'][] = 'js/style-switcher.js';
 	$config['additional_javascript'][] = 'js/options/user-css.js';
 	$config['additional_javascript'][] = 'js/options/user-js.js';
 	$config['additional_javascript'][] = 'js/webm-settings.js';
