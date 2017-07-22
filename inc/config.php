@@ -1055,7 +1055,8 @@
 	$config['additional_javascript'][] = 'js/wpaint.js';
 	$config['additional_javascript'][] = 'js/expand-all-images.js';  
 	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
-	$config['additional_javascript'][] = 'js/youtube.js';  
+	$config['additional_javascript'][] = 'js/youtube.js';
+	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
 	
 	// Optional JS (some probably has bugs)
 	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
