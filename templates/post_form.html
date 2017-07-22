@@ -64,7 +64,7 @@
 		{% if config.captcha.enabled or (config.new_thread_capt and not id) %}
 		<tr class='captcha'>
 			<th>
-				{% trans %}Verification{% endtrans %} <span class="required-star">*</span>
+				{% trans %}Verify{% endtrans %} <span class="required-star">*</span>
 			</th>
 			<td>
 				<script>load_captcha("{{ config.captcha.provider_get }}", "{{ config.captcha.extra }}");</script>
