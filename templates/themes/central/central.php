@@ -5,6 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="{{ settings.meta_description }}">
     <meta name="keywords" content="{{ settings.meta_keywords }}">
+	<meta name="google-site-verification" content="{{ settings.google_site_verification }}" />
 	<script type="text/javascript">
 		var active_page = "index";
 	</script>

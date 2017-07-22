@@ -27,6 +27,14 @@
 	);
 	
 	$theme['config'][] = Array(
+		'title' => 'Google Site Verification',
+		'name' => 'google_site_verification',
+		'type' => 'text',
+		'default' => '000000000000000',
+		'comment' => '(add your google search console verification code)'
+	);
+	
+	$theme['config'][] = Array(
 		'title' => 'Title Logo',
 		'name' => 'title_logo',
 		'type' => 'text',
