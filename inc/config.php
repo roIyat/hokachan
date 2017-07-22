@@ -287,16 +287,16 @@
 	// Captcha expiration:
 	$config['captcha']['expires_in'] = 120; // 120 seconds
 	// Captcha length:
-	$config['captcha']['length'] = 6;
+	$config['captcha']['length'] = 3;
 	
 	/* 
 	 * Custom captcha provider path (You will need to change these depending on your configuration! It cannot be
 	 * automatically determined because provider_check requires curl which needs to know the domain of your site.)
 	 * 
-	 * Specify yourimageboard.com/$config['root']/8chan-captcha/entrypoint.php for the default provider or write your own
+	 * Specify yourimageboard.com/$config['root']/captcha/entrypoint.php for the default provider or write your own
 	 */
-	$config['captcha']['provider_get']   = 'http://localhost/hokachan/8chan-captcha/entrypoint.php';
-	$config['captcha']['provider_check'] = 'http://localhost/hokachan/8chan-captcha/entrypoint.php';
+	$config['captcha']['provider_get']   = 'http://localhost/hokachan/captcha/entrypoint.php';
+	$config['captcha']['provider_check'] = 'http://localhost/hokachan/captcha/entrypoint.php';
 
 	//New thread captcha
  	//Require solving a captcha to post a thread only, don't enable captcha above if you want to use this one. 
