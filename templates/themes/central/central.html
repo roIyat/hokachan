@@ -17,6 +17,7 @@
 	{% if config.font_awesome %}<link rel="stylesheet" href="{{ config.root }}{{ config.font_awesome_css }}">{% endif %}
 	{% include 'header.html' %}
 </head>
+
 <body>
 	{{ boardlist.top }}
 	
@@ -28,11 +29,16 @@
 	
 	
 <div class="box-wrap">
-
-	<!--Search-->
-	<?php
-	require 'templates/themes/central/central_search.php';
-	?>
+    
+    <!-- Start Search Form -->
+        <form style="display:inline" action="/search.php">
+                <p style="max-width: 1200px; margin: 10px auto;">
+                    <input type="text" name="search" value="">
+                    <input type="text" name="board" style="max-width:100px;" value="Select Board">
+                    <input type="submit" value="Search">
+                </p>
+        </form>
+    <!-- End Search Form -->
 	
 	<!-- Modify the Intro -->
 	<div class="box-wrap-board">
@@ -113,19 +119,22 @@
 				<div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
 						<!-- Add left boards -->
-					<li><a href="/kinfolk/" title="Kin who cannot shed their humanity.">KinFolk</a></li>
+					<li><a href="/kin/" title="Kin who cannot shed their humanity.">KinFolk</a></li>
+					<li><a href="/bot/" title="Weaponized Autism.">RoboKin</a></li>
 					</ul>
                 </div>
 			    <div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
 						<!-- Add center boards -->
-					    <li><a href="/otherkin/" title="Change is the only constant.">OtherKin</a></li>
+					<li><a href="/b/" title="Every family has their undesirables.">VileKin</a></li>
+						
 					</ul>
 				</div>
 				<div id="column" style="float:left; margin:0; width:33.33%;">
 					<ul>
-						<!-- Add center boards -->
-					    <li><a href="/vilekin/" title="Every family has their undesirables.">VileKin</a></li>
+						<!-- Add right boards -->
+					    <li><a href="/hoka/" title="Being told you are weird for crawling on the floor, when in reality, you are trying to be just like a turtle that you always wanted to be.">OtherKin</a></li>
+					    <li><a href="/tf/" title="Change is the only constant.">MutaKin</a></li>
 					</ul>
 				</div>
 			</h4>

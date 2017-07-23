@@ -5,7 +5,7 @@
 	$theme['name'] = 'CENTRAL';
 	// Description (you can use Tinyboard markup here)
 	$theme['description'] = 'This theme has it all';
-	$theme['version'] = 'v2.1';
+	$theme['version'] = 'v3.0';
 	
 	// Theme configuration	
 	$theme['config'] = Array();
@@ -60,7 +60,7 @@
 		'title' => 'Memetics',
 		'name' => 'meme_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/thumb/1500747158025.png',
+		'default' => 'https://hokachan.com/bot/thumb/1500747158025.png',
 		'comment' => '(Add a meme image url)'
 	);
 	
@@ -68,7 +68,7 @@
 		'title' => 'Meme URL',
 		'name' => 'meme_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/res/2.html',
+		'default' => 'https://hokachan.com/bot/res/2.html',
 		'comment' => '(Add a link for the meme image)'
 	);
 	
@@ -80,50 +80,50 @@
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo',
+		'title' => 'Intro Logo #1',
 		'name' => 'intro_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/thumb/1500362626856.png',
+		'default' => 'https://hokachan.com/bot/thumb/1500362626856.png',
 		'comment' => '(Image url for the first intro logo #1)'
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo URL',
+		'title' => 'Intro Logo URL #1',
 		'name' => 'intro_logo_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/res/45.html#q45',
+		'default' => 'https://hokachan.com/bot/res/45.html#q45',
 		'comment' => '(Image link for the first intro logo #1)'
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo2',
+		'title' => 'Intro Logo #2',
 		'name' => 'intro_logo2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/thumb/1498251230400.png',
+		'default' => 'https://hokachan.com/bot/thumb/1498251230400.png',
 		'comment' => '(Image url for the second intro logo #2)'
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo URL2',
+		'title' => 'Intro Logo UR #L2',
 		'name' => 'intro_logo_link2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/res/17.html#q17',
+		'default' => 'https://hokachan.com/bot/res/17.html#q17',
 		'comment' => '(Image link for the second intro logo #2)'
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo3',
-		'name' => 'intro_logo3',
+		'title' => 'Intro Logo #3',
+		'name' => 'intro_logo #3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/thumb/1497405966416.png',
+		'default' => 'https://hokachan.com/bot/thumb/1497405966416.png',
 		'comment' => '(Image url for the third and last intro logo #3)'
 	);
 	
 	$theme['config'][] = Array(
-		'title' => 'Intro Logo URL3',
-		'name' => 'intro_logo_link3',
+		'title' => 'Intro Logo URL #3',
+		'name' => 'intro_logo_link #3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/robokin/res/2.html#q2',
+		'default' => 'https://hokachan.com/bot/res/2.html#q2',
 		'comment' => '(Image link for the third and last intro logo #3)'
 	);
 	
@@ -131,8 +131,8 @@
 		'title' => 'Intro Embed',
 		'name' => 'intro_embed',
 		'type' => 'text',
-		'default' => 'https://www.youtube.com/embed/hhh4t75LcbY?ecver=2',
-		'comment' => '(add an embed (needs to contain an embed url)'
+		'default' => 'https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2',
+		'comment' => '(add an embed (needs to contain an embed url youtube example "https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2")'
 	);
 	
 	$theme['config'][] = Array(
@@ -161,7 +161,7 @@
 		'title' => '# of recent images',
 		'name' => 'limit_images',
 		'type' => 'text',
-		'default' => '15',
+		'default' => '20',
 		'comment' => '(maximum images to display)'
 	);
 	
@@ -177,8 +177,8 @@
 		'title' => 'PHP/HTML file',
 		'name' => 'html',
 		'type' => 'text',
-		'default' => 'index.php',
-		'comment' => '(eg. "index.php for homepage")'
+		'default' => 'index.html',
+		'comment' => '(eg. "index.html for homepage")'
 	);
 	
 	$theme['config'][] = Array(

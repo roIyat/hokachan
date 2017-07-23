@@ -150,7 +150,7 @@
 				preg_match_all('/"size":([0-9]*)/', $file[0], $matches);
 				$stats['active_content'] += array_sum($matches[1]);
 			}
-			return Element('themes/central/central.php', Array(
+			return Element('themes/central/central.html', Array(
 				'settings' => $settings,
 				'config' => $config,
 				'boardlist' => createBoardlist(),
