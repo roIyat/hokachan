@@ -18,7 +18,7 @@
 	<form style="display:inline" action="" method="get">
 		<p>
 			<input id="search" name="search" type="text" size="40" value="{{ search }}">
-			<select multiple name="board" style="vertical-align: middle; height: 60px; overflow: overlay; border-radius: 5px;margin: 5px";>
+			<select multiple name="board" style="vertical-align: middle; height: 60px; overflow: overlay; border-radius: 5px; margin: 5px; min-width: 75px;">
 				{% for b in boards %}
 					<option value="{{ b }}"{% if b == board %} selected{% endif %}>/{{ b }}/</option>
 				{% endfor %}

@@ -28,6 +28,11 @@
 	
 	
 <div class="box-wrap">
+
+	<!--Search-->
+	<?php
+	require 'templates/themes/central/central_search.php';
+	?>
 	
 	<!-- Modify the Intro -->
 	<div class="box-wrap-board">
@@ -80,11 +85,6 @@
 			</div>
 		</h4>
 	</div>
-	
-	<!--Search-->
-	<?php
-	require 'templates/themes/central/central_search.php';
-	?>
 	
 	<!--News Module-->
 	<div class="box-wrap-board">
