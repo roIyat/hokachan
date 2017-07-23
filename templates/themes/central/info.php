@@ -113,7 +113,7 @@
 	
 	$theme['config'][] = Array(
 		'title' => 'Intro Logo #3',
-		'name' => 'intro_logo #3',
+		'name' => 'intro_logo3',
 		'type' => 'text',
 		'default' => 'https://hokachan.com/bot/thumb/1497405966416.png',
 		'comment' => '(Image url for the third and last intro logo #3)'
@@ -121,7 +121,7 @@
 	
 	$theme['config'][] = Array(
 		'title' => 'Intro Logo URL #3',
-		'name' => 'intro_logo_link #3',
+		'name' => 'intro_logo_link3',
 		'type' => 'text',
 		'default' => 'https://hokachan.com/bot/res/2.html#q2',
 		'comment' => '(Image link for the third and last intro logo #3)'
