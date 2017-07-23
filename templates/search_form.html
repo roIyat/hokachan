@@ -1,19 +1,3 @@
-<head>
- 	<script type="text/javascript">
-        function pagination() {
-		var ele = document.getElementById("toggleText");
-		var text = document.getElementById("displayText");
-		if(ele.style.display == "block") {
-    		ele.style.display = "none";
-		text.innerHTML = "Show Information";
-  			} else {
-				ele.style.display = "block";
-				text.innerHTML = "Hide Information";
-				}
-		    } 
-    </script>
-</head>
-
 <div class="ban">
 	<form style="display:inline" action="" method="get">
 		<p>
@@ -24,12 +8,11 @@
 				{% endfor %}
 			</select>
 			<input type="submit" value="{% trans %}Search{% endtrans %}" />
-			<a id="displayText" style="margin: 5px;" href="javascript:pagination();">Show Information</a>
 		</p>
 	</form>
-	     <div id="toggleText" style="display: none">
-	        <p>
+	     <div id="search-info">
+	       
 		    {% trans %}Only pick one board to search. Search is case-insensitive and based on keywords. To match exact phrases, use "quotes". Use an asterisk (*) for wildcard. You may apply the following filters to your searches: <strong>id</strong>, <strong>thread</strong>, <strong>subject</strong>, and <strong>name</strong>. To apply a filter, simply add to your query, for example, <em>name:Anonymous</em> or <em>subject:"Some Thread"</em>. Wildcards cannot be used in filters.{% endtrans %}
-	        </p>
+	        
 	    </div>
 </div>
