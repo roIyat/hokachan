@@ -5,7 +5,7 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-So apparently including the search form in the board indexes and central theme is fairly easy. You can do it with a simple form... the central theme can go back to a html format. only problem might be to change the variables.
+Search has been added to the board index. Next up will be pagination changes. I make it so that you can type the page number and you automatically go to that page. it will also say the page total count. the pagination currently will be removed.
 
 Dev 6 is coming along nicely. APC caching has been added again... well more like apcu caching and it works with php 7.0. the post form looks like 8chan. I fixed some code errors for 7.0 and possibly 7.1. 
 The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fix in the future.
