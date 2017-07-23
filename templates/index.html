@@ -60,7 +60,8 @@
 	{% if config.global_message %}<hr /><div class="blotter">{{ config.global_message }}</div>{% endif %}
 	<hr />
 	
-		<!-- Start Search Form -->
+	<!-- Start Search Form -->
+	{% if config.board_search %}
         <form style="display:inline" action="/search.php">
                 <p style="max-width: 1200px; margin: 10px auto;">
                     <input type="text" name="search" placeholder="{{ board.uri }} search">
@@ -68,6 +69,7 @@
                     <input type="submit" value="S34RCH">
                 </p>
         </form>
+    {% endif %}
     <!-- End Search Form -->
     
 	<form name="postcontrols" action="{{ config.post_url }}" method="post">
