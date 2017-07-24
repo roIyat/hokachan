@@ -332,6 +332,7 @@ function _syslog($priority, $message) {
 function verbose_error_handler($errno, $errstr, $errfile, $errline) {
 	if (error_reporting() == 0)
 		return false; // Looks like this warning was suppressed by the @ operator.
+	
 	error(utf8tohtml($errstr), true, array(
 		'file' => $errfile . ':' . $errline,
 		'errno' => $errno,
@@ -970,10 +971,14 @@ function insertFloodPost(array $post) {
 	$query->bindValue(':board', $board['uri']);
 	$query->bindValue(':time', time());
 	$query->bindValue(':posthash', make_comment_hex($post['body_nomarkup']));
-	if ($post['has_file'])
+	
+	if ($post['has_file']) {
 		$query->bindValue(':filehash', $post['filehash']);
-	else
+	}
+	else {
 		$query->bindValue(':filehash', null, PDO::PARAM_NULL);
+	}
+	
 	$query->bindValue(':isreply', !$post['op'], PDO::PARAM_INT);
 	$query->execute() or error(db_error($query));
 }
@@ -988,13 +993,13 @@ function post(array $post) {
 	} else {
 		$query->bindValue(':subject', null, PDO::PARAM_NULL);
 	}
-
+	
 	if (!empty($post['email'])) {
 		$query->bindValue(':email', $post['email']);
 	} else {
 		$query->bindValue(':email', null, PDO::PARAM_NULL);
 	}
-
+	
 	if (!empty($post['trip'])) {
 		$query->bindValue(':trip', $post['trip']);
 	} else {
@@ -1013,19 +1018,19 @@ function post(array $post) {
 	} else {
 		$query->bindValue(':sticky', false, PDO::PARAM_INT);
 	}
-
+	
 	if ($post['op'] && $post['mod'] && isset($post['locked']) && $post['locked']) {
 		$query->bindValue(':locked', true, PDO::PARAM_INT);
 	} else {
 		$query->bindValue(':locked', false, PDO::PARAM_INT);
 	}
-
+	
 	if ($post['op'] && $post['mod'] && isset($post['cycle']) && $post['cycle']) {
 		$query->bindValue(':cycle', true, PDO::PARAM_INT);
 	} else {
 		$query->bindValue(':cycle', false, PDO::PARAM_INT);
 	}
-
+	
 	if ($post['mod'] && isset($post['capcode']) && $post['capcode']) {
 		$query->bindValue(':capcode', $post['capcode'], PDO::PARAM_INT);
 	} else {
@@ -1037,14 +1042,14 @@ function post(array $post) {
 	} else {
 		$query->bindValue(':embed', null, PDO::PARAM_NULL);
 	}
-
+	
 	if ($post['op']) {
 		// No parent thread, image
 		$query->bindValue(':thread', null, PDO::PARAM_NULL);
 	} else {
 		$query->bindValue(':thread', $post['thread'], PDO::PARAM_INT);
 	}
-
+	
 	if ($post['has_file']) {
 		$query->bindValue(':files', json_encode($post['files']));
 		$query->bindValue(':num_files', $post['num_files']);
@@ -1059,7 +1064,7 @@ function post(array $post) {
 		undoImage($post);
 		error(db_error($query));
 	}
-
+	
 	return $pdo->lastInsertId();
 }
 
@@ -1438,7 +1443,7 @@ function getPages($mod=false) {
 
 	if ($count < 1) $count = 1;
 
-	$pages = array();
+	$pages = array(); 
 	for ($x=0;$x<$count && $x<$config['max_pages'];$x++) {
 		$pages[] = array(
 			'num' => $x+1,
@@ -1587,11 +1592,15 @@ function buildIndex($global_api = "yes") {
 		$api = new Api();
 		$catalog = array();
 	}
+	
+
 	for ($page = 1; $page <= $config['max_pages']; $page++) {
 		$filename = $board['dir'] . ($page == 1 ? $config['file_index'] : sprintf($config['file_page'], $page));
 		if ((!$config['api']['enabled'] || $global_api == "skip") && $config['try_smarter'] && isset($build_pages)
 			 && !empty($build_pages) && !in_array($page, $build_pages) )
 			continue;
+
+
 		$content = index($page);
 		if (!$content)
 			break;
@@ -1615,27 +1624,37 @@ function buildIndex($global_api = "yes") {
 		$content['pages'][$page-1]['selected'] = true;
 		$content['btn'] = getPageButtons($content['pages']);
 		$content['antibot'] = $antibot;
+
 		file_write($filename, Element('index.html', $content));
+		
+
 	}
+
 	if ($page < $config['max_pages']) {
 		for (;$page<=$config['max_pages'];$page++) {
 			$filename = $board['dir'] . ($page==1 ? $config['file_index'] : sprintf($config['file_page'], $page));
 			file_unlink($filename);
+
 			if ($config['api']['enabled']) {
 				$jsonFilename = $board['dir'] . ($page - 1) . '.json';
 				file_unlink($jsonFilename);
 			}
 		}
 	}
+
 	// json api catalog
 	if ($config['api']['enabled'] && $global_api != "skip") {
+
 		$json = json_encode($api->translateCatalog($catalog));
 		$jsonFilename = $board['dir'] . 'catalog.json';
 		file_write($jsonFilename, $json);
+
 		$json = json_encode($api->translateCatalog($catalog, true));
 		$jsonFilename = $board['dir'] . 'threads.json';
 		file_write($jsonFilename, $json);
+		
 	}
+
 	if ($config['try_smarter'])
 		$build_pages = array();
 }
@@ -2484,39 +2503,38 @@ function shell_exec_error($command, $suppress_stdout = false) {
  */
 function diceRoller($post) {
 	global $config;
-	if(strpos(strtolower($post->email), 'dice%20') === 0) {
-		$dicestr = str_split(substr($post->email, strlen('dice%20')));
-
+	if (isset($_POST['dx'], $_POST['dy'], $_POST['dz']) && !empty($_POST['dy'])) {
 		// Get params
-		$diceX = '';
-		$diceY = '';
-		$diceZ = '';
-
-		$curd = 'diceX';
-		for($i = 0; $i < count($dicestr); $i ++) {
-			if(is_numeric($dicestr[$i])) {
-				$$curd .= $dicestr[$i];
-			} else if($dicestr[$i] == 'd') {
-				$curd = 'diceY';
-			} else if($dicestr[$i] == '-' || $dicestr[$i] == '+') {
-				$curd = 'diceZ';
-				$$curd = $dicestr[$i];
-			}
-		}
+		$diceX = $_POST['dx'];
+		$diceY = $_POST['dy'];
+		$diceZ = $_POST['dz'];
 
 		// Default values for X and Z
 		if($diceX == '') {
-			$diceX = '1';
+			$diceX = 1;
 		}
 
 		if($diceZ == '') {
-			$diceZ = '+0';
+			$diceZ = 0;
 		}
 
 		// Intify them
 		$diceX = intval($diceX);
 		$diceY = intval($diceY);
 		$diceZ = intval($diceZ);
+
+		// Apply sane limits
+		if ($diceY > 1024) {
+			$diceY = 1024;
+		}
+
+		if ($diceX > 200) {
+			$diceX = 200;
+		}
+
+		if (abs($diceZ) > 1000000) {
+			$diceZ = 0;
+		}
 
 		// Continue only if we have valid values
 		if($diceX > 0 && $diceY > 0) {
@@ -2531,7 +2549,8 @@ function diceRoller($post) {
 			// Prepend the result to the post body
 			$modifier = ($diceZ != 0) ? ((($diceZ < 0) ? ' - ' : ' + ') . abs($diceZ)) : '';
 			$dicesum = ($diceX > 1) ? ' = ' . $dicesum : '';
-			$post->body = '<table class="diceroll"><tr><td><img src="'.$config['dir']['static'].'d10.svg" alt="Dice roll" width="24"></td><td>Rolled ' . implode(', ', $dicerolls) . $modifier . $dicesum . '</td></tr></table><br/>' . $post->body;
+			$rollstring = "{$diceX}d{$diceY}";
+			$post->body = '<table class="diceroll"><tr><td><img src="'.$config['dir']['static'].'d10.svg" alt="Dice roll" width="24"></td><td>Rolled ' . implode(', ', $dicerolls) . $modifier . $dicesum . " ($rollstring)</td></tr></table><br/>" . $post->body;
 		}
 	}
 }
