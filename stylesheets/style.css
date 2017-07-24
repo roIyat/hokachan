@@ -478,6 +478,7 @@ div.ban {
     overflow: auto;
     border-radius: 20px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
+    text-align: center;
 }
 
 div.ban p,div.ban h2 {
@@ -1119,7 +1120,7 @@ div.post.reply {
   border-style: none solid solid none;
   border-color: #B7C5D9;
   display: inline-block;
-  max-width: 94%!important;
+  max-width: 94%!important; 
   border-radius: 15px;
 }
 #quick-reply input[type="text"], input[type="password"], #quick-reply textarea {
