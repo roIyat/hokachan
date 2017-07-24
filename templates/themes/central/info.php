@@ -60,7 +60,7 @@
 		'title' => 'Memetics',
 		'name' => 'meme_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/thumb/1500747158025.png',
+		'default' => 'https://hokachan.com/ai/thumb/1500747158025.png',
 		'comment' => '(Add a meme image url)'
 	);
 	
@@ -68,7 +68,7 @@
 		'title' => 'Meme URL',
 		'name' => 'meme_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/res/2.html',
+		'default' => 'https://hokachan.com/ai/res/2.html',
 		'comment' => '(Add a link for the meme image)'
 	);
 	
@@ -83,7 +83,7 @@
 		'title' => 'Intro Logo #1',
 		'name' => 'intro_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/thumb/1500362626856.png',
+		'default' => 'https://hokachan.com/ai/thumb/1500362626856.png',
 		'comment' => '(Image url for the first intro logo #1)'
 	);
 	
@@ -91,7 +91,7 @@
 		'title' => 'Intro Logo URL #1',
 		'name' => 'intro_logo_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/res/45.html#q45',
+		'default' => 'https://hokachan.com/ai/res/45.html#q45',
 		'comment' => '(Image link for the first intro logo #1)'
 	);
 	
@@ -99,7 +99,7 @@
 		'title' => 'Intro Logo #2',
 		'name' => 'intro_logo2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/thumb/1498251230400.png',
+		'default' => 'https://hokachan.com/ai/thumb/1498251230400.png',
 		'comment' => '(Image url for the second intro logo #2)'
 	);
 	
@@ -107,7 +107,7 @@
 		'title' => 'Intro Logo UR #L2',
 		'name' => 'intro_logo_link2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/res/17.html#q17',
+		'default' => 'https://hokachan.com/ai/res/17.html#q17',
 		'comment' => '(Image link for the second intro logo #2)'
 	);
 	
@@ -115,7 +115,7 @@
 		'title' => 'Intro Logo #3',
 		'name' => 'intro_logo3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/thumb/1497405966416.png',
+		'default' => 'https://hokachan.com/ai/thumb/1497405966416.png',
 		'comment' => '(Image url for the third and last intro logo #3)'
 	);
 	
@@ -123,7 +123,7 @@
 		'title' => 'Intro Logo URL #3',
 		'name' => 'intro_logo_link3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/bot/res/2.html#q2',
+		'default' => 'https://hokachan.com/ai/res/2.html#q2',
 		'comment' => '(Image link for the third and last intro logo #3)'
 	);
 	
@@ -132,7 +132,7 @@
 		'name' => 'intro_embed',
 		'type' => 'text',
 		'default' => 'https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2',
-		'comment' => '(add an embed (needs to contain an embed url youtube example "https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2")'
+		'comment' => '(only paste a basic link: youtube example "https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2")'
 	);
 	
 	$theme['config'][] = Array(
