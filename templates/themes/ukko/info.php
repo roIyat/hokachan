@@ -2,10 +2,10 @@
 	$theme = array();
 	
 	// Theme name
-	$theme['name'] = 'Overboard (Ukko)';
+	$theme['name'] = 'Omnis';
 	// Description (you can use Tinyboard markup here)
 	$theme['description'] = 'Board with threads and messages from all boards';
-	$theme['version'] = 'v0.2';
+	$theme['version'] = 'v1.0';
 	
 	// Theme configuration	
 	$theme['config'] = array();
@@ -14,19 +14,20 @@
 		'title' => 'Board name',
 		'name' => 'title',
 		'type' => 'text',
-		'default' => 'Ukko'
+		'default' => 'Omnis'
 	);
 	$theme['config'][] = array(
 		'title' => 'Board URI',
 		'name' => 'uri',
 		'type' => 'text',
-		'default' => '*',
+		'default' => 'omnis',
 		'comment' => '(ukko for example)'
 	);	
 	$theme['config'][] = array(
 		'title' => 'Subtitle',
 		'name' => 'subtitle',
 		'type' => 'text',
+		'default' => '%s freshly bumped threads',
 		'comment' => '(%s = thread limit. for example "%s freshly bumped threads")'
 	);		
 	$theme['config'][] = array(

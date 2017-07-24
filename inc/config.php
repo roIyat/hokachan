@@ -958,8 +958,9 @@
 	// 	array('c', 'd', 'e', 'f', 'g'),
 	// 	array('h', 'i', 'j'),
 	// 	array('k', array('l', 'm')),
+		array('Omnis' => '/omnis/index.html'),
 		array('Search' => '/search.php'), 
-		array('Manager' => '/mod.php')
+		array('Mod' => '/mod.php')
 	 );
 
 	// Whether or not to put brackets around the whole board list
