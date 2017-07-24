@@ -152,7 +152,7 @@
 		}
 		
 		if(!empty($temp))
-			$_body .= '<fieldset><legend>' .
+			$_body .= '<fieldset style="margin:10px auto; max-width:1200px;"><legend>' .
 					sprintf(ngettext('%d result in', '%d results in', $query->rowCount()), 
 					$query->rowCount()) . ' <a href="/' .
 					sprintf($config['board_path'], $board['uri']) . $config['file_index'] .
