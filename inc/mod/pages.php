@@ -1539,11 +1539,18 @@ function mod_edit_post($board, $edit_raw_html, $postID) {
 		foreach ($modifiers as $key => $value) {
 			$_POST['body'] .= "<tinyboard $key>$value</tinyboard>";
 		}
+		
+		// Handle embed edits...
+		foreach ($config['embedding'] as &$embed) {
+			if (preg_match($embed[0], $_POST['embed'])) {
+				$embed_link = $_POST['embed'];
+			}
+		}
 
 		if ($edit_raw_html)
-			$query = prepare(sprintf('UPDATE ``posts_%s`` SET `name` = :name, `email` = :email, `subject` = :subject, `body` = :body, `body_nomarkup` = :body_nomarkup WHERE `id` = :id', $board));
+			$query = prepare(sprintf('UPDATE ``posts_%s`` SET `name` = :name, `email` = :email, `subject` = :subject, `body` = :body, `body_nomarkup` = :body_nomarkup, `embed` = :embed WHERE `id` = :id', $board));
 		else
-			$query = prepare(sprintf('UPDATE ``posts_%s`` SET `name` = :name, `email` = :email, `subject` = :subject, `body_nomarkup` = :body WHERE `id` = :id', $board));
+			$query = prepare(sprintf('UPDATE ``posts_%s`` SET `name` = :name, `email` = :email, `subject` = :subject, `body_nomarkup` = :body, `embed` = :embed WHERE `id` = :id', $board));
 		$query->bindValue(':id', $postID);
 		$query->bindValue('name', $_POST['name']);
 		$query->bindValue(':email', $_POST['email']);
@@ -1552,6 +1559,11 @@ function mod_edit_post($board, $edit_raw_html, $postID) {
 		if ($edit_raw_html) {
 			$body_nomarkup = $_POST['body'] . "\n<tinyboard raw html>1</tinyboard>";
 			$query->bindValue(':body_nomarkup', $body_nomarkup);
+		}
+		if (isset($embed_link)) {
+			$query->bindValue(':embed', $embed_link);
+		} else {
+			$query->bindValue(':embed', NULL, PDO::PARAM_NULL);
 		}
 		$query->execute() or error(db_error($query));
 		
@@ -1581,8 +1593,11 @@ function mod_edit_post($board, $edit_raw_html, $postID) {
 			$post['body_nomarkup'] = str_replace("\t", '&#09;', $post['body_nomarkup']);
 			$post['body'] = str_replace("\t", '&#09;', $post['body']);
 		}
+		
+		$preview = new Post($post);
+		$html = $preview->build(true);
 
-		mod_page(_('Edit post'), 'mod/edit_post_form.html', array('token' => $security_token, 'board' => $board, 'raw' => $edit_raw_html, 'post' => $post));
+		mod_page(_('Edit post'), 'mod/edit_post_form.html', array('token' => $security_token, 'board' => $board, 'raw' => $edit_raw_html, 'post' => $post, 'preview' => $html));
 	}
 }
 
