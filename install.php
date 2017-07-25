@@ -820,9 +820,9 @@ if ($step == 0) {
 		array(
 			'category' => 'Misc',
 			'name' => 'Caching available ( PHP, APC, APCU, Memcached or Redis)',
-			'result' => extension_loaded('memcached') || extension_loaded('redis') || extension_loaded('php'),
+			'result' => extension_loaded('memcached') || extension_loaded('redis') || extension_loaded('php') || extension_loaded('apc') || extension_loaded('apcu'),
 			'required' => false,
-			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance. PHP, APC(U), <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
+			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance. PHP, APC, APCU, <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
 		)
 	);
 
