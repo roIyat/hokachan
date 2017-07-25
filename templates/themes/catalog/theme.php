@@ -81,7 +81,7 @@
 				$recent_posts[] = $post;
 			}
 			
-			$required_scripts = array('js/jquery.min.js', 'js/jquery.mixitup.min.js', 'js/catalog.js');
+			$required_scripts = array('js/jquery.min.js', 'js/catalog/jquery.mixitup.min.js', 'js/catalog/catalog.js');
 
 			foreach($required_scripts as $i => $s) {
 				if (!in_array($s, $config['additional_javascript']))
