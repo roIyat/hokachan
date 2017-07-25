@@ -37,8 +37,8 @@ To Do List
 ------------
 * <strike>Dice rolling fix.</strike> Done
 * <strike>Make apc(u) compatible in php 7.0 </strike> Done
-* report captcha re-implementation
-* Improved edit form.
+* report captcha re-implementation 
+* <strike>Improved edit form</strike>. Done (uploaded file editing needs a lot of modifications though.)
 * Reduce pagination numbers. (I have trouble with figuring out what the current page variable is in the function.)
 * Removing/Fixing old code.
 * Improve the menu making it more mobile friendly.

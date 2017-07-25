@@ -819,17 +819,10 @@ if ($step == 0) {
 		),
 		array(
 			'category' => 'Misc',
-			'name' => 'Caching available (PHP, Memcached or Redis)',
+			'name' => 'Caching available ( PHP, APC, APCU, Memcached or Redis)',
 			'result' => extension_loaded('memcached') || extension_loaded('redis') || extension_loaded('php'),
 			'required' => false,
-			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance.PHP, <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
-		),
-		array(
-			'category' => 'Misc',
-			'name' => 'H0K4CH4N installed using git',
-			'result' => is_dir('.git'),
-			'required' => false,
-			'message' => 'H0K4CH4N is still beta software and it\'s not going to come out of beta any time soon. As there are often many months between releases yet changes and bug fixes are very frequent, it\'s recommended to use the git repository to maintain your H0K4CH4N installation. Using git makes upgrading much easier.'
+			'message' => 'You will not be able to enable the additional caching system, designed to minimize SQL queries and significantly improve performance. PHP, APC(U), <a href="http://www.php.net/manual/en/intro.memcached.php">Memcached</a> and <a href="http://pecl.php.net/package/redis">Redis</a> are supported.'
 		)
 	);
 
