@@ -5,11 +5,8 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 Introduction
 ------------
 
-Search has been added to the board index. Next up will be pagination changes. I make it so that you can type the page number and you automatically go to that page. it will also say the page total count. the pagination currently will be removed.
-
 Dev 6 is coming along nicely. APC caching has been added again... well more like apcu caching and it works with php 7.0. the post form looks like 8chan. I fixed some code errors for 7.0 and possibly 7.1. 
-The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fix in the future.
-There still is a lot of work my priorities are dice rolling fix, report captcha re-implementation, looking into the anti-bot code I want to remove it but I don't like to touch the source code, and I think it's intertwined with the spam checks. 
+The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fixed in the future.
 
 
 Important Notice
@@ -24,7 +21,7 @@ If I screw something up I know how to fix my database and restore my content. Yo
 
 Our future releases are as follows:
 
-* dev6 current release: focusing on stability, bug fixes, using my weaponized autism to improve and remove dead code in the script, 
+* dev6 current release: focusing on stability, bug fixes, improve and remove dead code in the script, 
 improving the central theme, 
 making H0K4CH4N operational for php 7.0,   
 implementing report captcha again now that we have cool-php-captcha (maybe not sure), 
@@ -36,10 +33,21 @@ dev6 lasts until september.
 * H0K4CH4N Version 6 Release (someday in the future, need to be 100% sure all works with no severe errors.)
 
 
+To Do List
+------------
+* <strike>Dice rolling fix.</strike> Done
+* <strike>Make apc(u) compatible in php 7.0 </strike> Done
+* report captcha re-implementation
+* Improved edit form.
+* Reduce pagination numbers. (I have trouble with figuring out what the current page variable is in the function.)
+* Removing/Fixing old code.
+* Improve the menu making it more mobile friendly.
+
+
 Known Bugs
 ------------
-* git installation database error (workaround is importing the instal.sql file manually in your database, or copy past the install files from the zip.)
-* minor issues with moving threads with deleted images.
+* git installation database error (workaround is importing the instal.sql file manually in your database, or copy paste the install files from the zip.)
+* issues with moving threads with deleted and spoilered reply images.
 * ... 
 
 
