@@ -1026,6 +1026,7 @@
 	$config['additional_javascript'][] = 'js/toggle/toggle-locked-threads.js';
 	$config['additional_javascript'][] = 'js/toggle/hide-images.js';
 	$config['additional_javascript'][] = 'js/toggle/hide-threads.js';
+	$config['additional_javascript'][] = 'js/toggle/expand-all-images.js'; 
 	$config['additional_javascript'][] = 'js/file-selector.js';
 	$config['additional_javascript'][] = 'js/gallery-view.js';
 	$config['additional_javascript'][] = 'js/post-hover.js';
@@ -1049,8 +1050,7 @@
 	$config['additional_javascript'][] = 'js/titlebar-notifications.js';
 	$config['additional_javascript'][] = 'js/mobile-style.js';
 	$config['additional_javascript'][] = 'js/wPaint/8ch.js';
-	$config['additional_javascript'][] = 'js/wpaint.js';
-	$config['additional_javascript'][] = 'js/expand-all-images.js';  
+	$config['additional_javascript'][] = 'js/wpaint.js'; 
 	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
 	$config['additional_javascript'][] = 'js/youtube.js';
 	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
