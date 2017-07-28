@@ -4,7 +4,7 @@ H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 
 Introduction
 ------------
-I'm going to fix the move errors with removing the file baleeted replacement. Who really cares that a file has been baleeted anyways? so if you remove an image it just show no longer any image. Need to see if it's working though.
+Move threads and replies should be severely reduced now. there are still errors with moving an embed and maybe file but I think I know how to fix those also (probably).
 
 Dev 6 is coming along nicely. APC caching has been added again... well more like apcu caching and it works with php 7.0. the post form looks like 8chan. I fixed some code errors for 7.0 and possibly 7.1. 
 The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fixed in the future.
