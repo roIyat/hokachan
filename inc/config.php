@@ -1009,7 +1009,6 @@
 	// jQuery, you should first empty the array so that "js/query.min.js" can be the first, and then re-add
 	// "js/inline-expanding.js" or else the inline-expanding script might not interact properly with other
 	// scripts.
-	// $config['additional_javascript'] = array();
 	$config['additional_javascript'] = array();
     $config['additional_javascript'][] = 'js/jquery.min.js';
 	$config['additional_javascript'][] = 'js/options.js';
@@ -1053,7 +1052,6 @@
 	$config['additional_javascript'][] = 'js/wpaint.js'; 
 	$config['additional_javascript'][] = 'js/infinite-scroll.js';   
 	$config['additional_javascript'][] = 'js/youtube.js';
-	$config['additional_javascript'][] = 'js/jquery.lazyload.js';
 	
 	// Optional JS (some probably has bugs)
 	// $config['additional_javascript'][] = 'js/auto-reload.js';		// I don't think this has bugs but you really don't need this unless your board becomes popular and people post every 30 seconds in a thread.
