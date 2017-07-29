@@ -2,13 +2,18 @@
 H0K4CH4N - A PHP imageboard forked from Vichan and Tinyboard .
 ========================================================
 
-Introduction
+About
 ------------
-Move threads and replies should be severely reduced now. there are still errors with moving an embed and maybe file but I think I know how to fix those also (probably).
 
-Dev 6 is coming along nicely. APC caching has been added again... well more like apcu caching and it works with php 7.0. the post form looks like 8chan. I fixed some code errors for 7.0 and possibly 7.1. 
-The minify library got updated. More useless folders and files have been removed. the captcha iplementation works pretty good. lazy load makes it so that the site loading goes a lot smoother there are still some ajax issues but those can be fixed in the future.
+This script is an imageboard script like 4chan, 2chan, 8chan (without the board creation option) , and many others.
+H0K4CH4N is a clone from [Vichan](https://engine.vichan.net/) which is a clone from the (now defunc'd) 
+[Tinyboard](http://github.com/savetheinternet/Tinyboard),. 
 
+H0K4CH4N tries to combine useful features of Infinity, openIB, Vichan and TinyBoard.
+While removing/updating/fixing useless/outdated/unfinished/broken code.
+
+It is a free, fast, highly configurable and user-friendly
+imageboard software package, written in PHP and has few dependencies.
 
 Important Notice
 ------------
@@ -25,8 +30,7 @@ Our future releases are as follows:
 * dev6 current release: focusing on stability, bug fixes, improve and remove dead code in the script, 
 improving the central theme, 
 making H0K4CH4N operational for php 7.0,   
-implementing report captcha again now that we have cool-php-captcha (maybe not sure), 
-Updating the post-form to resemble infinity more, 
+implementing report captcha again now that we have cool-php-captcha (maybe not sure),  
 implementing fixes from openIB/infinity,  
 dev6 lasts until september.
 * dev7: Looking if all works as intended. 
@@ -38,17 +42,21 @@ To Do List
 ------------
 * <strike>Dice rolling fix.</strike> Done
 * <strike>Make apc(u) compatible in php 7.0 </strike> Done
+* <strike>Fixing move errors.</strike> Fixed 
 * report captcha re-implementation 
 * <strike>Improved edit form</strike>. Done (uploaded file editing needs a lot of modifications though.)
 * Reduce pagination numbers. (I have trouble with figuring out what the current page variable is in the function.)
 * Removing/Fixing old code.
 * Improve the menu making it more mobile friendly.
-
+* Update translation files.
+* Figuring out how to lazyload images with no conflicts with ajax.
+* Making a minimum text, post subject, required option. Someone asked I added it.
+* ...
 
 Known Bugs
 ------------
 * git installation database error (workaround is importing the instal.sql file manually in your database, or copy paste the install files from the zip.)
-* issues with moving threads with deleted and spoilered reply images.
+* <strike>issues with moving threads with deleted and spoilered reply images.</strike> Fixed (still need to check moving posts with embed and files though)
 * ... 
 
 
@@ -58,8 +66,6 @@ Special Thanks
 * [Tinyboard](http://github.com/savetheinternet/Tinyboard) @savetheinternet 
 * [Infinity](https://github.com/ctrlcctrlv/infinity) @ctrcctrlv
 * [OpenIB](https://github.com/OpenIB/OpenIB) @Cipherwraith
-* [Lainchan](https://github.com/lainchan/lainchan)
-
 
 H0K4CH4N WIKI
 ------------
@@ -67,18 +73,6 @@ Credits go to @savetheinternet for making most of the [WIKI](https://github.com/
 
 Important wiki links (under development)
 * [DNSBL Setup](https://github.com/H0K4hokachan/wiki/DNS-Blacklists-(DNSBL)-Information)
-
-
-About
-------------
-H0K4CH4N is a free light-weight, fast, highly configurable and user-friendly
-imageboard software package. It is written in PHP and has few dependencies.
-
-H0K4CH4Nn is a fork of [Vichan](https://engine.vichan.net/) and (now defunc'd) 
-[Tinyboard](http://github.com/savetheinternet/Tinyboard),
-
-H0K4CH4N tries to combine useful features of Infinity, Vichan and TinyBoard.
-While removing useless/outdated/unfinished/broken code.
 
 Requirements
 ------------
@@ -110,7 +104,7 @@ Installation
 1.	Download and extract H0K4CH4N to your web directory.	
 2.	Navigate to ```install.php``` in your web browser and follow the
 	prompts.
-3.	If you have an error with instalation try to import the install.sql database file manually and add your info in instance.config.php.
+3.	If you have an error with instalation through git, first import the install.sql database file manually and go to install.php afterwards.
 4.	H0K4CH4N should now be installed. Log in to ```mod.php``` with the
 	default username and password combination: **admin / password**. (Change this as soon as possible)
 5. 	You should delete the tools folder if you don't need it.
@@ -160,7 +154,7 @@ at the power users.
 
 Localisation
 ------------
-Wanting to have vichan/hokachan in your language? You can contribute your translations at this URL:
+Wanting to have tinyboard/vichan/hokachan in your language? You can contribute your translations at this URL:
 
 https://www.transifex.com/projects/p/tinyboard-vichan-devel/
 
@@ -169,6 +163,8 @@ Oekaki
 H0K4CH4N makes use of <strike>[wPaint](https://github.com/websanova/wPaint)</strike> use the link below for oekaki:
 
 [ctrlcctrlv/wPaint](https://github.com/ctrlcctrlv/wPaint/tree/53b007f28cf0b6cec9998e5e79d56dae6feb8c69)
+
+wPaint has been added in H0K4CH4N by default you no longer need to import it.
 
 To enable oekaki, add all the scripts listed in `js/wpaint.js` to your `instance-config.php`.
 
