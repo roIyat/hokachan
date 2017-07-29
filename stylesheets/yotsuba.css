@@ -58,6 +58,13 @@ table.modlog tr th {
 	background: #EA8;
 }
 
+.thread {
+    background: #f0e0d6;
+}
+form table {
+    background: #f0e0d6;
+}
+
 /* options.js */
 #options_div, #alert_div {
 	background: #f0e0d6;
