@@ -70,8 +70,8 @@
 				<script>load_captcha("{{ config.captcha.provider_get }}", "{{ config.captcha.extra }}");</script>
 				<noscript>You seem to have JavaScript disabled. To complete the CAPTCHA,<br><a href="{{ config.captcha.provider_get }}?mode=get&amp;extra={{ config.captcha.extra }}&amp;nojs=true" target="_blank">open this link in a new tab</a> and put the result in the boxes below:
 				<br>
-				ID: <input class="captcha_cookie" type="text" name="captcha_cookie" size="30" autocomplete="off"><br>
-				Answer: <input class="captcha_text" type="text" name="captcha_text" size="30" maxlength="6" autocomplete="off">
+				ID: <input class="captcha_cookie" type="text" name="captcha_cookie" size="25" autocomplete="off"><br>
+				Answer: <input class="captcha_text" type="text" name="captcha_text" size="25" maxlength="6" autocomplete="off">
 				</noscript>
 			</td>
 		</tr>
@@ -112,7 +112,7 @@
 						<label for="file_url">{% trans %}Image{% endtrans %}</label> 
 			</th>
 			<td>
-						<input style="display:inline" type="text" id="file_url" name="file_url" size="30"> <br> <span class="unimportant hint">{% trans %}(copies an image adress and replaces files){% endtrans %}</span>
+						<input style="display:inline" type="text" id="file_url" name="file_url" size="25"> <br> <span class="unimportant hint">{% trans %}(copies an image adress and replaces files){% endtrans %}</span>
 			</td>
 		</tr>
 		{% endif %}
@@ -123,7 +123,7 @@
 				{% trans %}Embed{% endtrans %}
 			</th>
 			<td>
-				<input type="text" name="embed" value="" size="30" maxlength="120" autocomplete="off"><br> <span class="unimportant hint">{% trans %}(replaces files and can be used instead){% endtrans %}</span>
+				<input type="text" name="embed" value="" size="25" maxlength="120" autocomplete="off"><br> <span class="unimportant hint">{% trans %}(replaces files and can be used instead){% endtrans %}</span>
 			</td>
 		</tr>
 		{% endif %}
