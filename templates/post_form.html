@@ -70,8 +70,8 @@
 				<script>load_captcha("{{ config.captcha.provider_get }}", "{{ config.captcha.extra }}");</script>
 				<noscript>You seem to have JavaScript disabled. To complete the CAPTCHA,<br><a href="{{ config.captcha.provider_get }}?mode=get&amp;extra={{ config.captcha.extra }}&amp;nojs=true" target="_blank">open this link in a new tab</a> and put the result in the boxes below:
 				<br>
-				ID: <input class="captcha_cookie" type="text" name="captcha_cookie" size="25" autocomplete="off"><br>
-				Answer: <input class="captcha_text" type="text" name="captcha_text" size="25" maxlength="6" autocomplete="off">
+				ID: <input class="captcha_cookie" type="text" name="captcha_cookie" size="30" autocomplete="off"><br>
+				Answer: <input class="captcha_text" type="text" name="captcha_text" size="30" maxlength="6" autocomplete="off">
 				</noscript>
 			</td>
 		</tr>
@@ -105,6 +105,29 @@
 			</td>
 		</tr>
 		{% endif %}
+		
+		{% if config.allow_upload_by_url %}
+		<tr id="upload_embed">
+			<th>
+						<label for="file_url">{% trans %}Image Link{% endtrans %}</label> 
+			</th>
+			<td>
+						<input style="display:inline" type="text" id="file_url" name="file_url" size="30">
+			</td>
+		</tr>
+		{% endif %}
+
+		{% if config.enable_embedding %}
+		<tr id="upload_embed">
+			<th>
+				{% trans %}Embed{% endtrans %}
+			</th>
+			<td>
+				<input type="text" name="embed" value="" size="30" maxlength="120" autocomplete="off"><br> <span class="unimportant hint">{% trans %}(replaces files and can be used instead){% endtrans %}</span>
+			</td>
+		</tr>
+		{% endif %}
+		
 		{% set flag_tr %}
 		{% if config.user_flag %}
 			<tr>
@@ -141,27 +164,6 @@
 			{{ flag_tr }}
 		{% endif %}
 		
-		{% if config.allow_upload_by_url %}
-		<tr id="upload_embed">
-			<th>
-						<label for="file_url">{% trans %}Image url{% endtrans %}</label>: 
-			</th>
-			<td>
-						<input style="display:inline" type="text" id="file_url" name="file_url" size="35">
-			</td>
-		</tr>
-		{% endif %}
-
-		{% if config.enable_embedding %}
-		<tr id="upload_embed">
-			<th>
-				{% trans %}Embed{% endtrans %}
-			</th>
-			<td>
-				<input type="text" name="embed" value="" size="30" maxlength="120" autocomplete="off"><br> <span class="unimportant hint">{% trans %}(replaces files and can be used instead){% endtrans %}</span>
-			</td>
-		</tr>
-		{% endif %}
 		{% if config.oekaki %}
 		<tr id="oekaki">
 			<th>{% trans %}Oekaki{% endtrans %}</th>

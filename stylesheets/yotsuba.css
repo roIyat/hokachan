@@ -57,6 +57,7 @@ div.boardlist a {
 }
 table.modlog tr th {
 	background: #EA8;
+	color: #8e0000;
 }
 .thread {
     background: #f0e0d6;
