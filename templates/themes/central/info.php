@@ -5,7 +5,7 @@
 	$theme['name'] = 'CENTRAL';
 	// Description (you can use Tinyboard markup here)
 	$theme['description'] = 'This theme has it all';
-	$theme['version'] = 'v3.0';
+	$theme['version'] = 'v3.1';
 	
 	// Theme configuration	
 	$theme['config'] = Array();
@@ -14,6 +14,7 @@
 		'title' => 'Meta Description',
 		'name' => 'meta_description',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'Software is like entropy. It is difficult to grasp, weighs nothing, and obeys the second law of thermodynamics; i.e. it always increases.',
 		'comment' => '(A meta description is used for search introductions.)'
 	);
@@ -22,6 +23,7 @@
 		'title' => 'Meta Keywords',
 		'name' => 'meta_keywords',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'Free Speech,Anonymous,Hokachan,Coding,Github',
 		'comment' => '(meta keywords describe what the main focus of your website is.)'
 	);
@@ -38,6 +40,7 @@
 		'title' => 'Title Logo',
 		'name' => 'title_logo',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'https://hokachan.com/templates/themes/central/hokachan.png',
 		'comment' => '(50px image is best for this)'
 	);
@@ -53,6 +56,7 @@
 		'title' => 'Intro',
 		'name' => 'intro',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'Congratulations, you installed the central theme.'
 	);
 	
@@ -60,7 +64,8 @@
 		'title' => 'Memetics',
 		'name' => 'meme_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/thumb/1500747158025.png',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/thumb/1500747158025.png',
 		'comment' => '(Add a meme image url)'
 	);
 	
@@ -68,7 +73,8 @@
 		'title' => 'Meme URL',
 		'name' => 'meme_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/res/2.html',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/res/2.html',
 		'comment' => '(Add a link for the meme image)'
 	);
 	
@@ -76,6 +82,7 @@
 		'title' => 'Quote',
 		'name' => 'quote',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'Chemicals in the water turn the frogs gay.'
 	);
 	
@@ -83,7 +90,8 @@
 		'title' => 'Intro Logo #1',
 		'name' => 'intro_logo',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/thumb/1500362626856.png',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/thumb/1500362626856.png',
 		'comment' => '(Image url for the first intro logo #1)'
 	);
 	
@@ -91,7 +99,8 @@
 		'title' => 'Intro Logo URL #1',
 		'name' => 'intro_logo_link',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/res/45.html#q45',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/res/45.html#q45',
 		'comment' => '(Image link for the first intro logo #1)'
 	);
 	
@@ -99,7 +108,8 @@
 		'title' => 'Intro Logo #2',
 		'name' => 'intro_logo2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/thumb/1498251230400.png',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/thumb/1498251230400.png',
 		'comment' => '(Image url for the second intro logo #2)'
 	);
 	
@@ -107,7 +117,8 @@
 		'title' => 'Intro Logo UR #L2',
 		'name' => 'intro_logo_link2',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/res/17.html#q17',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/res/17.html#q17',
 		'comment' => '(Image link for the second intro logo #2)'
 	);
 	
@@ -115,7 +126,8 @@
 		'title' => 'Intro Logo #3',
 		'name' => 'intro_logo3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/thumb/1497405966416.png',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/thumb/1497405966416.png',
 		'comment' => '(Image url for the third and last intro logo #3)'
 	);
 	
@@ -123,7 +135,8 @@
 		'title' => 'Intro Logo URL #3',
 		'name' => 'intro_logo_link3',
 		'type' => 'text',
-		'default' => 'https://hokachan.com/ai/res/2.html#q2',
+		'size' => '100',
+		'default' => 'https://hokachan.com/bot/res/2.html#q2',
 		'comment' => '(Image link for the third and last intro logo #3)'
 	);
 	
@@ -131,14 +144,16 @@
 		'title' => 'Intro Embed',
 		'name' => 'intro_embed',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2',
-		'comment' => '(only paste a basic link: youtube example "https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2")'
+		'comment' => '(add an embed (needs to contain an embed url youtube example "https://www.youtube.com/embed/_ReLaD2qTOA?ecver=2")'
 	);
 	
 	$theme['config'][] = Array(
 		'title' => 'Warning',
 		'name' => 'warning',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'This board contains content that is normie hostile. schroll down at your own risk, Minors are not allowed to visit this website and should leave now.'
 	);
 	
@@ -146,6 +161,7 @@
 		'title' => 'Warning Link',
 		'name' => 'warning_link',
 		'type' => 'text',
+		'size' => '100',
 		'default' => 'https://duckduckgo.com',
 		'comment' => '(Add the warning url link)'
 	);
