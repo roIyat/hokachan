@@ -145,12 +145,14 @@ links may be helpful for you as well:
 
 CLI tools
 -----------------
+Tools folder has been moved to [hokatools](https://github.com/H0K4/hokatools)
+
 There are a few command line interface tools, based on Tinyboard-Tools. These need
 to be launched from a Unix shell account (SSH, or something). They are located in a ```tools/```
 directory.
 
 You actually don't need these tools for your imageboard functioning, they are aimed
-at the power users.
+at the power users. You can find the tools here: [hokatools](https://github.com/H0K4/hokatools)
 
 Localisation
 ------------
