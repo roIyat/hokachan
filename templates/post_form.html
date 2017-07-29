@@ -109,10 +109,10 @@
 		{% if config.allow_upload_by_url %}
 		<tr id="upload_embed">
 			<th>
-						<label for="file_url">{% trans %}Image Link{% endtrans %}</label> 
+						<label for="file_url">{% trans %}Image{% endtrans %}</label> 
 			</th>
 			<td>
-						<input style="display:inline" type="text" id="file_url" name="file_url" size="30">
+						<input style="display:inline" type="text" id="file_url" name="file_url" size="30"> <br> <span class="unimportant hint">{% trans %}(copies an image adress and replaced files){% endtrans %}</span>
 			</td>
 		</tr>
 		{% endif %}
