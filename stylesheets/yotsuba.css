@@ -57,12 +57,15 @@ div.boardlist a {
 table.modlog tr th {
 	background: #EA8;
 }
-
 .thread {
     background: #f0e0d6;
 }
 form table {
     background: #f0e0d6;
+}
+div.post.reply {
+    background: #ffffee;
+    border-color: #d8d8be;
 }
 
 /* options.js */
