@@ -94,11 +94,12 @@
 
 	<footer>
 		<p class="unimportant" style="margin-top:20px;text-align:center;">
-		- <a href="https://github.com/savetheinternet/Tinyboard/">© TINYBOARD</a> + 
-		<a href="https://engine.vichan.net/"> © VICHAN</a> + 
-		<a href="https://hokachan.com/">© H0K4CH4N</a> {{ config.version }} - </p>
+		- <a href="https://github.com/savetheinternet/Tinyboard/ " title="Tinyboard Copyright © 2010-2014 Tinyboard Development Group">© TINYBOARD</a> + 
+		<a href="https://engine.vichan.net/" title="vichan Copyright © 2012-2016 vichan-devel"> © VICHAN</a> + 
+		<a href="https://hokachan.com/" title="H0K4CH4N Copyright © 2016-2017 vichan-devel">© H0K4CH4N</a> {{ config.version }} -
+		</p>
 		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
-	</footer>
+</footer>
 	<script type="text/javascript">{% raw %}
 		ready();
 	{% endraw %}
