@@ -1,12 +1,11 @@
 <?php
 require_once 'cool-php-captcha-0.3.1/captcha.php';
+
 function generate_captcha($extra = '1234567890') {
   global $config;
 
-  $text = rand_string($config['captcha']['length'], $extra);
-
   $captcha = new SimpleCaptcha();
-
+  $text = $captcha->GetDictionaryCaptchaText();
   $cookie = rand_string(20, "abcdefghijklmnopqrstuvwxyz");
 
   ob_start();
